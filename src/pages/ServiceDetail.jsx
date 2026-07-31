@@ -452,7 +452,7 @@ export default function ServiceDetail() {
           <div className="ph-img">
             <div className="ph-illus">
               <img src={data.heroImg} alt={data.title} loading="eager" />
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg,rgba(217,56,30,.3),transparent 60%)', borderRadius: '22px' }}></div>
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg,rgba(232,101,26,.25),transparent 60%)', borderRadius: '22px' }}></div>
               <div className="f-badge p1"><i className="fas fa-check-circle"></i> {data.badge1}</div>
               <div className="f-badge p2"><i className="fas fa-certificate"></i> {data.badge2}</div>
             </div>

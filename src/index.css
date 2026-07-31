@@ -10,8 +10,8 @@
   --white: #ffffff;
   --off-white: #f8f9fa;
   --light: #f0f2f5;
-  --dark: #220407;
-  --dark2: #420810;
+  --dark: #181a1e;
+  --dark2: #282b32;
   --text: #333344;
   --text2: #666680;
   --border: #e8eaed;
@@ -33,7 +33,7 @@ img { max-width: 100%; display: block; }
 
 /* ===== TOP BAR ===== */
 .topbar {
-  background: var(--dark);
+  background: #141619;
   padding: 10px 0;
   font-size: 13px;
   color: #fff;
@@ -74,7 +74,7 @@ img { max-width: 100%; display: block; }
 .navbar {
   position: sticky;
   top: 0; z-index: 1000;
-  background: linear-gradient(135deg, #180305 0%, #220407 100%);
+  background: linear-gradient(135deg, #121417 0%, #1c1f24 100%);
   border-bottom: 1px solid rgba(255,255,255,0.08);
   box-shadow: 0 4px 20px rgba(0,0,0,0.3);
   transition: var(--transition);
@@ -326,7 +326,7 @@ img { max-width: 100%; display: block; }
 
 /* ===== HERO ===== */
 .hero {
-  background: linear-gradient(135deg, #220407 0%, #450810 50%, #680d1a 100%);
+  background: linear-gradient(135deg, #121417 0%, #1c1f24 50%, #282c34 100%);
   min-height: 88vh;
   display: flex;
   align-items: center;
@@ -926,7 +926,7 @@ img { max-width: 100%; display: block; }
 .full-width { width: 100%; justify-content: center; text-align: center; }
 
 /* ===== PAGE HERO & HERO-BG ===== */
-.page-hero { background: linear-gradient(135deg, #220407 0%, #450810 55%, #680d1a 100%); padding: 80px 0 90px; position: relative; overflow: hidden; }
+.page-hero { background: linear-gradient(135deg, #121417 0%, #1c1f24 55%, #282c34 100%); padding: 80px 0 90px; position: relative; overflow: hidden; }
 .page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 55% 65% at 72% 50%, rgba(232,101,26,0.22) 0%, transparent 70%); }
 .hero-bg {
   position: absolute;
@@ -1338,7 +1338,7 @@ img { max-width: 100%; display: block; }
 
 /* ===== CTA BAND STYLES ===== */
 .cta-band {
-  background: linear-gradient(135deg, #220407 0%, #450810 50%, #680d1a 100%);
+  background: linear-gradient(135deg, #121417 0%, #1c1f24 50%, #282c34 100%);
   padding: 64px 0;
   color: #ffffff;
   position: relative;
@@ -1593,7 +1593,7 @@ html, body {
     top: 72px;
     left: 0;
     right: 0;
-    background: #1c0406;
+    background: #141619;
     flex-direction: column;
     padding: 16px 20px;
     border-bottom: 1px solid rgba(255,255,255,0.1);
