@@ -8,6 +8,7 @@ import WhatsAppFloat from './components/WhatsAppFloat';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
+import TranslationServices from './pages/TranslationServices';
 import Quality from './pages/Quality';
 import Blog from './pages/Blog';
 import Contact from './pages/Contact';
@@ -23,6 +24,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
+        <Route path="/translation-services" element={<TranslationServices />} />
         <Route path="/quality" element={<Quality />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/contact" element={<Contact />} />

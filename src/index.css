@@ -10,8 +10,8 @@
   --white: #ffffff;
   --off-white: #f8f9fa;
   --light: #f0f2f5;
-  --dark: #1a1a2e;
-  --dark2: #16213e;
+  --dark: #220407;
+  --dark2: #420810;
   --text: #333344;
   --text2: #666680;
   --border: #e8eaed;
@@ -74,16 +74,17 @@ img { max-width: 100%; display: block; }
 .navbar {
   position: sticky;
   top: 0; z-index: 1000;
-  background: white;
-  box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+  background: linear-gradient(135deg, #180305 0%, #220407 100%);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
   transition: var(--transition);
 }
-.navbar.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.12); }
+.navbar.scrolled { box-shadow: 0 6px 30px rgba(0,0,0,0.4); }
 .nav-inner {
   max-width: 1240px;
   margin: 0 auto;
   padding: 0 24px;
-  height: 72px;
+  height: 84px;
   display: flex;
   align-items: center;
   gap: 32px;
@@ -94,9 +95,9 @@ img { max-width: 100%; display: block; }
 .logo-icon svg { width: 100%; height: 100%; }
 .logo-icon.small, .logo-icon.sm { width: 46px; height: 37px; }
 .logo-text { display: flex; flex-direction: column; line-height: 1; gap: 2px; }
-.logo-main { font-weight: 900; font-size: 17px; letter-spacing: 3px; color: var(--dark); text-transform: uppercase; }
-.logo-sub  { font-size: 11px; font-weight: 400; color: var(--text2); letter-spacing: 1px; }
-.logo-iso  { font-size: 8.5px; color: #aaa; font-weight: 500; letter-spacing: 0.5px; }
+.logo-main { font-weight: 900; font-size: 17px; letter-spacing: 3px; color: #ffffff; text-transform: uppercase; }
+.logo-sub  { font-size: 11px; font-weight: 400; color: rgba(255,255,255,0.7); letter-spacing: 1px; }
+.logo-iso  { font-size: 8.5px; color: rgba(255,255,255,0.5); font-weight: 500; letter-spacing: 0.5px; }
 
 /* VISMA BRAND LOGO */
 .visma-brand-logo {
@@ -105,7 +106,7 @@ img { max-width: 100%; display: block; }
   text-decoration: none;
 }
 .visma-brand-logo img {
-  height: 52px;
+  height: 68px;
   width: auto;
   max-width: 100%;
   object-fit: contain;
@@ -114,10 +115,10 @@ img { max-width: 100%; display: block; }
 /* NAV LINKS */
 .nav-links { display: flex; align-items: center; gap: 4px; flex: 1; }
 .nav-link, .nl {
-  padding: 8px 12px;
+  padding: 8px 14px;
   font-size: 14px;
-  font-weight: 500;
-  color: var(--text);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
   border-radius: var(--radius-sm);
   transition: var(--transition);
   white-space: nowrap;
@@ -125,12 +126,12 @@ img { max-width: 100%; display: block; }
   display: flex; align-items: center; gap: 5px;
   text-decoration: none;
 }
-.nav-link:hover, .nav-link.active, .nl:hover, .nl.active { color: var(--org); background: rgba(232,101,26,0.07); }
+.nav-link:hover, .nav-link.active, .nl:hover, .nl.active { color: #ffffff; background: var(--org); }
 .nav-link .fa-chevron-down, .nl .fa-chevron-down { font-size: 10px; transition: var(--transition); }
 
 /* DROPDOWN & MEGA MENU STYLES */
 .nav-item { position: relative; }
-.nav-item.has-mega { position: relative; }
+.nav-item.has-mega { position: static; }
 .nav-item:hover .nav-link .fa-chevron-down, .nav-item:hover .nl .fa-chevron-down { transform: rotate(180deg); }
 
 /* Invisible Hover Bridge */
@@ -138,8 +139,8 @@ img { max-width: 100%; display: block; }
   content: '';
   position: absolute;
   top: 100%;
-  left: -50px;
-  right: -50px;
+  left: 0;
+  right: 0;
   height: 24px;
   background: transparent;
   z-index: 9998;
@@ -161,23 +162,25 @@ img { max-width: 100%; display: block; }
 }
 .nav-item:hover .dropdown, .nav-item:hover .drop { opacity: 1; visibility: visible; transform: translateY(0); }
 
-/* MEGA DROPDOWN PANEL */
+/* MEGA DROPDOWN PANEL (FULL CONTAINER WIDTH LIKE REFERENCE PHOTO 2) */
 .mega-panel {
   position: absolute;
   top: 100%;
-  left: 50%;
-  transform: translateX(-50%) translateY(6px);
-  background: #ffffff;
+  left: 0;
+  right: 0;
+  width: calc(100% - 48px);
+  max-width: 1240px;
+  margin: 0 auto;
+  transform: translateY(8px);
+  background: #f8f9fa;
   border: 1px solid var(--border);
   border-radius: 18px;
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 24px 70px rgba(0,0,0,0.3);
   display: flex;
-  width: 780px;
-  max-width: 92vw;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 99999;
   overflow: hidden;
 }
@@ -187,20 +190,20 @@ img { max-width: 100%; display: block; }
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  transform: translateX(-50%) translateY(0);
+  transform: translateY(0);
 }
 
 .mega-left {
   flex: 1;
-  padding: 24px;
-  background: #ffffff;
+  padding: 32px 40px;
+  background: #f8f9fa;
 }
 
 .mega-head {
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--org);
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -213,47 +216,50 @@ img { max-width: 100%; display: block; }
 
 .mega-cols {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px 28px;
 }
 
 .mega-col {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 
 .mega-item {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 10px 12px;
-  border-radius: 10px;
+  padding: 12px 14px;
+  border-radius: 12px;
   transition: all 0.2s ease;
   text-decoration: none;
   color: var(--dark);
   cursor: pointer;
   position: relative;
   z-index: 100000;
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.05);
 }
 
 .mega-item:hover,
 .mega-item.mgi-active {
   background: rgba(232, 101, 26, 0.08);
   color: var(--org);
+  border-color: rgba(232, 101, 26, 0.35);
   transform: translateX(4px);
 }
 
 .mi-icon {
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
   background: rgba(232, 101, 26, 0.1);
   color: var(--org);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 11px;
+  font-size: 12px;
   flex-shrink: 0;
   transition: all 0.2s ease;
 }
@@ -266,29 +272,29 @@ img { max-width: 100%; display: block; }
 
 .mega-item strong {
   display: block;
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 700;
   line-height: 1.2;
 }
 
 .mega-item span {
   display: block;
-  font-size: 11.5px;
+  font-size: 12px;
   color: var(--text2);
-  margin-top: 2px;
+  margin-top: 3px;
 }
 
 .mega-right {
-  width: 280px;
+  width: 360px;
   background: #ffffff;
   border-left: 1px solid var(--border);
-  padding: 24px;
+  padding: 32px 28px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  gap: 14px;
+  gap: 18px;
 }
 
 .mega-preview-title {
@@ -320,7 +326,7 @@ img { max-width: 100%; display: block; }
 
 /* ===== HERO ===== */
 .hero {
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  background: linear-gradient(135deg, #220407 0%, #450810 50%, #680d1a 100%);
   min-height: 88vh;
   display: flex;
   align-items: center;
@@ -332,8 +338,8 @@ img { max-width: 100%; display: block; }
   content: '';
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse 50% 60% at 80% 50%, rgba(192,57,43,0.15) 0%, transparent 70%),
-    radial-gradient(ellipse 30% 40% at 10% 20%, rgba(255,255,255,0.03) 0%, transparent 60%);
+    radial-gradient(ellipse 50% 60% at 80% 50%, rgba(232,101,26,0.25) 0%, transparent 70%),
+    radial-gradient(ellipse 30% 40% at 10% 20%, rgba(255,255,255,0.05) 0%, transparent 60%);
 }
 .hero-inner {
   max-width: 1240px;
@@ -920,8 +926,8 @@ img { max-width: 100%; display: block; }
 .full-width { width: 100%; justify-content: center; text-align: center; }
 
 /* ===== PAGE HERO & HERO-BG ===== */
-.page-hero { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 55%, #0f3460 100%); padding: 80px 0 90px; position: relative; overflow: hidden; }
-.page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 55% 65% at 72% 50%, rgba(232,101,26,0.13) 0%, transparent 70%); }
+.page-hero { background: linear-gradient(135deg, #220407 0%, #450810 55%, #680d1a 100%); padding: 80px 0 90px; position: relative; overflow: hidden; }
+.page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 55% 65% at 72% 50%, rgba(232,101,26,0.22) 0%, transparent 70%); }
 .hero-bg {
   position: absolute;
   inset: 0;
@@ -1332,7 +1338,7 @@ img { max-width: 100%; display: block; }
 
 /* ===== CTA BAND STYLES ===== */
 .cta-band {
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  background: linear-gradient(135deg, #220407 0%, #450810 50%, #680d1a 100%);
   padding: 64px 0;
   color: #ffffff;
   position: relative;
@@ -1570,22 +1576,28 @@ html, body {
     height: auto;
   }
   .nav-inner {
-    height: 64px;
+    height: 72px;
+  }
+  .visma-brand-logo img {
+    height: 56px;
   }
   .hamburger {
     display: flex;
   }
+  .hamburger span {
+    background: #ffffff;
+  }
   .nav-links {
     display: none;
     position: absolute;
-    top: 64px;
+    top: 72px;
     left: 0;
     right: 0;
-    background: #ffffff;
+    background: #1c0406;
     flex-direction: column;
     padding: 16px 20px;
-    border-bottom: 1px solid var(--border);
-    box-shadow: var(--shadow-lg);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     gap: 6px;
     max-height: 80vh;
     overflow-y: auto;

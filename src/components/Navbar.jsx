@@ -119,7 +119,7 @@ export default function Navbar() {
       <header className="navbar" id="navbar">
         <div className="nav-inner">
           <NavLink to="/" style={{ textDecoration: 'none' }} onClick={closeMobile}>
-            <Logo />
+            <Logo light={true} />
           </NavLink>
 
           <nav className={`nav-links ${mobileOpen ? 'open' : ''}`} id="navLinks">
@@ -146,7 +146,7 @@ export default function Navbar() {
                   </NavLink>
                   <div className="mega-cols">
                     <div className="mega-col">
-                      {SERVICES.slice(0, 5).map(item => (
+                      {SERVICES.slice(0, 4).map(item => (
                         <NavLink
                           key={item.path}
                           to={item.path}
@@ -160,7 +160,21 @@ export default function Navbar() {
                       ))}
                     </div>
                     <div className="mega-col">
-                      {SERVICES.slice(5).map(item => (
+                      {SERVICES.slice(4, 7).map(item => (
+                        <NavLink
+                          key={item.path}
+                          to={item.path}
+                          className={`mega-item ${svcPreview.key === item.key ? 'mgi-active' : ''}`}
+                          onMouseEnter={() => setSvcPreview(item)}
+                          onClick={closeMobile}
+                        >
+                          <div className="mi-icon"><i className="fas fa-arrow-right"></i></div>
+                          <div><strong>{item.title}</strong><span>{item.sub}</span></div>
+                        </NavLink>
+                      ))}
+                    </div>
+                    <div className="mega-col">
+                      {SERVICES.slice(7, 10).map(item => (
                         <NavLink
                           key={item.path}
                           to={item.path}
@@ -199,7 +213,7 @@ export default function Navbar() {
               onMouseLeave={() => window.innerWidth > 768 && setActiveMega(null)}
             >
               <NavLink 
-                to="/services" 
+                to="/translation-services" 
                 className="nav-link" 
                 onClick={(e) => handleMegaClick(e, 'translation')}
               >
@@ -207,12 +221,12 @@ export default function Navbar() {
               </NavLink>
               <div className="mega-panel">
                 <div className="mega-left">
-                  <NavLink to="/services" className="mega-head" onClick={closeMobile}>
+                  <NavLink to="/translation-services" className="mega-head" onClick={closeMobile}>
                     Translation Services <i className="fas fa-arrow-right"></i>
                   </NavLink>
                   <div className="mega-cols">
                     <div className="mega-col">
-                      {TRANSLATIONS.slice(0, 4).map(item => (
+                      {TRANSLATIONS.slice(0, 3).map(item => (
                         <NavLink
                           key={item.path}
                           to={item.path}
@@ -226,7 +240,21 @@ export default function Navbar() {
                       ))}
                     </div>
                     <div className="mega-col">
-                      {TRANSLATIONS.slice(4).map(item => (
+                      {TRANSLATIONS.slice(3, 6).map(item => (
+                        <NavLink
+                          key={item.path}
+                          to={item.path}
+                          className={`mega-item ${transPreview.key === item.key ? 'mgi-active' : ''}`}
+                          onMouseEnter={() => setTransPreview(item)}
+                          onClick={closeMobile}
+                        >
+                          <div className="mi-icon"><i className="fas fa-arrow-right"></i></div>
+                          <div><strong>{item.title}</strong><span>{item.sub}</span></div>
+                        </NavLink>
+                      ))}
+                    </div>
+                    <div className="mega-col">
+                      {TRANSLATIONS.slice(6, 8).map(item => (
                         <NavLink
                           key={item.path}
                           to={item.path}
