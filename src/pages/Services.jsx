@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 const ALL_SERVICES = [
   { path: '/localization', icon: 'fa-globe', title: 'Localization Service', desc: 'Cultural adaptation of software, websites, and mobile applications for international audiences.' },
@@ -15,6 +16,12 @@ const ALL_SERVICES = [
 export default function Services() {
   return (
     <main>
+      <SEO 
+        title="Our Language Services - Translation, Subtitling & DTP"
+        description="Comprehensive ISO Certified language services including document translation, localization, subtitling, transcription, voice-over, and DTP in Bangalore."
+        keywords="language services bangalore, document translation, subtitling services, transcription india, voiceover agency, dtp services"
+        canonical="https://vismatranslation.com/services"
+      />
       <section className="page-hero">
         <div className="ph-inner">
           <div className="ph-text">
@@ -62,8 +69,10 @@ export default function Services() {
 
       <div className="cta-band">
         <div className="container cta-inner">
-          <h2>Ready to Localize Your Content?</h2>
-          <p>Get a free quote within 2 hours. ISO certified quality guaranteed.</p>
+          <div>
+            <h2>Ready to Localize Your Content?</h2>
+            <p>Get a free quote within 2 hours. ISO certified quality guaranteed.</p>
+          </div>
           <div className="cta-btns">
             <Link to="/contact" className="btn-wh"><i className="fas fa-paper-plane"></i> Get Free Quote</Link>
             <a href="tel:+919945342726" className="btn-wb"><i className="fas fa-phone-alt"></i> Call Us</a>

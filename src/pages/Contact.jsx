@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
@@ -12,6 +13,12 @@ export default function Contact() {
 
   return (
     <main>
+      <SEO 
+        title="Contact Us - Free Translation Quote in 2 Hours"
+        description="Get in touch with VISMA Translation in Bangalore. Call +91 9945342726 or email info@vismatranslation.com for urgent document translation quotes."
+        keywords="contact visma translation, translation quote bangalore, translation agency phone number, translation office bangalore"
+        canonical="https://vismatranslation.com/contact"
+      />
       <section className="page-hero" style={{ paddingBottom: '90px' }}>
         <div className="hero-bg bg-contact"></div>
         <div className="ph-inner" style={{ gridTemplateColumns: '1fr', justifyItems: 'center', textAlign: 'center' }}>

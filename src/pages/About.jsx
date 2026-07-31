@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 export default function About() {
   const [stats, setStats] = useState({ customers: 0, projects: 0, words: 0, translators: 0 });
@@ -17,7 +18,7 @@ export default function About() {
         customers: Math.floor(progress * 500),
         projects: Math.floor(progress * 1200),
         words: Math.floor(progress * 50),
-        translators: Math.floor(progress * 200)
+        translators: Math.floor(progress * 100)
       });
       if (currentStep >= steps) clearInterval(timer);
     }, stepTime);
@@ -27,6 +28,12 @@ export default function About() {
 
   return (
     <main>
+      <SEO 
+        title="About Us - Leading ISO Certified Translation Agency"
+        description="Learn about VISMA Translation's mission, certified linguists, quality assurance process, and 10+ years of global language service excellence in Bangalore."
+        keywords="about visma translation, translation agency bangalore, certified translators india, language service provider"
+        canonical="https://vismatranslation.com/about"
+      />
       <section className="page-hero">
         <div className="hero-bg bg-about"></div>
         <div className="ph-inner">
@@ -117,8 +124,10 @@ export default function About() {
 
       <div className="cta-band">
         <div className="container cta-inner">
-          <h2>Ready to Work with India's Top Translation Agency?</h2>
-          <p>Get a free consultation and quote within 24 hours. No hidden charges.</p>
+          <div>
+            <h2>Ready to Work with India's Top Translation Agency?</h2>
+            <p>Get a free consultation and quote within 24 hours. No hidden charges.</p>
+          </div>
           <div className="cta-btns">
             <Link to="/contact" className="btn-wh"><i className="fas fa-paper-plane"></i> Get Free Quote</Link>
             <a href="tel:+919945342726" className="btn-wb"><i className="fas fa-phone-alt"></i> Call Us Now</a>

@@ -1,9 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 export default function Apostille() {
   return (
     <main>
+      <SEO 
+        title="MEA Apostille & Document Attestation Services in Bangalore"
+        description="Fast MEA apostille legalization for degree certificates, birth certificates, marriage certificates, and commercial documents with express 24-48 hr delivery."
+        keywords="apostille services bangalore, mea apostille india, degree certificate apostille, birth certificate attestation, embassy attestation"
+        canonical="https://vismatranslation.com/apostille"
+      />
       <section className="page-hero">
         <div className="hero-bg bg-apostille"></div>
         <div className="ph-inner">
@@ -105,8 +112,10 @@ export default function Apostille() {
 
       <div className="cta-band">
         <div className="container cta-inner">
-          <h2>Start Your Apostille Application Today</h2>
-          <p>Quick, reliable and fully tracked. Free assessment within 2 hours.</p>
+          <div>
+            <h2>Start Your Apostille Application Today</h2>
+            <p>Quick, reliable and fully tracked. Free assessment within 2 hours.</p>
+          </div>
           <div className="cta-btns">
             <Link to="/contact" className="btn-wh"><i className="fas fa-paper-plane"></i> Apply Now</Link>
             <a href="tel:+919945342726" className="btn-wb"><i className="fas fa-phone-alt"></i> Call for Help</a>

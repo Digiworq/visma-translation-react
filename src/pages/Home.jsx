@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 export default function Home() {
   const [stats, setStats] = useState({ customers: 0, projects: 0, words: 0, translators: 0 });
@@ -18,7 +19,7 @@ export default function Home() {
         customers: Math.floor(progress * 500),
         projects: Math.floor(progress * 1200),
         words: Math.floor(progress * 50),
-        translators: Math.floor(progress * 200)
+        translators: Math.floor(progress * 100)
       });
       if (currentStep >= steps) clearInterval(timer);
     }, stepTime);
@@ -34,6 +35,12 @@ export default function Home() {
 
   return (
     <main>
+      <SEO 
+        title="Best Language Translation & Apostille Services in India"
+        description="ISO Certified translation services, embassy apostille legalization, website localization, subtitling, and voice-over in 100+ global languages."
+        keywords="translation services bangalore, certified translation india, apostille services bangalore, document translation services, legal translation bangalore, certificate translation"
+        canonical="https://vismatranslation.com/"
+      />
       {/* ===== HERO SECTION ===== */}
       <section className="hero" id="home">
         <div style={{

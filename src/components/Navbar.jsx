@@ -80,7 +80,20 @@ export default function Navbar() {
   const [svcPreview, setSvcPreview] = useState(SERVICES[0]);
   const [transPreview, setTransPreview] = useState(TRANSLATIONS[0]);
 
-  const closeMobile = () => setMobileOpen(false);
+  const closeMobile = () => {
+    setMobileOpen(false);
+    setActiveMega(null);
+  };
+
+  const handleMegaClick = (e, megaName) => {
+    if (window.innerWidth <= 768) {
+      e.preventDefault();
+      setActiveMega(activeMega === megaName ? null : megaName);
+    } else {
+      setActiveMega(null);
+      closeMobile();
+    }
+  };
 
   return (
     <>
@@ -116,15 +129,19 @@ export default function Navbar() {
             {/* SERVICES MEGA DROPDOWN */}
             <div 
               className={`nav-item has-mega ${activeMega === 'services' ? 'mega-open' : ''}`}
-              onMouseEnter={() => setActiveMega('services')}
-              onMouseLeave={() => setActiveMega(null)}
+              onMouseEnter={() => window.innerWidth > 768 && setActiveMega('services')}
+              onMouseLeave={() => window.innerWidth > 768 && setActiveMega(null)}
             >
-              <NavLink to="/services" className="nav-link" onClick={() => { setActiveMega(null); closeMobile(); }}>
-                Services <i className="fas fa-chevron-down"></i>
+              <NavLink 
+                to="/services" 
+                className="nav-link" 
+                onClick={(e) => handleMegaClick(e, 'services')}
+              >
+                Services <i className={`fas fa-chevron-down ${activeMega === 'services' ? 'fa-rotate-180' : ''}`}></i>
               </NavLink>
               <div className="mega-panel">
                 <div className="mega-left">
-                  <NavLink to="/services" className="mega-head" onClick={() => { setActiveMega(null); closeMobile(); }}>
+                  <NavLink to="/services" className="mega-head" onClick={closeMobile}>
                     Services <i className="fas fa-arrow-right"></i>
                   </NavLink>
                   <div className="mega-cols">
@@ -135,7 +152,7 @@ export default function Navbar() {
                           to={item.path}
                           className={`mega-item ${svcPreview.key === item.key ? 'mgi-active' : ''}`}
                           onMouseEnter={() => setSvcPreview(item)}
-                          onClick={() => { setActiveMega(null); closeMobile(); }}
+                          onClick={closeMobile}
                         >
                           <div className="mi-icon"><i className="fas fa-arrow-right"></i></div>
                           <div><strong>{item.title}</strong><span>{item.sub}</span></div>
@@ -149,7 +166,7 @@ export default function Navbar() {
                           to={item.path}
                           className={`mega-item ${svcPreview.key === item.key ? 'mgi-active' : ''}`}
                           onMouseEnter={() => setSvcPreview(item)}
-                          onClick={() => { setActiveMega(null); closeMobile(); }}
+                          onClick={closeMobile}
                         >
                           <div className="mi-icon"><i className="fas fa-arrow-right"></i></div>
                           <div><strong>{item.title}</strong><span>{item.sub}</span></div>
@@ -178,15 +195,19 @@ export default function Navbar() {
             {/* TRANSLATION SERVICES MEGA DROPDOWN */}
             <div 
               className={`nav-item has-mega ${activeMega === 'translation' ? 'mega-open' : ''}`}
-              onMouseEnter={() => setActiveMega('translation')}
-              onMouseLeave={() => setActiveMega(null)}
+              onMouseEnter={() => window.innerWidth > 768 && setActiveMega('translation')}
+              onMouseLeave={() => window.innerWidth > 768 && setActiveMega(null)}
             >
-              <NavLink to="/services" className="nav-link" onClick={() => { setActiveMega(null); closeMobile(); }}>
-                Translation Services <i className="fas fa-chevron-down"></i>
+              <NavLink 
+                to="/services" 
+                className="nav-link" 
+                onClick={(e) => handleMegaClick(e, 'translation')}
+              >
+                Translation Services <i className={`fas fa-chevron-down ${activeMega === 'translation' ? 'fa-rotate-180' : ''}`}></i>
               </NavLink>
               <div className="mega-panel">
                 <div className="mega-left">
-                  <NavLink to="/services" className="mega-head" onClick={() => { setActiveMega(null); closeMobile(); }}>
+                  <NavLink to="/services" className="mega-head" onClick={closeMobile}>
                     Translation Services <i className="fas fa-arrow-right"></i>
                   </NavLink>
                   <div className="mega-cols">
@@ -197,7 +218,7 @@ export default function Navbar() {
                           to={item.path}
                           className={`mega-item ${transPreview.key === item.key ? 'mgi-active' : ''}`}
                           onMouseEnter={() => setTransPreview(item)}
-                          onClick={() => { setActiveMega(null); closeMobile(); }}
+                          onClick={closeMobile}
                         >
                           <div className="mi-icon"><i className="fas fa-arrow-right"></i></div>
                           <div><strong>{item.title}</strong><span>{item.sub}</span></div>
@@ -211,7 +232,7 @@ export default function Navbar() {
                           to={item.path}
                           className={`mega-item ${transPreview.key === item.key ? 'mgi-active' : ''}`}
                           onMouseEnter={() => setTransPreview(item)}
-                          onClick={() => { setActiveMega(null); closeMobile(); }}
+                          onClick={closeMobile}
                         >
                           <div className="mi-icon"><i className="fas fa-arrow-right"></i></div>
                           <div><strong>{item.title}</strong><span>{item.sub}</span></div>

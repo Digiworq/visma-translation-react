@@ -1,9 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 export default function Blog() {
   return (
     <main>
+      <SEO 
+        title="Language & Translation Insights Blog"
+        description="Read expert articles and practical guides on multilingual SEO, apostille attestation, certified document translation, and voice-over selection."
+        keywords="translation blog, localization articles, apostille guide, multilingual seo tips, language translation news"
+        canonical="https://vismatranslation.com/blog"
+      />
       <section className="page-hero" style={{ paddingBottom: '90px' }}>
         <div className="hero-bg bg-blog"></div>
         <div className="ph-inner" style={{ gridTemplateColumns: '1fr', justifyItems: 'center', textAlign: 'center' }}>
@@ -211,8 +218,10 @@ export default function Blog() {
 
       <div className="cta-band">
         <div className="container cta-inner">
-          <h2>Have a Translation Project?</h2>
-          <p>Get a free quote within 2 hours. Fast, accurate and ISO certified.</p>
+          <div>
+            <h2>Have a Translation Project?</h2>
+            <p>Get a free quote within 2 hours. Fast, accurate and ISO certified.</p>
+          </div>
           <div className="cta-btns">
             <Link to="/contact" className="btn-wh"><i className="fas fa-paper-plane"></i> Get Free Quote</Link>
             <Link to="/services" className="btn-wb"><i className="fas fa-th-large"></i> Our Services</Link>

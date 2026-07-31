@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 const SERVICE_DATABASE = {
   '/localization': {
@@ -427,6 +428,12 @@ export default function ServiceDetail() {
 
   return (
     <main>
+      <SEO 
+        title={data.title}
+        description={data.desc}
+        keywords={`${data.title.toLowerCase()}, certified ${data.headingMain.toLowerCase()} bangalore, ${data.tag.toLowerCase()} services india`}
+        canonical={`https://vismatranslation.com${currentPath}`}
+      />
       <section className="page-hero">
         <div className={`hero-bg ${data.heroBg}`}></div>
         <div className="ph-inner">
@@ -477,8 +484,10 @@ export default function ServiceDetail() {
 
       <div className="cta-band">
         <div className="container cta-inner">
-          <h2>Ready to Get Started with {data.headingMain}?</h2>
-          <p>Get a free consultation and quote within 2 hours.</p>
+          <div>
+            <h2>Ready to Get Started with {data.headingMain}?</h2>
+            <p>Get a free consultation and quote within 2 hours.</p>
+          </div>
           <div className="cta-btns">
             <Link to="/contact" className="btn-wh"><i className="fas fa-paper-plane"></i> Get Free Quote</Link>
             <a href="tel:+919945342726" className="btn-wb"><i className="fas fa-phone-alt"></i> +91 9945342726</a>

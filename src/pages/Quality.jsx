@@ -1,9 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 export default function Quality() {
   return (
     <main>
+      <SEO 
+        title="ISO Certified Quality Assurance Standard"
+        description="Our 3-tier quality control process guarantees 99.9% translation accuracy with certified native domain linguists and ISO 9001:2015 compliance."
+        keywords="quality translation services, iso 9001 certified translation, accurate translation bangalore, quality assurance translation"
+        canonical="https://vismatranslation.com/quality"
+      />
       <section className="page-hero">
         <div className="hero-bg bg-quality"></div>
         <div className="ph-inner">
@@ -115,8 +122,10 @@ export default function Quality() {
 
       <div className="cta-band">
         <div className="container cta-inner">
-          <h2>Experience Quality-Guaranteed Translation</h2>
-          <p>ISO certified. Accuracy guaranteed. Free quote in 2 hours.</p>
+          <div>
+            <h2>Experience Quality-Guaranteed Translation</h2>
+            <p>ISO certified. Accuracy guaranteed. Free quote in 2 hours.</p>
+          </div>
           <div className="cta-btns">
             <Link to="/contact" className="btn-wh"><i className="fas fa-paper-plane"></i> Get Free Quote</Link>
             <a href="tel:+919945342726" className="btn-wb"><i className="fas fa-phone-alt"></i> Call Us</a>
