@@ -134,9 +134,12 @@ export function DataProvider({ children }) {
     };
   });
 
-  const [isAdmin, setIsAdmin] = useState(() => {
-    return localStorage.getItem('visma_admin_auth') === 'true';
-  });
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  // Clear any stale auth session from localStorage on mount
+  useEffect(() => {
+    localStorage.removeItem('visma_admin_auth');
+  }, []);
 
   // Save to LocalStorage on changes
   useEffect(() => {
@@ -166,10 +169,6 @@ export function DataProvider({ children }) {
   useEffect(() => {
     localStorage.setItem('visma_admin_creds', JSON.stringify(adminCreds));
   }, [adminCreds]);
-
-  useEffect(() => {
-    localStorage.setItem('visma_admin_auth', isAdmin ? 'true' : 'false');
-  }, [isAdmin]);
 
   // Auth Functions
   const loginAdmin = (username, password) => {
