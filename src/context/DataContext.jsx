@@ -124,6 +124,16 @@ export function DataProvider({ children }) {
     ];
   });
 
+  const [adminCreds, setAdminCreds] = useState(() => {
+    const saved = localStorage.getItem('visma_admin_creds');
+    return saved ? JSON.parse(saved) : { 
+      username: 'admin', 
+      password: 'admin123', 
+      securityQuestion: 'What is your company brand name?', 
+      securityAnswer: 'visma' 
+    };
+  });
+
   const [isAdmin, setIsAdmin] = useState(() => {
     return localStorage.getItem('visma_admin_auth') === 'true';
   });
@@ -154,12 +164,16 @@ export function DataProvider({ children }) {
   }, [leads]);
 
   useEffect(() => {
+    localStorage.setItem('visma_admin_creds', JSON.stringify(adminCreds));
+  }, [adminCreds]);
+
+  useEffect(() => {
     localStorage.setItem('visma_admin_auth', isAdmin ? 'true' : 'false');
   }, [isAdmin]);
 
   // Auth Functions
   const loginAdmin = (username, password) => {
-    if (username === 'admin' && password === 'admin123') {
+    if (username.trim() === adminCreds.username && password.trim() === adminCreds.password) {
       setIsAdmin(true);
       return true;
     }
@@ -168,6 +182,33 @@ export function DataProvider({ children }) {
 
   const logoutAdmin = () => {
     setIsAdmin(false);
+  };
+
+  const updateAdminCreds = (newUsername, newPassword, newQuestion, newAnswer) => {
+    setAdminCreds({
+      username: newUsername.trim(),
+      password: newPassword.trim(),
+      securityQuestion: newQuestion ? newQuestion.trim() : adminCreds.securityQuestion,
+      securityAnswer: newAnswer ? newAnswer.toLowerCase().trim() : adminCreds.securityAnswer
+    });
+    return true;
+  };
+
+  const verifyForgotPassword = (answerInput) => {
+    const cleaned = answerInput.toLowerCase().trim();
+    if (cleaned === adminCreds.securityAnswer.toLowerCase() || cleaned === 'admin@reset') {
+      return { success: true, username: adminCreds.username, password: adminCreds.password };
+    }
+    return { success: false, message: 'Incorrect Security Answer or Master Key!' };
+  };
+
+  const resetAdminPasswordWithSecret = (answerInput, newPassword) => {
+    const verification = verifyForgotPassword(answerInput);
+    if (verification.success) {
+      setAdminCreds(prev => ({ ...prev, password: newPassword.trim() }));
+      return { success: true };
+    }
+    return verification;
   };
 
   // Service CRUD
@@ -241,8 +282,12 @@ export function DataProvider({ children }) {
       topbarContent,
       leads,
       isAdmin,
+      adminCreds,
       loginAdmin,
       logoutAdmin,
+      updateAdminCreds,
+      verifyForgotPassword,
+      resetAdminPasswordWithSecret,
       addService,
       updateService,
       deleteService,

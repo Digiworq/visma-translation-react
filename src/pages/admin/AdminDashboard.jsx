@@ -13,6 +13,8 @@ export default function AdminDashboard() {
     topbarContent,
     leads,
     isAdmin,
+    adminCreds,
+    updateAdminCreds,
     logoutAdmin,
     addService,
     updateService,
@@ -29,6 +31,32 @@ export default function AdminDashboard() {
   const navigate = useNavigate();
   const location = useLocation();
   const [activeTab, setActiveTab] = useState('overview');
+
+  // Security Form state
+  const [secForm, setSecForm] = useState({
+    username: adminCreds.username,
+    currentPassword: '',
+    newPassword: '',
+    confirmPassword: '',
+    securityQuestion: adminCreds.securityQuestion || 'What is your company brand name?',
+    securityAnswer: adminCreds.securityAnswer || 'visma'
+  });
+
+  const handleSaveSecurity = (e) => {
+    e.preventDefault();
+    if (secForm.currentPassword !== adminCreds.password) {
+      showToast('⚠️ Incorrect current password!');
+      return;
+    }
+    if (secForm.newPassword && secForm.newPassword !== secForm.confirmPassword) {
+      showToast('⚠️ New password and confirmation do not match!');
+      return;
+    }
+    const finalPassword = secForm.newPassword ? secForm.newPassword : adminCreds.password;
+    updateAdminCreds(secForm.username, finalPassword, secForm.securityQuestion, secForm.securityAnswer);
+    showToast('✅ Admin credentials & security settings updated successfully!');
+    setSecForm(prev => ({ ...prev, currentPassword: '', newPassword: '', confirmPassword: '' }));
+  };
 
   // Service Edit / Add Modal state
   const [showSvcModal, setShowSvcModal] = useState(false);
