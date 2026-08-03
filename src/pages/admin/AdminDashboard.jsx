@@ -12,6 +12,7 @@ export default function AdminDashboard() {
     heroContent,
     topbarContent,
     leads,
+    blogs,
     isAdmin,
     adminCreds,
     updateAdminCreds,
@@ -25,6 +26,9 @@ export default function AdminDashboard() {
     updateHero,
     updateTopbar,
     deleteLead,
+    addBlog,
+    updateBlog,
+    deleteBlog,
     resetToDefaults
   } = useData();
 
@@ -105,6 +109,44 @@ export default function AdminDashboard() {
   const [menuForm, setMenuForm] = useState({
     label: '', path: '', isMega: false, megaType: 'services', visible: true
   });
+
+  // Blog modal state
+  const [showBlogModal, setShowBlogModal] = useState(false);
+  const [editBlogId, setEditBlogId] = useState(null);
+  const [blogForm, setBlogForm] = useState({
+    title: '', category: '', author: '', date: '', readTime: '', excerpt: '', content: '', image: '', featured: false
+  });
+
+  const openAddBlogModal = () => {
+    setEditBlogId(null);
+    setBlogForm({ title: '', category: '', author: '', date: new Date().toISOString().split('T')[0], readTime: '', excerpt: '', content: '', image: '', featured: false });
+    setShowBlogModal(true);
+  };
+
+  const openEditBlogModal = (blog) => {
+    setEditBlogId(blog.id);
+    setBlogForm({ ...blog });
+    setShowBlogModal(true);
+  };
+
+  const handleSaveBlog = (e) => {
+    e.preventDefault();
+    if (editBlogId) {
+      updateBlog(editBlogId, blogForm);
+      showToast(`Blog "${blogForm.title}" updated!`);
+    } else {
+      addBlog(blogForm);
+      showToast(`Blog "${blogForm.title}" published!`);
+    }
+    setShowBlogModal(false);
+  };
+
+  const handleDeleteBlog = (id, title) => {
+    if (window.confirm(`Delete blog "${title}"?`)) {
+      deleteBlog(id);
+      showToast(`Blog "${title}" deleted.`);
+    }
+  };
 
   // Hero form state
   const [heroForm, setHeroForm] = useState({ ...heroContent });
@@ -277,6 +319,9 @@ export default function AdminDashboard() {
           <button className={`admin-tab-btn ${activeTab === 'leads' ? 'active' : ''}`} onClick={() => { setActiveTab('leads'); setSidebarOpen(false); }}>
             <i className="fas fa-envelope-open-text"></i> Customer Inquiries ({leads.length})
           </button>
+          <button className={`admin-tab-btn ${activeTab === 'blog' ? 'active' : ''}`} onClick={() => { setActiveTab('blog'); setSidebarOpen(false); }}>
+            <i className="fas fa-blog"></i> Blog Posts ({blogs.length})
+          </button>
           <button className={`admin-tab-btn ${activeTab === 'security' ? 'active' : ''}`} onClick={() => { setActiveTab('security'); setSidebarOpen(false); }}>
             <i className="fas fa-user-lock"></i> Account &amp; Security
           </button>
@@ -324,6 +369,14 @@ export default function AdminDashboard() {
                     <span>Received Inquiries</span>
                   </div>
                 </div>
+
+                <div className="admin-stat-card">
+                  <div className="asc-icon orange"><i className="fas fa-blog"></i></div>
+                  <div className="asc-data">
+                    <h3>{blogs.length}</h3>
+                    <span>Blog Articles</span>
+                  </div>
+                </div>
               </div>
 
               <div className="admin-quick-section">
@@ -340,6 +393,9 @@ export default function AdminDashboard() {
                   </button>
                   <button onClick={() => setActiveTab('menu')} className="asc-shortcut-btn">
                     <i className="fas fa-link"></i> Add Navigation Menu Link
+                  </button>
+                  <button onClick={openAddBlogModal} className="asc-shortcut-btn">
+                    <i className="fas fa-pen-nib"></i> Write New Blog Post
                   </button>
                 </div>
               </div>
@@ -781,7 +837,97 @@ export default function AdminDashboard() {
               </div>
             </div>
           )}
-          {/* TAB 7: ACCOUNT & SECURITY */}
+          {/* TAB 7: BLOG MANAGER */}
+          {activeTab === 'blog' && (
+            <div className="admin-tab-pane">
+              <div className="admin-pane-head flex-between">
+                <div>
+                  <h2>Blog Posts ({blogs.length})</h2>
+                  <p>Create, edit, or delete blog articles shown on the Blog page.</p>
+                </div>
+                <button onClick={openAddBlogModal} className="btn-admin-add">
+                  <i className="fas fa-plus"></i> New Blog Post
+                </button>
+              </div>
+
+              {blogs.length === 0 && (
+                <div style={{ textAlign: 'center', padding: '60px 20px', color: '#999' }}>
+                  <i className="fas fa-blog" style={{ fontSize: '40px', marginBottom: '16px', display: 'block', color: '#ddd' }}></i>
+                  No blog posts yet. Click "New Blog Post" to create your first article.
+                </div>
+              )}
+
+              {/* Desktop table */}
+              {blogs.length > 0 && (
+                <div className="admin-table-responsive admin-desktop-only">
+                  <table className="admin-table">
+                    <thead>
+                      <tr>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Author</th>
+                        <th>Date</th>
+                        <th>Featured</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {blogs.map(b => (
+                        <tr key={b.id}>
+                          <td><strong>{b.title}</strong><div style={{ fontSize: '12px', color: '#999', marginTop: '4px' }}>{b.excerpt?.substring(0, 60)}...</div></td>
+                          <td><span className="badge-svc">{b.category}</span></td>
+                          <td>{b.author}</td>
+                          <td><span className="badge-date">{b.date}</span></td>
+                          <td>
+                            <button
+                              onClick={() => { updateBlog(b.id, { featured: !b.featured }); showToast(b.featured ? 'Removed from featured.' : 'Marked as featured!'); }}
+                              className={`status-toggle ${b.featured ? 'active' : 'hidden'}`}
+                            >
+                              {b.featured ? 'Featured' : 'Normal'}
+                            </button>
+                          </td>
+                          <td>
+                            <div className="td-actions">
+                              <button onClick={() => openEditBlogModal(b)} className="btn-act-edit"><i className="fas fa-pen"></i> Edit</button>
+                              <button onClick={() => handleDeleteBlog(b.id, b.title)} className="btn-act-delete"><i className="fas fa-trash-alt"></i> Delete</button>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+
+              {/* Mobile cards */}
+              {blogs.length > 0 && (
+                <div className="admin-mobile-only admin-card-list">
+                  {blogs.map(b => (
+                    <div className="admin-row-card" key={b.id}>
+                      <div className="arc-header">
+                        <div className="arc-icon-circle" style={{ background: 'rgba(232,101,26,0.1)', color: '#e8651a' }}><i className="fas fa-newspaper"></i></div>
+                        <div className="arc-title">
+                          <strong>{b.title}</strong>
+                          <span className="badge-svc">{b.category}</span>
+                        </div>
+                      </div>
+                      <div className="arc-meta arc-row">
+                        <div><span className="arc-label">Author</span><span>{b.author}</span></div>
+                        <div><span className="arc-label">Date</span><span className="badge-date">{b.date}</span></div>
+                      </div>
+                      <div className="arc-meta"><span className="arc-label">Excerpt</span><p style={{ margin: 0, fontSize: '13px', color: '#555' }}>{b.excerpt}</p></div>
+                      <div className="arc-actions">
+                        <button onClick={() => openEditBlogModal(b)} className="btn-act-edit"><i className="fas fa-pen"></i> Edit</button>
+                        <button onClick={() => handleDeleteBlog(b.id, b.title)} className="btn-act-delete"><i className="fas fa-trash-alt"></i> Delete</button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* TAB 8: ACCOUNT & SECURITY */}
           {activeTab === 'security' && (
             <div className="admin-tab-pane">
               <div className="admin-pane-head">
@@ -966,6 +1112,70 @@ export default function AdminDashboard() {
               <div className="admin-modal-actions">
                 <button type="button" onClick={() => setShowSvcModal(false)} className="btn-admin-cancel">Cancel</button>
                 <button type="submit" className="btn-admin-save">Save Service</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* BLOG ADD/EDIT MODAL */}
+      {showBlogModal && (
+        <div className="admin-modal-overlay">
+          <div className="admin-modal" style={{ maxWidth: '680px' }}>
+            <div className="admin-modal-head">
+              <h3><i className="fas fa-blog"></i> {editBlogId ? 'Edit Blog Post' : 'Add New Blog Post'}</h3>
+              <button onClick={() => setShowBlogModal(false)} className="modal-close-btn">&times;</button>
+            </div>
+            <form onSubmit={handleSaveBlog} className="admin-modal-form">
+              <div className="admin-fg">
+                <label>Blog Title</label>
+                <input type="text" placeholder="e.g. Why Certified Translation Matters" value={blogForm.title} onChange={e => setBlogForm({ ...blogForm, title: e.target.value })} required />
+              </div>
+
+              <div className="form-grid-2">
+                <div className="admin-fg">
+                  <label>Category</label>
+                  <input type="text" placeholder="e.g. Translation Tips, Apostille, Localization" value={blogForm.category} onChange={e => setBlogForm({ ...blogForm, category: e.target.value })} required />
+                </div>
+                <div className="admin-fg">
+                  <label>Author Name</label>
+                  <input type="text" placeholder="e.g. Anil Verma" value={blogForm.author} onChange={e => setBlogForm({ ...blogForm, author: e.target.value })} required />
+                </div>
+                <div className="admin-fg">
+                  <label>Publish Date</label>
+                  <input type="date" value={blogForm.date} onChange={e => setBlogForm({ ...blogForm, date: e.target.value })} required />
+                </div>
+                <div className="admin-fg">
+                  <label>Read Time (e.g. 5 min)</label>
+                  <input type="text" placeholder="5 min" value={blogForm.readTime} onChange={e => setBlogForm({ ...blogForm, readTime: e.target.value })} required />
+                </div>
+              </div>
+
+              <div className="admin-fg">
+                <label>Cover Image URL (Optional)</label>
+                <input type="text" placeholder="https://images.unsplash.com/..." value={blogForm.image} onChange={e => setBlogForm({ ...blogForm, image: e.target.value })} />
+              </div>
+
+              <div className="admin-fg">
+                <label>Short Excerpt / Preview Text</label>
+                <textarea rows="2" placeholder="A brief 1-2 sentence summary shown on the blog listing..." value={blogForm.excerpt} onChange={e => setBlogForm({ ...blogForm, excerpt: e.target.value })} required />
+              </div>
+
+              <div className="admin-fg">
+                <label>Full Article Content</label>
+                <textarea rows="6" placeholder="Write the full blog article content here..." value={blogForm.content} onChange={e => setBlogForm({ ...blogForm, content: e.target.value })} required />
+              </div>
+
+              <div className="admin-fg-checkbox">
+                <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontWeight: 600 }}>
+                  <input type="checkbox" checked={blogForm.featured} onChange={e => setBlogForm({ ...blogForm, featured: e.target.checked })} />
+                  Mark as Featured Post (shows in the top "Latest Article" spot)
+                </label>
+              </div>
+
+              <div className="admin-modal-actions">
+                <button type="button" onClick={() => setShowBlogModal(false)} className="btn-admin-cancel">Cancel</button>
+                <button type="submit" className="btn-admin-save"><i className="fas fa-save"></i> {editBlogId ? 'Update Post' : 'Publish Post'}</button>
               </div>
             </form>
           </div>
