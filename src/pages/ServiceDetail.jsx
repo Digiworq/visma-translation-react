@@ -490,11 +490,11 @@ export default function ServiceDetail() {
     "@type": "Service",
     "name": data.title,
     "description": data.desc,
-    "url": `https://vismatranslation.com${currentPath}`,
+    "url": `https://visma-translation-react.vercel.app${currentPath}`,
     "provider": {
       "@type": "LocalBusiness",
       "name": "VISMA Translation",
-      "url": "https://vismatranslation.com",
+      "url": "https://visma-translation-react.vercel.app",
       "telephone": "+919945342726",
       "email": "info@vismatranslation.com",
       "address": {
@@ -512,7 +512,7 @@ export default function ServiceDetail() {
     ],
     "availableChannel": {
       "@type": "ServiceChannel",
-      "serviceUrl": "https://vismatranslation.com/contact",
+      "serviceUrl": "https://visma-translation-react.vercel.app/contact",
       "servicePhone": "+919945342726"
     },
     "hasOfferCatalog": {
@@ -536,7 +536,7 @@ export default function ServiceDetail() {
         title={data.title}
         description={data.desc}
         keywords={pageKeywords}
-        canonical={`https://vismatranslation.com${currentPath}`}
+        canonical={`https://visma-translation-react.vercel.app${currentPath}`}
         schema={pageSchema}
       />
       <section className="page-hero">

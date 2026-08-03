@@ -1,6 +1,14 @@
 import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+
+const SITE_URL = 'https://visma-translation-react.vercel.app';
 
 export default function SEO({ title, description, keywords, canonical, schema }) {
+  const { pathname } = useLocation();
+
+  // Always use the passed canonical, or auto-generate from current path
+  const canonicalUrl = canonical || `${SITE_URL}${pathname === '/' ? '' : pathname}`;
+
   useEffect(() => {
     if (title) {
       document.title = `${title} | VISMA Translation`;
@@ -32,28 +40,29 @@ export default function SEO({ title, description, keywords, canonical, schema })
     setMeta('keywords', keywords);
     setOgMeta('og:title', title ? `${title} | VISMA Translation` : undefined);
     setOgMeta('og:description', description);
-    if (canonical) {
-      setOgMeta('og:url', canonical);
-      let twitterUrl = document.querySelector('meta[name="twitter:url"]');
-      if (!twitterUrl) {
-        twitterUrl = document.createElement('meta');
-        twitterUrl.setAttribute('name', 'twitter:url');
-        document.head.appendChild(twitterUrl);
-      }
-      twitterUrl.setAttribute('content', canonical);
-    }
+    setOgMeta('og:url', canonicalUrl);
+    setOgMeta('og:type', 'website');
+    setOgMeta('og:site_name', 'VISMA Translation');
 
-    if (canonical) {
-      let link = document.querySelector('link[rel="canonical"]');
-      if (!link) {
-        link = document.createElement('link');
-        link.setAttribute('rel', 'canonical');
-        document.head.appendChild(link);
-      }
-      link.setAttribute('href', canonical);
-    }
+    // Twitter card
+    setMeta('twitter:card', 'summary_large_image');
+    setMeta('twitter:title', title ? `${title} | VISMA Translation` : undefined);
+    setMeta('twitter:description', description);
+    setMeta('twitter:url', canonicalUrl);
 
-    // Inject / replace per-page JSON-LD schema
+    // Canonical link tag
+    let link = document.querySelector('link[rel="canonical"]');
+    if (!link) {
+      link = document.createElement('link');
+      link.setAttribute('rel', 'canonical');
+      document.head.appendChild(link);
+    }
+    link.setAttribute('href', canonicalUrl);
+
+    // Robots
+    setMeta('robots', 'index, follow');
+
+    // JSON-LD schema
     const existingScript = document.querySelector('script[data-page-schema="true"]');
     if (existingScript) existingScript.remove();
 
@@ -66,11 +75,10 @@ export default function SEO({ title, description, keywords, canonical, schema })
     }
 
     return () => {
-      // Clean up page-specific schema on unmount so it doesn't leak to the next page
       const s = document.querySelector('script[data-page-schema="true"]');
       if (s) s.remove();
     };
-  }, [title, description, keywords, canonical, schema]);
+  }, [title, description, keywords, canonicalUrl, schema]);
 
   return null;
 }

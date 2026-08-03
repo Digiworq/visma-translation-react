@@ -13,23 +13,23 @@ export default function TranslationServices() {
         title="Certified Document Translation Services - Legal, Medical, Financial & More"
         description="Embassy-accepted certified document translation in 100+ languages across Legal, Medical, Financial, Technical, Business, E-Commerce, E-Learning, and Certificate domains in Bangalore. ISO 9001:2015 certified."
         keywords="certified translation services bangalore, legal translation india, medical translation bangalore, financial translation services, technical translation india, business translation bangalore, certificate translation services, e-commerce translation india, elearning translation, document translation 100 languages, sworn translation bangalore, notarized translation india, embassy accepted translation, iso certified document translation, professional translation services india"
-        canonical="https://vismatranslation.com/translation-services"
+        canonical="https://visma-translation-react.vercel.app/translation-services"
         schema={{
           "@context": "https://schema.org",
           "@type": "ItemList",
           "name": "Certified Translation Services by VISMA Translation",
           "description": "Specialized certified document translation services in Bangalore across 8 expert domains.",
-          "url": "https://vismatranslation.com/translation-services",
+          "url": "https://visma-translation-react.vercel.app/translation-services",
           "numberOfItems": 8,
           "itemListElement": [
-            { "@type": "ListItem", "position": 1, "item": { "@type": "Service", "name": "Legal Translation", "url": "https://vismatranslation.com/legal-translation", "description": "Certified translation of contracts, court documents, patents, and legal agreements." } },
-            { "@type": "ListItem", "position": 2, "item": { "@type": "Service", "name": "Medical Translation", "url": "https://vismatranslation.com/medical-translation", "description": "Clinical trials, pharma, medical device, and patient records translation." } },
-            { "@type": "ListItem", "position": 3, "item": { "@type": "Service", "name": "Business Translation", "url": "https://vismatranslation.com/business-translation", "description": "Corporate reports, business proposals, and executive communications translation." } },
-            { "@type": "ListItem", "position": 4, "item": { "@type": "Service", "name": "Finance Translation", "url": "https://vismatranslation.com/finance-translation", "description": "Financial statements, audit reports, and banking documents translation." } },
-            { "@type": "ListItem", "position": 5, "item": { "@type": "Service", "name": "Technical Translation", "url": "https://vismatranslation.com/technical-translation", "description": "Engineering manuals, SDS sheets, and technical documentation translation." } },
-            { "@type": "ListItem", "position": 6, "item": { "@type": "Service", "name": "Certificate Translation", "url": "https://vismatranslation.com/certificate-translation", "description": "Birth, marriage, degree certificate translation accepted by embassies." } },
-            { "@type": "ListItem", "position": 7, "item": { "@type": "Service", "name": "E-Commerce Translation", "url": "https://vismatranslation.com/ecommerce-translation", "description": "Product catalog, checkout, and storefront translation for global retail." } },
-            { "@type": "ListItem", "position": 8, "item": { "@type": "Service", "name": "E-Learning Translation", "url": "https://vismatranslation.com/elearning-translation", "description": "LMS platforms, course materials, and instructional video translation." } }
+            { "@type": "ListItem", "position": 1, "item": { "@type": "Service", "name": "Legal Translation", "url": "https://visma-translation-react.vercel.app/legal-translation", "description": "Certified translation of contracts, court documents, patents, and legal agreements." } },
+            { "@type": "ListItem", "position": 2, "item": { "@type": "Service", "name": "Medical Translation", "url": "https://visma-translation-react.vercel.app/medical-translation", "description": "Clinical trials, pharma, medical device, and patient records translation." } },
+            { "@type": "ListItem", "position": 3, "item": { "@type": "Service", "name": "Business Translation", "url": "https://visma-translation-react.vercel.app/business-translation", "description": "Corporate reports, business proposals, and executive communications translation." } },
+            { "@type": "ListItem", "position": 4, "item": { "@type": "Service", "name": "Finance Translation", "url": "https://visma-translation-react.vercel.app/finance-translation", "description": "Financial statements, audit reports, and banking documents translation." } },
+            { "@type": "ListItem", "position": 5, "item": { "@type": "Service", "name": "Technical Translation", "url": "https://visma-translation-react.vercel.app/technical-translation", "description": "Engineering manuals, SDS sheets, and technical documentation translation." } },
+            { "@type": "ListItem", "position": 6, "item": { "@type": "Service", "name": "Certificate Translation", "url": "https://visma-translation-react.vercel.app/certificate-translation", "description": "Birth, marriage, degree certificate translation accepted by embassies." } },
+            { "@type": "ListItem", "position": 7, "item": { "@type": "Service", "name": "E-Commerce Translation", "url": "https://visma-translation-react.vercel.app/ecommerce-translation", "description": "Product catalog, checkout, and storefront translation for global retail." } },
+            { "@type": "ListItem", "position": 8, "item": { "@type": "Service", "name": "E-Learning Translation", "url": "https://visma-translation-react.vercel.app/elearning-translation", "description": "LMS platforms, course materials, and instructional video translation." } }
           ]
         }}
       />

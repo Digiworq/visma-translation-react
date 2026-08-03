@@ -9,7 +9,7 @@ export default function Apostille() {
         title="MEA Apostille & Document Attestation Services in Bangalore | Express 3-5 Days"
         description="Fast MEA apostille legalization for degree certificates, birth certificates, marriage certificates, commercial documents and medical records. Express 24-48 hour processing across all Indian states."
         keywords="apostille services bangalore, mea apostille india, degree certificate apostille, birth certificate apostille, marriage certificate attestation, embassy attestation bangalore, hrd attestation india, document apostille india, hague apostille, apostille legalization bangalore, commercial document apostille, educational certificate apostille, express apostille india, apostille for visa, document legalization india, attestation services karnataka"
-        canonical="https://vismatranslation.com/apostille"
+        canonical="https://visma-translation-react.vercel.app/apostille"
         schema={{
           "@context": "https://schema.org",
           "@type": "Service",
@@ -18,11 +18,11 @@ export default function Apostille() {
           "provider": {
             "@type": "LocalBusiness",
             "name": "VISMA Translation",
-            "url": "https://vismatranslation.com",
+            "url": "https://visma-translation-react.vercel.app",
             "telephone": "+919945342726",
             "address": { "@type": "PostalAddress", "addressLocality": "Bangalore", "addressRegion": "Karnataka", "addressCountry": "IN" }
           },
-          "url": "https://vismatranslation.com/apostille",
+          "url": "https://visma-translation-react.vercel.app/apostille",
           "serviceType": "Apostille & Document Attestation",
           "areaServed": [
             { "@type": "Country", "name": "India" },
@@ -30,7 +30,7 @@ export default function Apostille() {
           ],
           "availableChannel": {
             "@type": "ServiceChannel",
-            "serviceUrl": "https://vismatranslation.com/contact",
+            "serviceUrl": "https://visma-translation-react.vercel.app/contact",
             "servicePhone": "+919945342726"
           },
           "offers": [

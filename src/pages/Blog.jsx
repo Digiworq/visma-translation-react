@@ -22,7 +22,7 @@ export default function Blog() {
       <SEO
         title="Translation Blog - Language, Localization & Apostille Guides"
         description="Expert articles on certified document translation, apostille services, multilingual SEO, medical translation best practices, and language industry insights from Visma Translation's certified linguists."
-        canonical="https://vismatranslation.com/blog"
+        canonical="https://visma-translation-react.vercel.app/blog"
       />
 
       {/* Hero */}

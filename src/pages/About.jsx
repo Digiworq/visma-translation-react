@@ -32,13 +32,13 @@ export default function About() {
         title="About Us - Leading ISO Certified Translation Agency in Bangalore"
         description="VISMA Translation is an ISO 9001:2015 certified language agency in Bangalore with 200+ expert linguists, 100+ languages, and 15+ years of experience delivering precision translation globally."
         keywords="about visma translation, translation agency bangalore, iso certified translation company, best translation agency india, certified translators bangalore, language service provider india, professional translation company, translation agency history, multilingual solutions bangalore, top translation agency india, translation company reviews, who is visma translation"
-        canonical="https://vismatranslation.com/about"
+        canonical="https://visma-translation-react.vercel.app/about"
         schema={{
           "@context": "https://schema.org",
           "@type": "Organization",
           "name": "VISMA Translation",
-          "url": "https://vismatranslation.com",
-          "logo": "https://vismatranslation.com/logo.png",
+          "url": "https://visma-translation-react.vercel.app",
+          "logo": "https://visma-translation-react.vercel.app/logo.png",
           "description": "ISO 9001:2015 certified translation agency in Bangalore with 200+ linguists covering 100+ languages across legal, medical, business, technical and multimedia domains.",
           "foundingDate": "2010",
           "numberOfEmployees": { "@type": "QuantitativeValue", "value": 200 },

@@ -24,13 +24,13 @@ export default function Contact() {
         title="Contact Us - Free Translation Quote Within 2 Hours | Bangalore"
         description="Contact VISMA Translation in Bangalore for certified document translation, apostille services and localization. Call +91 9945342726 or email info@vismatranslation.com. Free quote in 2 hours."
         keywords="contact visma translation, translation quote bangalore, translation agency phone number, translation office bangalore, free translation quote india, urgent translation bangalore, translation services contact, get translation quote, apostille contact bangalore, certified translation inquiry, translation agency whatsapp"
-        canonical="https://vismatranslation.com/contact"
+        canonical="https://visma-translation-react.vercel.app/contact"
         schema={{
           "@context": "https://schema.org",
           "@type": "ContactPage",
           "name": "Contact VISMA Translation",
           "description": "Get in touch for certified translation, apostille, and localization services in Bangalore.",
-          "url": "https://vismatranslation.com/contact",
+          "url": "https://visma-translation-react.vercel.app/contact",
           "mainEntity": {
             "@type": "LocalBusiness",
             "name": "VISMA Translation",

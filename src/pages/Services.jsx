@@ -13,25 +13,25 @@ export default function Services() {
         title="Digital & Media Language Services - Localization, SEO, Voice-Over & More"
         description="Complete digital language services including website localization, SEO content writing, social media content, subtitling, DTP, voice-over, transcription, video editing, social media marketing, and web development in Bangalore."
         keywords="language services bangalore, website localization india, voiceover agency bangalore, subtitling services india, video editing bangalore, web development multilingual, social media marketing agency, seo content writing bangalore, desktop publishing dtp bangalore, transcription services india, digital media services, localization agency india, multilingual digital services, content creation agency, language solutions india"
-        canonical="https://vismatranslation.com/services"
+        canonical="https://visma-translation-react.vercel.app/services"
         schema={{
           "@context": "https://schema.org",
           "@type": "ItemList",
           "name": "Digital & Language Services by VISMA Translation",
           "description": "Complete range of digital and language services offered by VISMA Translation in Bangalore.",
-          "url": "https://vismatranslation.com/services",
+          "url": "https://visma-translation-react.vercel.app/services",
           "numberOfItems": 10,
           "itemListElement": [
-            { "@type": "ListItem", "position": 1, "item": { "@type": "Service", "name": "Website Localization", "url": "https://vismatranslation.com/localization", "provider": { "@type": "Organization", "name": "VISMA Translation" } } },
-            { "@type": "ListItem", "position": 2, "item": { "@type": "Service", "name": "SEO Content Writing", "url": "https://vismatranslation.com/seo-content" } },
-            { "@type": "ListItem", "position": 3, "item": { "@type": "Service", "name": "Social Media Content", "url": "https://vismatranslation.com/social-media" } },
-            { "@type": "ListItem", "position": 4, "item": { "@type": "Service", "name": "Sub-Titling Services", "url": "https://vismatranslation.com/subtitling" } },
-            { "@type": "ListItem", "position": 5, "item": { "@type": "Service", "name": "Desktop Publishing (DTP)", "url": "https://vismatranslation.com/dtp" } },
-            { "@type": "ListItem", "position": 6, "item": { "@type": "Service", "name": "Voice-Over Services", "url": "https://vismatranslation.com/voiceover" } },
-            { "@type": "ListItem", "position": 7, "item": { "@type": "Service", "name": "Transcription Services", "url": "https://vismatranslation.com/transcription" } },
-            { "@type": "ListItem", "position": 8, "item": { "@type": "Service", "name": "Video Editing", "url": "https://vismatranslation.com/video-editing" } },
-            { "@type": "ListItem", "position": 9, "item": { "@type": "Service", "name": "Social Media Marketing", "url": "https://vismatranslation.com/social-media-marketing" } },
-            { "@type": "ListItem", "position": 10, "item": { "@type": "Service", "name": "Web Development", "url": "https://vismatranslation.com/web-development" } }
+            { "@type": "ListItem", "position": 1, "item": { "@type": "Service", "name": "Website Localization", "url": "https://visma-translation-react.vercel.app/localization", "provider": { "@type": "Organization", "name": "VISMA Translation" } } },
+            { "@type": "ListItem", "position": 2, "item": { "@type": "Service", "name": "SEO Content Writing", "url": "https://visma-translation-react.vercel.app/seo-content" } },
+            { "@type": "ListItem", "position": 3, "item": { "@type": "Service", "name": "Social Media Content", "url": "https://visma-translation-react.vercel.app/social-media" } },
+            { "@type": "ListItem", "position": 4, "item": { "@type": "Service", "name": "Sub-Titling Services", "url": "https://visma-translation-react.vercel.app/subtitling" } },
+            { "@type": "ListItem", "position": 5, "item": { "@type": "Service", "name": "Desktop Publishing (DTP)", "url": "https://visma-translation-react.vercel.app/dtp" } },
+            { "@type": "ListItem", "position": 6, "item": { "@type": "Service", "name": "Voice-Over Services", "url": "https://visma-translation-react.vercel.app/voiceover" } },
+            { "@type": "ListItem", "position": 7, "item": { "@type": "Service", "name": "Transcription Services", "url": "https://visma-translation-react.vercel.app/transcription" } },
+            { "@type": "ListItem", "position": 8, "item": { "@type": "Service", "name": "Video Editing", "url": "https://visma-translation-react.vercel.app/video-editing" } },
+            { "@type": "ListItem", "position": 9, "item": { "@type": "Service", "name": "Social Media Marketing", "url": "https://visma-translation-react.vercel.app/social-media-marketing" } },
+            { "@type": "ListItem", "position": 10, "item": { "@type": "Service", "name": "Web Development", "url": "https://visma-translation-react.vercel.app/web-development" } }
           ]
         }}
       />

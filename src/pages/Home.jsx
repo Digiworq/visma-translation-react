@@ -46,16 +46,16 @@ export default function Home() {
         title="Best Language Translation & Apostille Services in India"
         description="ISO 9001:2015 certified translation agency in Bangalore offering document translation, MEA apostille, website localization, subtitling, voice-over, and DTP in 100+ languages. Free 2-hour quote."
         keywords="translation services bangalore, certified translation india, apostille services bangalore, document translation services, legal translation bangalore, certificate translation india, medical translation services, business translation, iso certified translation agency, language services india, multilingual translation, embassy accepted translation, notarized translation bangalore, 100 languages translation, visma translation"
-        canonical="https://vismatranslation.com/"
+        canonical="https://visma-translation-react.vercel.app/"
         schema={{
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
           "name": "VISMA Translation",
           "description": "ISO 9001:2015 certified translation agency in Bangalore providing certified document translation, MEA apostille, localization, subtitling and voice-over in 100+ languages.",
-          "url": "https://vismatranslation.com",
+          "url": "https://visma-translation-react.vercel.app",
           "telephone": "+919945342726",
           "email": "info@vismatranslation.com",
-          "image": "https://vismatranslation.com/logo.png",
+          "image": "https://visma-translation-react.vercel.app/logo.png",
           "priceRange": "$$",
           "currenciesAccepted": "INR",
           "paymentAccepted": "Cash, Credit Card, Bank Transfer",
