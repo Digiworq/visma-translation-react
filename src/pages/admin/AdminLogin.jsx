@@ -150,7 +150,7 @@ export default function AdminLogin() {
                 <label>Security Answer (or Master Key: <code>admin@reset</code>)</label>
                 <input 
                   type="text" 
-                  placeholder="Enter security answer (default: visma)" 
+                  placeholder="Enter your security answer" 
                   value={forgotAnswer} 
                   onChange={e => setForgotAnswer(e.target.value)} 
                   required 

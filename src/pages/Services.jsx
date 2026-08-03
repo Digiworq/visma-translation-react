@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
+import ServiceSidebar from '../components/ServiceSidebar';
 import { useData } from '../context/DataContext';
 
 export default function Services() {
@@ -8,11 +9,31 @@ export default function Services() {
 
   return (
     <main>
-      <SEO 
-        title="Our Services - All Specialized Digital & Language Solutions"
-        description="Explore specialized services including website localization, SEO content, voice-over, subtitling, DTP, transcription, video editing, social media marketing, and web development."
-        keywords="language services bangalore, website localization, voiceover agency, video editing, web development, social media marketing india"
+      <SEO
+        title="Digital & Media Language Services - Localization, SEO, Voice-Over & More"
+        description="Complete digital language services including website localization, SEO content writing, social media content, subtitling, DTP, voice-over, transcription, video editing, social media marketing, and web development in Bangalore."
+        keywords="language services bangalore, website localization india, voiceover agency bangalore, subtitling services india, video editing bangalore, web development multilingual, social media marketing agency, seo content writing bangalore, desktop publishing dtp bangalore, transcription services india, digital media services, localization agency india, multilingual digital services, content creation agency, language solutions india"
         canonical="https://vismatranslation.com/services"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          "name": "Digital & Language Services by VISMA Translation",
+          "description": "Complete range of digital and language services offered by VISMA Translation in Bangalore.",
+          "url": "https://vismatranslation.com/services",
+          "numberOfItems": 10,
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "item": { "@type": "Service", "name": "Website Localization", "url": "https://vismatranslation.com/localization", "provider": { "@type": "Organization", "name": "VISMA Translation" } } },
+            { "@type": "ListItem", "position": 2, "item": { "@type": "Service", "name": "SEO Content Writing", "url": "https://vismatranslation.com/seo-content" } },
+            { "@type": "ListItem", "position": 3, "item": { "@type": "Service", "name": "Social Media Content", "url": "https://vismatranslation.com/social-media" } },
+            { "@type": "ListItem", "position": 4, "item": { "@type": "Service", "name": "Sub-Titling Services", "url": "https://vismatranslation.com/subtitling" } },
+            { "@type": "ListItem", "position": 5, "item": { "@type": "Service", "name": "Desktop Publishing (DTP)", "url": "https://vismatranslation.com/dtp" } },
+            { "@type": "ListItem", "position": 6, "item": { "@type": "Service", "name": "Voice-Over Services", "url": "https://vismatranslation.com/voiceover" } },
+            { "@type": "ListItem", "position": 7, "item": { "@type": "Service", "name": "Transcription Services", "url": "https://vismatranslation.com/transcription" } },
+            { "@type": "ListItem", "position": 8, "item": { "@type": "Service", "name": "Video Editing", "url": "https://vismatranslation.com/video-editing" } },
+            { "@type": "ListItem", "position": 9, "item": { "@type": "Service", "name": "Social Media Marketing", "url": "https://vismatranslation.com/social-media-marketing" } },
+            { "@type": "ListItem", "position": 10, "item": { "@type": "Service", "name": "Web Development", "url": "https://vismatranslation.com/web-development" } }
+          ]
+        }}
       />
       <section className="page-hero">
         <div className="ph-inner">
@@ -40,27 +61,37 @@ export default function Services() {
 
       <section className="sec">
         <div className="container">
-          <div className="sh c">
-            <div className="stag">FULL SERVICE SUITE</div>
-            <h2>Explore Our <span className="ac">Specialized Services</span></h2>
-            <p className="sh-desc">Comprehensive solutions for localization, digital marketing, multimedia post-production, and web technology.</p>
-          </div>
-
-          <div className="g2">
-            {services.map(s => (
-              <div className="card" key={s.key || s.path} style={{ display: 'flex', gap: '20px', alignItems: 'flex-start' }}>
-                <div className="c-icon" style={{ flexShrink: 0 }}>
-                  <i className={`fas ${s.icon || 'fa-cog'}`}></i>
-                </div>
-                <div style={{ flex: 1 }}>
-                  <h4 style={{ fontSize: '18px', fontWeight: 800, color: '#1a1a2e', marginBottom: '8px' }}>{s.title}</h4>
-                  <p style={{ color: '#666680', fontSize: '14px', lineHeight: 1.7, marginBottom: '14px' }}>{s.desc}</p>
-                  <Link to={s.path} style={{ color: '#e8651a', fontWeight: 700, fontSize: '13px', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                    Learn More <i className="fas fa-arrow-right"></i>
-                  </Link>
-                </div>
+          <div className="service-page-with-sidebar">
+            <ServiceSidebar
+              title="Services"
+              items={services}
+              hubPath="/services"
+              hubLabel="Services"
+            />
+            <div className="service-page-main">
+              <div className="sh" style={{ textAlign: 'left', marginBottom: '28px' }}>
+                <div className="stag">FULL SERVICE SUITE</div>
+                <h2>Explore Our <span className="ac">Specialized Services</span></h2>
+                <p className="sh-desc">Comprehensive solutions for localization, digital marketing, multimedia post-production, and web technology.</p>
               </div>
-            ))}
+
+              <div className="g2">
+                {services.map(s => (
+                  <div className="card" key={s.key || s.path} style={{ display: 'flex', gap: '20px', alignItems: 'flex-start' }}>
+                    <div className="c-icon" style={{ flexShrink: 0 }}>
+                      <i className={`fas ${s.icon || 'fa-cog'}`}></i>
+                    </div>
+                    <div style={{ flex: 1 }}>
+                      <h4 style={{ fontSize: '18px', fontWeight: 800, color: '#1a1a2e', marginBottom: '8px' }}>{s.title}</h4>
+                      <p style={{ color: '#666680', fontSize: '14px', lineHeight: 1.7, marginBottom: '14px' }}>{s.desc}</p>
+                      <Link to={s.path} style={{ color: '#e8651a', fontWeight: 700, fontSize: '13px', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                        Learn More <i className="fas fa-arrow-right"></i>
+                      </Link>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>

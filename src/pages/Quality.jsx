@@ -5,11 +5,45 @@ import SEO from '../components/SEO';
 export default function Quality() {
   return (
     <main>
-      <SEO 
-        title="ISO Certified Quality Assurance Standard"
-        description="Our 3-tier quality control process guarantees 99.9% translation accuracy with certified native domain linguists and ISO 9001:2015 compliance."
-        keywords="quality translation services, iso 9001 certified translation, accurate translation bangalore, quality assurance translation"
+      <SEO
+        title="ISO 9001:2015 Quality Assurance - 99.9% Translation Accuracy Guaranteed"
+        description="VISMA Translation's 6-stage quality control process guarantees 99.9% translation accuracy. ISO 9001:2015 certified with native domain linguists, senior editors, and a 50-point QA checklist on every project."
+        keywords="quality translation services, iso 9001 certified translation, accurate translation bangalore, quality assurance translation, 99.9 percent accuracy translation, translation quality control, iso certified language services, professional translation quality, native translator quality, translation proofreading services, certified quality translation india, translation accuracy guarantee, gdpr compliant translation, translation nda services, multi stage translation review"
         canonical="https://vismatranslation.com/quality"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": "ISO 9001:2015 Quality Assured Translation Services",
+          "description": "6-stage quality control process ensuring 99.9% accuracy across all translation projects. ISO 9001:2015 certified with native linguists, editorial review, and proprietary QA checklist.",
+          "provider": {
+            "@type": "Organization",
+            "name": "VISMA Translation",
+            "url": "https://vismatranslation.com",
+            "telephone": "+919945342726",
+            "hasCredential": { "@type": "EducationalOccupationalCredential", "credentialCategory": "ISO 9001:2015 Certification" }
+          },
+          "url": "https://vismatranslation.com/quality",
+          "serviceType": "Translation Quality Assurance",
+          "offers": {
+            "@type": "Offer",
+            "description": "99.9% accuracy guarantee with unlimited free revisions within 7 days",
+            "priceCurrency": "INR"
+          },
+          "review": [
+            {
+              "@type": "Review",
+              "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+              "author": { "@type": "Person", "name": "Nitish Arya" },
+              "reviewBody": "Quick, efficient service for my Spanish document translation and apostille. Well done, Team Visma!"
+            },
+            {
+              "@type": "Review",
+              "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+              "author": { "@type": "Person", "name": "Rajesh Kumar" },
+              "reviewBody": "Exceptional quality for our legal documents. Their understanding of legal terminology was impressive."
+            }
+          ]
+        }}
       />
       <section className="page-hero">
         <div className="hero-bg bg-quality"></div>

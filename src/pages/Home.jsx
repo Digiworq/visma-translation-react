@@ -42,11 +42,59 @@ export default function Home() {
 
   return (
     <main>
-      <SEO 
+      <SEO
         title="Best Language Translation & Apostille Services in India"
-        description="ISO Certified translation services, embassy apostille legalization, website localization, subtitling, and voice-over in 100+ global languages."
-        keywords="translation services bangalore, certified translation india, apostille services bangalore, document translation services, legal translation bangalore, certificate translation"
+        description="ISO 9001:2015 certified translation agency in Bangalore offering document translation, MEA apostille, website localization, subtitling, voice-over, and DTP in 100+ languages. Free 2-hour quote."
+        keywords="translation services bangalore, certified translation india, apostille services bangalore, document translation services, legal translation bangalore, certificate translation india, medical translation services, business translation, iso certified translation agency, language services india, multilingual translation, embassy accepted translation, notarized translation bangalore, 100 languages translation, visma translation"
         canonical="https://vismatranslation.com/"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          "name": "VISMA Translation",
+          "description": "ISO 9001:2015 certified translation agency in Bangalore providing certified document translation, MEA apostille, localization, subtitling and voice-over in 100+ languages.",
+          "url": "https://vismatranslation.com",
+          "telephone": "+919945342726",
+          "email": "info@vismatranslation.com",
+          "image": "https://vismatranslation.com/logo.png",
+          "priceRange": "$$",
+          "currenciesAccepted": "INR",
+          "paymentAccepted": "Cash, Credit Card, Bank Transfer",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Bangalore",
+            "addressLocality": "Bangalore",
+            "addressRegion": "Karnataka",
+            "postalCode": "560001",
+            "addressCountry": "IN"
+          },
+          "geo": { "@type": "GeoCoordinates", "latitude": 12.9716, "longitude": 77.5946 },
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+            "opens": "09:00",
+            "closes": "18:00"
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "320",
+            "bestRating": "5"
+          },
+          "areaServed": [
+            { "@type": "Country", "name": "India" },
+            { "@type": "City", "name": "Bangalore" }
+          ],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Language & Translation Services",
+            "itemListElement": [
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Certified Document Translation", "description": "Embassy-accepted certified translation in 100+ languages." } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "MEA Apostille Services", "description": "Fast MEA apostille legalization for all document types." } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Website Localization", "description": "Full cultural and technical adaptation for global websites." } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Voice-Over & Subtitling", "description": "Studio voice narrations and synced subtitles in 50+ languages." } }
+            ]
+          }
+        }}
       />
       {/* ===== HERO SECTION ===== */}
       <section className="hero" id="home">

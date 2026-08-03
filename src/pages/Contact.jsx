@@ -20,11 +20,41 @@ export default function Contact() {
 
   return (
     <main>
-      <SEO 
-        title="Contact Us - Free Translation Quote in 2 Hours"
-        description="Get in touch with VISMA Translation in Bangalore. Call +91 9945342726 or email info@vismatranslation.com for urgent document translation quotes."
-        keywords="contact visma translation, translation quote bangalore, translation agency phone number, translation office bangalore"
+      <SEO
+        title="Contact Us - Free Translation Quote Within 2 Hours | Bangalore"
+        description="Contact VISMA Translation in Bangalore for certified document translation, apostille services and localization. Call +91 9945342726 or email info@vismatranslation.com. Free quote in 2 hours."
+        keywords="contact visma translation, translation quote bangalore, translation agency phone number, translation office bangalore, free translation quote india, urgent translation bangalore, translation services contact, get translation quote, apostille contact bangalore, certified translation inquiry, translation agency whatsapp"
         canonical="https://vismatranslation.com/contact"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          "name": "Contact VISMA Translation",
+          "description": "Get in touch for certified translation, apostille, and localization services in Bangalore.",
+          "url": "https://vismatranslation.com/contact",
+          "mainEntity": {
+            "@type": "LocalBusiness",
+            "name": "VISMA Translation",
+            "telephone": "+919945342726",
+            "email": "info@vismatranslation.com",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Bangalore",
+              "addressRegion": "Karnataka",
+              "postalCode": "560001",
+              "addressCountry": "IN"
+            },
+            "openingHoursSpecification": {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+              "opens": "09:00",
+              "closes": "18:00"
+            },
+            "contactPoint": [
+              { "@type": "ContactPoint", "telephone": "+919945342726", "contactType": "customer service", "contactOption": "TollFree", "availableLanguage": "English" },
+              { "@type": "ContactPoint", "email": "info@vismatranslation.com", "contactType": "sales" }
+            ]
+          }
+        }}
       />
       <section className="page-hero" style={{ paddingBottom: '90px' }}>
         <div className="hero-bg bg-contact"></div>

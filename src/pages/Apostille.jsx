@@ -5,11 +5,50 @@ import SEO from '../components/SEO';
 export default function Apostille() {
   return (
     <main>
-      <SEO 
-        title="MEA Apostille & Document Attestation Services in Bangalore"
-        description="Fast MEA apostille legalization for degree certificates, birth certificates, marriage certificates, and commercial documents with express 24-48 hr delivery."
-        keywords="apostille services bangalore, mea apostille india, degree certificate apostille, birth certificate attestation, embassy attestation"
+      <SEO
+        title="MEA Apostille & Document Attestation Services in Bangalore | Express 3-5 Days"
+        description="Fast MEA apostille legalization for degree certificates, birth certificates, marriage certificates, commercial documents and medical records. Express 24-48 hour processing across all Indian states."
+        keywords="apostille services bangalore, mea apostille india, degree certificate apostille, birth certificate apostille, marriage certificate attestation, embassy attestation bangalore, hrd attestation india, document apostille india, hague apostille, apostille legalization bangalore, commercial document apostille, educational certificate apostille, express apostille india, apostille for visa, document legalization india, attestation services karnataka"
         canonical="https://vismatranslation.com/apostille"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": "MEA Apostille & Document Attestation Services",
+          "description": "Fast MEA apostille legalization for educational certificates, personal documents, commercial documents, and medical records. Express processing across all Indian states.",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "VISMA Translation",
+            "url": "https://vismatranslation.com",
+            "telephone": "+919945342726",
+            "address": { "@type": "PostalAddress", "addressLocality": "Bangalore", "addressRegion": "Karnataka", "addressCountry": "IN" }
+          },
+          "url": "https://vismatranslation.com/apostille",
+          "serviceType": "Apostille & Document Attestation",
+          "areaServed": [
+            { "@type": "Country", "name": "India" },
+            { "@type": "City", "name": "Bangalore" }
+          ],
+          "availableChannel": {
+            "@type": "ServiceChannel",
+            "serviceUrl": "https://vismatranslation.com/contact",
+            "servicePhone": "+919945342726"
+          },
+          "offers": [
+            { "@type": "Offer", "name": "Standard Apostille", "description": "7-10 business days processing", "priceCurrency": "INR" },
+            { "@type": "Offer", "name": "Express Apostille", "description": "3-5 business days processing", "priceCurrency": "INR" },
+            { "@type": "Offer", "name": "Urgent Apostille", "description": "24-48 hours emergency processing", "priceCurrency": "INR" }
+          ],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Document Types We Apostille",
+            "itemListElement": [
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Educational Document Apostille" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Personal Document Apostille" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Commercial Document Apostille" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Medical Document Apostille" } }
+            ]
+          }
+        }}
       />
       <section className="page-hero">
         <div className="hero-bg bg-apostille"></div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import SEO from '../components/SEO';
+import ServiceSidebar from '../components/ServiceSidebar';
 import { useData } from '../context/DataContext';
 
 const SERVICE_DATABASE = {
@@ -424,9 +425,35 @@ export default function ServiceDetail() {
   const location = useLocation();
   const currentPath = location.pathname;
   const { services, translationServices } = useData();
-  
+
+  // Per-route SEO keywords
+  const ROUTE_KEYWORDS = {
+    '/localization': 'localization service bangalore, website localization india, app localization, content localization, cultural adaptation, multilingual localization, ui ux localization, e-commerce localization, localization agency india, software localization bangalore, document localization, marketing localization',
+    '/seo-content': 'seo content writing bangalore, seo copywriting india, multilingual seo, keyword research services, blog writing services, content marketing india, meta description writing, technical copywriting, product description writing, on page seo writing',
+    '/social-media': 'social media content creation bangalore, multilingual social media content, instagram content agency, linkedin content writing, social media copywriting india, reels script writing, social media graphics bangalore',
+    '/subtitling': 'subtitling services india, subtitle translation bangalore, closed captioning services, srt file translation, youtube subtitles bangalore, film subtitling india, video captioning services, dfxp vtt subtitles',
+    '/dtp': 'desktop publishing services bangalore, dtp translation india, multilingual typesetting, indesign translation, rtl layout services, print ready pdf translation, brochure typesetting india, dtp localization',
+    '/voiceover': 'voice over services bangalore, multilingual voiceover india, native voice artist, corporate narration, elearning voiceover, commercial voice over, audiobook narration india, ivr voice recording',
+    '/transcription': 'transcription services bangalore, audio transcription india, video transcription services, legal transcription bangalore, medical transcription india, interview transcription, timestamped transcript',
+    '/video-editing': 'video editing services bangalore, multilingual video editing, subtitle integration video, color grading bangalore, corporate video editing, social media video editing, 4k video editing india',
+    '/social-media-marketing': 'social media marketing agency bangalore, multilingual social media marketing, facebook ads india, instagram marketing, linkedin marketing bangalore, influencer marketing india, social media management',
+    '/web-development': 'web development bangalore, multilingual website development, react website bangalore, e-commerce development india, responsive web design, seo optimized website, i18n localization web development',
+    '/legal-translation': 'legal translation services bangalore, certified legal translation india, contract translation, court document translation, patent translation india, notarized legal translation, sworn translator bangalore',
+    '/medical-translation': 'medical translation services bangalore, clinical trial translation, pharma translation india, medical device manual translation, patient records translation, fda ema dossier translation, healthcare translation bangalore',
+    '/business-translation': 'business translation services india, corporate document translation bangalore, annual report translation, business proposal translation, hr document translation, press release translation india',
+    '/certificate-translation': 'certificate translation bangalore, birth certificate translation india, marriage certificate translation, degree certificate translation, embassy accepted certificate translation, notarized certificate translation',
+    '/ecommerce-translation': 'e-commerce translation bangalore, product catalog translation, shopify translation india, amazon listing translation, checkout localization, ecommerce localization india',
+    '/elearning-translation': 'elearning translation bangalore, lms localization india, articulate storyline translation, scorm compliant translation, online course translation, educational content translation',
+    '/finance-translation': 'financial translation services bangalore, finance document translation india, audit report translation, investment prospectus translation, tax filing translation, banking document translation',
+    '/technical-translation': 'technical translation services bangalore, engineering manual translation india, safety data sheet translation, sds translation, technical document translation, user manual translation india'
+  };
+
   const allDynamic = [...services, ...translationServices];
   const dynamicMatch = allDynamic.find(s => s.path === currentPath || `/${s.key}` === currentPath);
+  const isTranslationService = translationServices.some(s => s.path === currentPath || `/${s.key}` === currentPath);
+  const sidebarItems = isTranslationService ? translationServices : services;
+  const sidebarHub = isTranslationService ? '/translation-services' : '/services';
+  const sidebarLabel = isTranslationService ? 'Translation Services' : 'Services';
 
   let data = SERVICE_DATABASE[currentPath];
   if (!data && dynamicMatch) {
@@ -455,27 +482,78 @@ export default function ServiceDetail() {
     data = SERVICE_DATABASE['/localization'];
   }
 
+  const pageKeywords = ROUTE_KEYWORDS[currentPath]
+    || `${data.title.toLowerCase()}, certified ${data.headingMain.toLowerCase()} bangalore, ${data.tag.toLowerCase()} services india, professional ${data.tag.toLowerCase()}, iso certified translation`;
+
+  const pageSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": data.title,
+    "description": data.desc,
+    "url": `https://vismatranslation.com${currentPath}`,
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "VISMA Translation",
+      "url": "https://vismatranslation.com",
+      "telephone": "+919945342726",
+      "email": "info@vismatranslation.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bangalore",
+        "addressRegion": "Karnataka",
+        "postalCode": "560001",
+        "addressCountry": "IN"
+      }
+    },
+    "serviceType": data.tag,
+    "areaServed": [
+      { "@type": "Country", "name": "India" },
+      { "@type": "City", "name": "Bangalore" }
+    ],
+    "availableChannel": {
+      "@type": "ServiceChannel",
+      "serviceUrl": "https://vismatranslation.com/contact",
+      "servicePhone": "+919945342726"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": `${data.secTitle} Solutions`,
+      "itemListElement": (data.cards || []).map((card, i) => ({
+        "@type": "ListItem",
+        "position": i + 1,
+        "item": {
+          "@type": "Service",
+          "name": card.title,
+          "description": card.desc
+        }
+      }))
+    }
+  };
+
   return (
     <main>
-      <SEO 
+      <SEO
         title={data.title}
         description={data.desc}
-        keywords={`${data.title.toLowerCase()}, certified ${data.headingMain.toLowerCase()} bangalore, ${data.tag.toLowerCase()} services india`}
+        keywords={pageKeywords}
         canonical={`https://vismatranslation.com${currentPath}`}
+        schema={pageSchema}
       />
       <section className="page-hero">
         <div className={`hero-bg ${data.heroBg}`}></div>
         <div className="ph-inner">
           <div className="ph-text">
             <div className="breadcrumb">
-              <Link to="/">Home</Link><i className="fas fa-chevron-right"></i><Link to="/services">Services</Link><i className="fas fa-chevron-right"></i><span>{data.title}</span>
+              <Link to="/">Home</Link><i className="fas fa-chevron-right"></i>
+              <Link to={sidebarHub}>{sidebarLabel}</Link><i className="fas fa-chevron-right"></i>
+              <span>{data.title}</span>
             </div>
             <div className="pg-tag"><i className={`fas ${data.tagIcon || 'fa-certificate'}`}></i> {data.tag}</div>
             <h1><span className="ac">{data.headingMain}</span><br />{data.headingSub}</h1>
             <p className="ph-desc">{data.desc}</p>
             <div className="ph-btns">
               <Link to="/contact" className="btn-org"><i className="fas fa-paper-plane"></i> Get a Free Quote</Link>
-              <Link to="/services" className="btn-ghost"><i className="fas fa-th-large"></i> All Services</Link>
+              <Link to={sidebarHub} className="btn-ghost"><i className="fas fa-th-large"></i> All {sidebarLabel}</Link>
             </div>
           </div>
           <div className="ph-img">
@@ -492,21 +570,31 @@ export default function ServiceDetail() {
 
       <section className="sec bg-light">
         <div className="container">
-          <div className="sh c">
-            <div className="stag">{data.stag}</div>
-            <h2>{data.secTitle.split(' ')[0]} <span className="ac">{data.secTitle.split(' ').slice(1).join(' ')}</span></h2>
-            <p>{data.secDesc}</p>
-          </div>
-          <div className="g3">
-            {data.cards.map((c, idx) => (
-              <div key={idx} className="card">
-                <div className="c-icon" style={{ background: '#e8f4fd', color: '#2980b9' }}>
-                  <i className={`fas ${c.icon}`}></i>
-                </div>
-                <h4>{c.title}</h4>
-                <p>{c.desc}</p>
+          <div className="service-page-with-sidebar">
+            <ServiceSidebar
+              title={sidebarLabel}
+              items={sidebarItems}
+              hubPath={sidebarHub}
+              hubLabel={sidebarLabel}
+            />
+            <div className="service-page-main">
+              <div className="sh c" style={{ textAlign: 'left' }}>
+                <div className="stag">{data.stag}</div>
+                <h2>{data.secTitle.split(' ')[0]} <span className="ac">{data.secTitle.split(' ').slice(1).join(' ')}</span></h2>
+                <p>{data.secDesc}</p>
               </div>
-            ))}
+              <div className="g3">
+                {data.cards.map((c, idx) => (
+                  <div key={idx} className="card">
+                    <div className="c-icon" style={{ background: '#e8f4fd', color: '#2980b9' }}>
+                      <i className={`fas ${c.icon}`}></i>
+                    </div>
+                    <h4>{c.title}</h4>
+                    <p>{c.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>

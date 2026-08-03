@@ -28,11 +28,43 @@ export default function About() {
 
   return (
     <main>
-      <SEO 
-        title="About Us - Leading ISO Certified Translation Agency"
-        description="Learn about VISMA Translation's mission, certified linguists, quality assurance process, and 10+ years of global language service excellence in Bangalore."
-        keywords="about visma translation, translation agency bangalore, certified translators india, language service provider"
+      <SEO
+        title="About Us - Leading ISO Certified Translation Agency in Bangalore"
+        description="VISMA Translation is an ISO 9001:2015 certified language agency in Bangalore with 200+ expert linguists, 100+ languages, and 15+ years of experience delivering precision translation globally."
+        keywords="about visma translation, translation agency bangalore, iso certified translation company, best translation agency india, certified translators bangalore, language service provider india, professional translation company, translation agency history, multilingual solutions bangalore, top translation agency india, translation company reviews, who is visma translation"
         canonical="https://vismatranslation.com/about"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "VISMA Translation",
+          "url": "https://vismatranslation.com",
+          "logo": "https://vismatranslation.com/logo.png",
+          "description": "ISO 9001:2015 certified translation agency in Bangalore with 200+ linguists covering 100+ languages across legal, medical, business, technical and multimedia domains.",
+          "foundingDate": "2010",
+          "numberOfEmployees": { "@type": "QuantitativeValue", "value": 200 },
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Bangalore",
+            "addressRegion": "Karnataka",
+            "addressCountry": "IN"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+919945342726",
+            "contactType": "customer service",
+            "areaServed": "IN",
+            "availableLanguage": "English"
+          },
+          "sameAs": [
+            "https://www.facebook.com/vismatranslation",
+            "https://www.linkedin.com/company/vismatranslation"
+          ],
+          "award": "Top 10 Translation Agency in India",
+          "hasCredential": {
+            "@type": "EducationalOccupationalCredential",
+            "credentialCategory": "ISO 9001:2015 Certification"
+          }
+        }}
       />
       <section className="page-hero">
         <div className="hero-bg bg-about"></div>
