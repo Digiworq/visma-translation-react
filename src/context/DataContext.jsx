@@ -90,6 +90,45 @@ const INITIAL_TOPBAR = {
   phone: '+91 9945342726'
 };
 
+const INITIAL_BLOGS = [
+  {
+    id: 'blog-1',
+    title: 'Why Certified Translation Matters for Your Visa Application',
+    category: 'Translation Tips',
+    author: 'Anil Verma',
+    date: '2026-07-15',
+    readTime: '5 min read',
+    excerpt: 'Understanding why you need a certified translation for embassy or immigration purposes can save you time, money and last-minute stress. Here\'s everything you need to know.',
+    content: 'Certified translation is a translation that has been verified and signed by a qualified professional linguist. When submitting documents to embassies or immigration authorities, they require that all foreign-language documents be accompanied by a certified translation. This ensures accuracy and legal validity of the translated content.',
+    image: '',
+    featured: true,
+  },
+  {
+    id: 'blog-2',
+    title: 'MEA Apostille vs Embassy Attestation — What\'s the Difference?',
+    category: 'Apostille',
+    author: 'Visma Team',
+    date: '2026-07-10',
+    readTime: '4 min read',
+    excerpt: 'A clear guide explaining when MEA apostille is needed vs embassy attestation for your documents.',
+    content: 'MEA Apostille and Embassy Attestation are two different processes for document legalization. An apostille is a simplified form of authentication accepted by countries that are members of the Hague Convention. Embassy attestation is required for countries that are not part of this convention.',
+    image: '',
+    featured: false,
+  },
+  {
+    id: 'blog-3',
+    title: 'Localization vs Translation: Why the Distinction Matters for Global Brands',
+    category: 'Localization',
+    author: 'Visma Team',
+    date: '2026-07-03',
+    readTime: '6 min read',
+    excerpt: 'Many businesses confuse translation with localization. Here\'s why getting this right can make or break your international marketing.',
+    content: 'Translation converts text from one language to another, while localization goes further by adapting the content culturally, including idioms, imagery, date formats, currency, and more. For global brands, localization creates a native experience that builds trust with local audiences.',
+    image: '',
+    featured: false,
+  },
+];
+
 export function DataProvider({ children }) {
   const [services, setServices] = useState(() => {
     const saved = localStorage.getItem('visma_services');
@@ -116,6 +155,11 @@ export function DataProvider({ children }) {
     return saved ? JSON.parse(saved) : INITIAL_TOPBAR;
   });
 
+  const [blogs, setBlogs] = useState(() => {
+    const saved = localStorage.getItem('visma_blogs');
+    return saved ? JSON.parse(saved) : INITIAL_BLOGS;
+  });
+
   const [leads, setLeads] = useState(() => {
     const saved = localStorage.getItem('visma_leads');
     return saved ? JSON.parse(saved) : [
@@ -135,66 +179,6 @@ export function DataProvider({ children }) {
   });
 
   const [isAdmin, setIsAdmin] = useState(false);
-
-  // Blogs state
-  const [blogs, setBlogs] = useState(() => {
-    const saved = localStorage.getItem('visma_blogs');
-    return saved ? JSON.parse(saved) : [
-      {
-        id: 'b1',
-        title: 'Why Certified Translation Matters for Your Visa Application',
-        category: 'Translation Tips',
-        author: 'Anil Verma',
-        date: '2026-07-15',
-        readTime: '5 min',
-        excerpt: 'Understanding why you need a certified translation for embassy or immigration purposes can save you time, money and last-minute stress. Here\'s everything you need to know.',
-        content: 'Certified translations are accepted by embassies and immigration authorities worldwide. A certified translation includes a signed statement from the translator attesting to the accuracy and completeness of the translation.',
-        image: '',
-        featured: true,
-      },
-      {
-        id: 'b2',
-        title: "MEA Apostille vs Embassy Attestation — What's the Difference?",
-        category: 'Apostille',
-        author: 'Visma Team',
-        date: '2026-07-10',
-        readTime: '4 min',
-        excerpt: 'A clear guide explaining when MEA apostille is needed vs embassy attestation for your documents.',
-        content: 'MEA Apostille is a simplified certification accepted in Hague Convention countries, while embassy attestation is required for countries outside this convention.',
-        image: '',
-        featured: false,
-      },
-      {
-        id: 'b3',
-        title: 'Localization vs Translation: Why the Distinction Matters for Global Brands',
-        category: 'Localization',
-        author: 'Visma Team',
-        date: '2026-07-03',
-        readTime: '6 min',
-        excerpt: 'Many businesses confuse translation with localization. Here\'s why getting this right can make or break your international marketing.',
-        content: 'Translation converts text from one language to another. Localization goes further — adapting content culturally so it resonates with the target audience.',
-        image: '',
-        featured: false,
-      },
-    ];
-  });
-
-  useEffect(() => {
-    localStorage.setItem('visma_blogs', JSON.stringify(blogs));
-  }, [blogs]);
-
-  const addBlog = (blog) => {
-    const newBlog = { ...blog, id: Date.now().toString() };
-    setBlogs(prev => [newBlog, ...prev]);
-  };
-
-  const updateBlog = (id, updated) => {
-    setBlogs(prev => prev.map(b => b.id === id ? { ...b, ...updated } : b));
-  };
-
-  const deleteBlog = (id) => {
-    setBlogs(prev => prev.filter(b => b.id !== id));
-  };
 
   // Clear any stale auth session from localStorage on mount
   useEffect(() => {
@@ -221,6 +205,10 @@ export function DataProvider({ children }) {
   useEffect(() => {
     localStorage.setItem('visma_topbar', JSON.stringify(topbarContent));
   }, [topbarContent]);
+
+  useEffect(() => {
+    localStorage.setItem('visma_blogs', JSON.stringify(blogs));
+  }, [blogs]);
 
   useEffect(() => {
     localStorage.setItem('visma_leads', JSON.stringify(leads));
@@ -322,6 +310,20 @@ export function DataProvider({ children }) {
     setLeads(prev => prev.filter(l => l.id !== id));
   };
 
+  // Blog CRUD
+  const addBlog = (blog) => {
+    const newBlog = { ...blog, id: 'blog-' + Date.now() };
+    setBlogs(prev => [newBlog, ...prev]);
+  };
+
+  const updateBlog = (id, updatedBlog) => {
+    setBlogs(prev => prev.map(b => b.id === id ? { ...b, ...updatedBlog } : b));
+  };
+
+  const deleteBlog = (id) => {
+    setBlogs(prev => prev.filter(b => b.id !== id));
+  };
+
   // Reset to default factory settings
   const resetToDefaults = () => {
     setServices(INITIAL_SERVICES);
@@ -329,7 +331,7 @@ export function DataProvider({ children }) {
     setMenuLinks(INITIAL_MENU_LINKS);
     setHeroContent(INITIAL_HERO);
     setTopbarContent(INITIAL_TOPBAR);
-    setBlogs([]);
+    setBlogs(INITIAL_BLOGS);
     localStorage.clear();
   };
 
