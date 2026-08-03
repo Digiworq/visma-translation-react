@@ -283,9 +283,6 @@ export default function AdminDashboard() {
             <Link to="/" target="_blank" className="btn-dash-view">
               <i className="fas fa-external-link-alt"></i> <span className="btn-dash-label">View Live Website</span>
             </Link>
-            <button onClick={() => { if (window.confirm('Reset all content to factory defaults?')) { resetToDefaults(); showToast('Reset to default content.'); } }} className="btn-dash-reset" title="Reset to Defaults">
-              <i className="fas fa-undo"></i> <span className="btn-dash-label">Reset Data</span>
-            </button>
             <button onClick={handleLogout} className="btn-dash-logout">
               <i className="fas fa-sign-out-alt"></i> <span className="btn-dash-label">Logout</span>
             </button>
