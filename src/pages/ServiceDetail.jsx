@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import SEO from '../components/SEO';
+import { useData } from '../context/DataContext';
 
 const SERVICE_DATABASE = {
   '/localization': {
@@ -422,9 +423,37 @@ const SERVICE_DATABASE = {
 export default function ServiceDetail() {
   const location = useLocation();
   const currentPath = location.pathname;
+  const { services, translationServices } = useData();
   
-  // Lookup specific service data or fallback gracefully
-  const data = SERVICE_DATABASE[currentPath] || SERVICE_DATABASE['/localization'];
+  const allDynamic = [...services, ...translationServices];
+  const dynamicMatch = allDynamic.find(s => s.path === currentPath || `/${s.key}` === currentPath);
+
+  let data = SERVICE_DATABASE[currentPath];
+  if (!data && dynamicMatch) {
+    data = {
+      title: dynamicMatch.title,
+      headingMain: dynamicMatch.title,
+      headingSub: dynamicMatch.sub || 'Professional Service',
+      tag: dynamicMatch.title,
+      tagIcon: dynamicMatch.icon || 'fa-star',
+      heroBg: 'bg-translation',
+      heroImg: dynamicMatch.image || 'https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=800&auto=format&fit=crop&q=80',
+      desc: dynamicMatch.desc,
+      badge1: 'High Quality',
+      badge2: 'Fast Delivery',
+      stag: 'Service Overview',
+      secTitle: dynamicMatch.title,
+      secDesc: dynamicMatch.desc,
+      cards: [
+        { icon: dynamicMatch.icon || 'fa-check', title: `${dynamicMatch.title} Solutions`, desc: dynamicMatch.desc },
+        { icon: 'fa-globe', title: 'Multilingual Support', desc: 'Available in 100+ global languages with ISO 9001 certified precision.' },
+        { icon: 'fa-user-check', title: 'Expert Linguists', desc: 'Handled by native language professionals and domain specialists.' }
+      ]
+    };
+  }
+  if (!data) {
+    data = SERVICE_DATABASE['/localization'];
+  }
 
   return (
     <main>

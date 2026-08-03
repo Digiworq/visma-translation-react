@@ -1,99 +1,66 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState, useRef } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 import Logo from './Logo';
-
-import imgLocalization from '../../Localization service.png';
-import imgSeo from '../../SEO content writing.png';
-import imgSocial from '../../Social media content.png';
-import imgSubtitling from '../../sub-titling services.png';
-import imgDtp from '../../Desktop Publishing (DTP).png';
-import imgVoiceover from '../../voice-over services.png';
-import imgTranscription from '../../Transcription Services.png';
-import imgVideoediting from '../../video editing services.png';
-import imgSmmarketing from '../../social media marketing.png';
-import imgWebdev from '../../Web development.png';
-
-import imgBusiness from '../../Business Translation.png';
-import imgCertificate from '../../certification translation.png';
-import imgEcommerce from '../../E-commerce Translation.png';
-import imgElearning from '../../E-Learning.png';
-import imgFinance from '../../Finance Translation.png';
-import imgLegal from '../../Legal translation.png';
-import imgMedical from '../../Medical.png';
-import imgTechnical from '../../teachnical translation.png';
-
-const SERVICE_IMAGES = {
-  localization: imgLocalization,
-  seo: imgSeo,
-  social: imgSocial,
-  subtitling: imgSubtitling,
-  dtp: imgDtp,
-  voiceover: imgVoiceover,
-  transcription: imgTranscription,
-  videoediting: imgVideoediting,
-  smmarketing: imgSmmarketing,
-  webdev: imgWebdev
-};
-
-const TRANSLATION_IMAGES = {
-  business: imgBusiness,
-  certificate: imgCertificate,
-  ecommerce: imgEcommerce,
-  elearning: imgElearning,
-  finance: imgFinance,
-  legal: imgLegal,
-  medical: imgMedical,
-  technical: imgTechnical
-};
-
-const SERVICES = [
-  { path: '/localization', title: 'Localization Service', sub: 'Cultural adaptation', key: 'localization' },
-  { path: '/seo-content', title: 'SEO Content Writing', sub: 'Rank higher online', key: 'seo' },
-  { path: '/social-media', title: 'Social Media Content', sub: 'Crafted for every platform', key: 'social' },
-  { path: '/subtitling', title: 'Sub-Titling Services', sub: 'Movies, TV, YouTube', key: 'subtitling' },
-  { path: '/dtp', title: 'Desktop Publishing', sub: 'Multilingual DTP', key: 'dtp' },
-  { path: '/voiceover', title: 'Voice-Over Services', sub: 'Multilingual narrations', key: 'voiceover' },
-  { path: '/transcription', title: 'Transcription Services', sub: 'Audio & video to text', key: 'transcription' },
-  { path: '/video-editing', title: 'Video Editing Service', sub: 'Professional post-production', key: 'videoediting' },
-  { path: '/social-media-marketing', title: 'Social Media Marketing', sub: 'Grow your brand online', key: 'smmarketing' },
-  { path: '/web-development', title: 'Web Development', sub: 'Modern & multilingual sites', key: 'webdev' }
-];
-
-const TRANSLATIONS = [
-  { path: '/business-translation', title: 'Business Translation', sub: 'Corporate communications', key: 'business' },
-  { path: '/certificate-translation', title: 'Certificate Translation', sub: 'Embassy accepted', key: 'certificate' },
-  { path: '/ecommerce-translation', title: 'E-Commerce Translation', sub: 'Global online stores', key: 'ecommerce' },
-  { path: '/elearning-translation', title: 'E-Learning Translation', sub: 'Educational content', key: 'elearning' },
-  { path: '/finance-translation', title: 'Finance Translation', sub: 'Banking & financial docs', key: 'finance' },
-  { path: '/legal-translation', title: 'Legal Translation', sub: 'Court & contract docs', key: 'legal' },
-  { path: '/medical-translation', title: 'Medical Translation', sub: 'Pharma & healthcare', key: 'medical' },
-  { path: '/technical-translation', title: 'Technical Translation', sub: 'Manuals & engineering', key: 'technical' }
-];
-
-const SVG_PREVIEWS = {
-  business: `<svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg"><rect width="220" height="180" fill="#ffffff" rx="12"/><rect x="40" y="55" width="140" height="80" rx="8" fill="#f8f9fa" stroke="#e8651a" stroke-width="2"/><text x="80" y="100" font-family="Arial" font-size="12" fill="#1a1a2e" font-weight="bold">BUSINESS</text></svg>`
-};
+import { useData } from '../context/DataContext';
 
 export default function Navbar() {
+  const { services, translationServices, menuLinks, topbarContent, isAdmin } = useData();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeMega, setActiveMega] = useState(null);
-  const [svcPreview, setSvcPreview] = useState(SERVICES[0]);
-  const [transPreview, setTransPreview] = useState(TRANSLATIONS[0]);
+  const megaTimeoutRef = useRef(null);
+  const navigate = useNavigate();
+
+  const [svcPreview, setSvcPreview] = useState(services[0] || {});
+  const [transPreview, setTransPreview] = useState(translationServices[0] || {});
 
   const closeMobile = () => {
     setMobileOpen(false);
     setActiveMega(null);
+    if (megaTimeoutRef.current) clearTimeout(megaTimeoutRef.current);
   };
 
-  const handleMegaClick = (e, megaName) => {
+  const handleMouseEnterMega = (megaKey) => {
+    if (window.innerWidth > 768) {
+      if (megaTimeoutRef.current) clearTimeout(megaTimeoutRef.current);
+      setActiveMega(megaKey);
+    }
+  };
+
+  const handleMouseLeaveMega = () => {
+    if (window.innerWidth > 768) {
+      if (megaTimeoutRef.current) clearTimeout(megaTimeoutRef.current);
+      megaTimeoutRef.current = setTimeout(() => {
+        setActiveMega(null);
+      }, 250);
+    }
+  };
+
+  const handleMegaClick = (e, megaName, path) => {
     if (window.innerWidth <= 768) {
       e.preventDefault();
       setActiveMega(activeMega === megaName ? null : megaName);
     } else {
       setActiveMega(null);
       closeMobile();
+      if (path) {
+        navigate(path);
+      }
     }
   };
+
+  // Helper to split dynamic array into 3 columns
+  const getCols = (arr) => {
+    const colSize = Math.ceil(arr.length / 3);
+    return [
+      arr.slice(0, colSize),
+      arr.slice(colSize, colSize * 2),
+      arr.slice(colSize * 2)
+    ];
+  };
+
+  const svcCols = getCols(services);
+  const transCols = getCols(translationServices);
+  const visibleLinks = menuLinks.filter(m => m.visible !== false);
 
   return (
     <>
@@ -101,16 +68,25 @@ export default function Navbar() {
       <div className="topbar">
         <div className="topbar-inner">
           <div className="topbar-left">
-            <span><i className="fas fa-clock"></i> Mon-Sat: 9AM-6PM</span>
-            <span><i className="fas fa-map-marker-alt"></i> Bangalore, India</span>
+            <span><i className="fas fa-clock"></i> {topbarContent.hours}</span>
+            <span><i className="fas fa-map-marker-alt"></i> {topbarContent.location}</span>
           </div>
           <div className="topbar-right">
-            <a href="mailto:info@vismatranslation.com" className="t-btn outline">
-              <i className="fas fa-envelope"></i> info@vismatranslation.com
+            <a href={`mailto:${topbarContent.email}`} className="t-btn outline">
+              <i className="fas fa-envelope"></i> {topbarContent.email}
             </a>
-            <a href="tel:+919945342726" className="t-btn solid">
-              <i className="fas fa-phone-alt"></i> +91 9945342726
+            <a href={`tel:${topbarContent.phone.replace(/[^0-9+]/g, '')}`} className="t-btn solid">
+              <i className="fas fa-phone-alt"></i> {topbarContent.phone}
             </a>
+            {isAdmin ? (
+              <NavLink to="/admin" className="t-btn solid" style={{ background: '#e8651a', color: '#ffffff' }}>
+                <i className="fas fa-user-shield"></i> Admin Dashboard
+              </NavLink>
+            ) : (
+              <NavLink to="/admin/login" className="t-btn outline" style={{ opacity: 0.85 }} title="Admin Login">
+                <i className="fas fa-lock"></i> Admin
+              </NavLink>
+            )}
           </div>
         </div>
       </div>
@@ -123,173 +99,130 @@ export default function Navbar() {
           </NavLink>
 
           <nav className={`nav-links ${mobileOpen ? 'open' : ''}`} id="navLinks">
-            <NavLink to="/" className="nav-link" onClick={closeMobile}>Home</NavLink>
-            <NavLink to="/about" className="nav-link" onClick={closeMobile}>About Us</NavLink>
+            {visibleLinks.map(link => {
+              if (link.isMega) {
+                const isServicesMega = link.megaType === 'services';
+                const cols = isServicesMega ? svcCols : transCols;
+                const preview = isServicesMega ? (svcPreview.title ? svcPreview : services[0]) : (transPreview.title ? transPreview : translationServices[0]);
+                const setPreview = isServicesMega ? setSvcPreview : setTransPreview;
+                const megaKey = isServicesMega ? 'services' : 'translation';
 
-            {/* SERVICES MEGA DROPDOWN */}
-            <div 
-              className={`nav-item has-mega ${activeMega === 'services' ? 'mega-open' : ''}`}
-              onMouseEnter={() => window.innerWidth > 768 && setActiveMega('services')}
-              onMouseLeave={() => window.innerWidth > 768 && setActiveMega(null)}
-            >
-              <NavLink 
-                to="/services" 
-                className="nav-link" 
-                onClick={(e) => handleMegaClick(e, 'services')}
-              >
-                Services <i className={`fas fa-chevron-down ${activeMega === 'services' ? 'fa-rotate-180' : ''}`}></i>
-              </NavLink>
-              <div className="mega-panel">
-                <div className="mega-left">
-                  <NavLink to="/services" className="mega-head" onClick={closeMobile}>
-                    Services <i className="fas fa-arrow-right"></i>
-                  </NavLink>
-                  <div className="mega-cols">
-                    <div className="mega-col">
-                      {SERVICES.slice(0, 4).map(item => (
-                        <NavLink
-                          key={item.path}
-                          to={item.path}
-                          className={`mega-item ${svcPreview.key === item.key ? 'mgi-active' : ''}`}
-                          onMouseEnter={() => setSvcPreview(item)}
-                          onClick={closeMobile}
-                        >
-                          <div className="mi-icon"><i className="fas fa-arrow-right"></i></div>
-                          <div><strong>{item.title}</strong><span>{item.sub}</span></div>
-                        </NavLink>
-                      ))}
-                    </div>
-                    <div className="mega-col">
-                      {SERVICES.slice(4, 7).map(item => (
-                        <NavLink
-                          key={item.path}
-                          to={item.path}
-                          className={`mega-item ${svcPreview.key === item.key ? 'mgi-active' : ''}`}
-                          onMouseEnter={() => setSvcPreview(item)}
-                          onClick={closeMobile}
-                        >
-                          <div className="mi-icon"><i className="fas fa-arrow-right"></i></div>
-                          <div><strong>{item.title}</strong><span>{item.sub}</span></div>
-                        </NavLink>
-                      ))}
-                    </div>
-                    <div className="mega-col">
-                      {SERVICES.slice(7, 10).map(item => (
-                        <NavLink
-                          key={item.path}
-                          to={item.path}
-                          className={`mega-item ${svcPreview.key === item.key ? 'mgi-active' : ''}`}
-                          onMouseEnter={() => setSvcPreview(item)}
-                          onClick={closeMobile}
-                        >
-                          <div className="mi-icon"><i className="fas fa-arrow-right"></i></div>
-                          <div><strong>{item.title}</strong><span>{item.sub}</span></div>
-                        </NavLink>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-                <div className="mega-right">
-                  <div className="mega-preview-title">{svcPreview.title}</div>
-                  <div className="mega-illus">
-                    {SERVICE_IMAGES[svcPreview.key] ? (
-                      <img 
-                        src={SERVICE_IMAGES[svcPreview.key]} 
-                        alt={svcPreview.title} 
-                        style={{ width: '100%', height: '100%', objectFit: 'contain', borderRadius: '12px' }} 
-                      />
-                    ) : (
-                      <div dangerouslySetInnerHTML={{ __html: SVG_PREVIEWS[svcPreview.key] || '' }} />
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
+                return (
+                  <div 
+                    key={link.id}
+                    className={`nav-item has-mega ${activeMega === megaKey ? 'mega-open' : ''}`}
+                    onMouseEnter={() => handleMouseEnterMega(megaKey)}
+                    onMouseLeave={handleMouseLeaveMega}
+                  >
+                    <NavLink 
+                      to={link.path} 
+                      className="nav-link" 
+                      onClick={(e) => handleMegaClick(e, megaKey, link.path)}
+                    >
+                      {link.label} <i className={`fas fa-chevron-down ${activeMega === megaKey ? 'fa-rotate-180' : ''}`}></i>
+                    </NavLink>
 
-            {/* TRANSLATION SERVICES MEGA DROPDOWN */}
-            <div 
-              className={`nav-item has-mega ${activeMega === 'translation' ? 'mega-open' : ''}`}
-              onMouseEnter={() => window.innerWidth > 768 && setActiveMega('translation')}
-              onMouseLeave={() => window.innerWidth > 768 && setActiveMega(null)}
-            >
-              <NavLink 
-                to="/translation-services" 
-                className="nav-link" 
-                onClick={(e) => handleMegaClick(e, 'translation')}
-              >
-                Translation Services <i className={`fas fa-chevron-down ${activeMega === 'translation' ? 'fa-rotate-180' : ''}`}></i>
-              </NavLink>
-              <div className="mega-panel">
-                <div className="mega-left">
-                  <NavLink to="/translation-services" className="mega-head" onClick={closeMobile}>
-                    Translation Services <i className="fas fa-arrow-right"></i>
-                  </NavLink>
-                  <div className="mega-cols">
-                    <div className="mega-col">
-                      {TRANSLATIONS.slice(0, 3).map(item => (
-                        <NavLink
-                          key={item.path}
-                          to={item.path}
-                          className={`mega-item ${transPreview.key === item.key ? 'mgi-active' : ''}`}
-                          onMouseEnter={() => setTransPreview(item)}
-                          onClick={closeMobile}
-                        >
-                          <div className="mi-icon"><i className="fas fa-arrow-right"></i></div>
-                          <div><strong>{item.title}</strong><span>{item.sub}</span></div>
-                        </NavLink>
-                      ))}
-                    </div>
-                    <div className="mega-col">
-                      {TRANSLATIONS.slice(3, 6).map(item => (
-                        <NavLink
-                          key={item.path}
-                          to={item.path}
-                          className={`mega-item ${transPreview.key === item.key ? 'mgi-active' : ''}`}
-                          onMouseEnter={() => setTransPreview(item)}
-                          onClick={closeMobile}
-                        >
-                          <div className="mi-icon"><i className="fas fa-arrow-right"></i></div>
-                          <div><strong>{item.title}</strong><span>{item.sub}</span></div>
-                        </NavLink>
-                      ))}
-                    </div>
-                    <div className="mega-col">
-                      {TRANSLATIONS.slice(6, 8).map(item => (
-                        <NavLink
-                          key={item.path}
-                          to={item.path}
-                          className={`mega-item ${transPreview.key === item.key ? 'mgi-active' : ''}`}
-                          onMouseEnter={() => setTransPreview(item)}
-                          onClick={closeMobile}
-                        >
-                          <div className="mi-icon"><i className="fas fa-arrow-right"></i></div>
-                          <div><strong>{item.title}</strong><span>{item.sub}</span></div>
-                        </NavLink>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-                <div className="mega-right">
-                  <div className="mega-preview-title">{transPreview.title}</div>
-                  <div className="mega-illus">
-                    {TRANSLATION_IMAGES[transPreview.key] ? (
-                      <img 
-                        src={TRANSLATION_IMAGES[transPreview.key]} 
-                        alt={transPreview.title} 
-                        style={{ width: '100%', height: '100%', objectFit: 'contain', borderRadius: '12px' }} 
-                      />
-                    ) : (
-                      <div dangerouslySetInnerHTML={{ __html: SVG_PREVIEWS[transPreview.key] || '' }} />
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
+                    <div 
+                      className="mega-panel"
+                      onMouseEnter={() => handleMouseEnterMega(megaKey)}
+                      onMouseLeave={handleMouseLeaveMega}
+                    >
+                      <div className="mega-left">
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+                          <NavLink to={link.path} className="mega-head" onClick={closeMobile} style={{ marginBottom: 0 }}>
+                            {link.label} <i className="fas fa-arrow-right"></i>
+                          </NavLink>
+                          {isAdmin && (
+                            <NavLink to="/admin" className="badge-admin-edit-link" onClick={closeMobile}>
+                              <i className="fas fa-pen-square"></i> Manage {link.label} (Admin)
+                            </NavLink>
+                          )}
+                        </div>
 
-            <NavLink to="/apostille" className="nav-link" onClick={closeMobile}>Apostille Services</NavLink>
-            <NavLink to="/quality" className="nav-link" onClick={closeMobile}>Quality</NavLink>
-            <NavLink to="/contact" className="nav-link" onClick={closeMobile}>Contact Us</NavLink>
-            <NavLink to="/blog" className="nav-link" onClick={closeMobile}>Blog</NavLink>
+                        <div className="mega-cols">
+                          {cols.map((colItems, colIdx) => (
+                            <div className="mega-col" key={colIdx}>
+                              {colItems.map(item => (
+                                <div
+                                  key={item.key || item.path}
+                                  className={`mega-item ${preview?.key === item.key ? 'mgi-active' : ''}`}
+                                  onMouseEnter={() => setPreview(item)}
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    closeMobile();
+                                    if (isAdmin) {
+                                      navigate('/admin', { state: { editKey: item.key, editType: isServicesMega ? 'services' : 'translation' } });
+                                    } else {
+                                      navigate(item.path);
+                                    }
+                                  }}
+                                >
+                                  <div className="mi-icon"><i className={`fas ${item.icon || 'fa-arrow-right'}`}></i></div>
+                                  <div style={{ flex: 1 }}>
+                                    <strong>{item.title}</strong>
+                                    <span>{item.sub}</span>
+                                  </div>
+                                  {isAdmin && (
+                                    <span className="mi-admin-edit-badge" title="Click to Edit in Admin">
+                                      <i className="fas fa-pen"></i> Edit
+                                    </span>
+                                  )}
+                                </div>
+                              ))}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="mega-right">
+                        <div className="mega-preview-title">{preview?.title || 'Service Overview'}</div>
+                        <div className="mega-illus">
+                          {preview?.image ? (
+                            <img 
+                              src={preview.image} 
+                              alt={preview.title} 
+                              style={{ width: '100%', height: '100%', objectFit: 'contain', borderRadius: '12px' }} 
+                            />
+                          ) : (
+                            <div style={{ padding: '20px', textAlign: 'center', color: '#888' }}>
+                              <i className={`fas ${preview?.icon || 'fa-concierge-bell'}`} style={{ fontSize: '48px', color: '#e8651a', marginBottom: '10px' }}></i>
+                              <p style={{ fontSize: '13px' }}>{preview?.sub}</p>
+                            </div>
+                          )}
+                        </div>
+                        {isAdmin && (
+                          <button 
+                            onClick={() => { closeMobile(); navigate('/admin'); }}
+                            style={{
+                              marginTop: '10px',
+                              background: '#e8651a',
+                              color: '#fff',
+                              border: 'none',
+                              padding: '8px 16px',
+                              borderRadius: '50px',
+                              fontSize: '12px',
+                              fontWeight: 700,
+                              cursor: 'pointer',
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '6px'
+                            }}
+                          >
+                            <i className="fas fa-edit"></i> Edit Services in Admin
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+
+              return (
+                <NavLink key={link.id} to={link.path} className="nav-link" onClick={closeMobile}>
+                  {link.label}
+                </NavLink>
+              );
+            })}
           </nav>
 
           <button className="hamburger" onClick={() => setMobileOpen(!mobileOpen)}>

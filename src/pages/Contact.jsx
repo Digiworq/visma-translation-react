@@ -1,13 +1,20 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
+import { useData } from '../context/DataContext';
 
 export default function Contact() {
+  const { addLead, topbarContent } = useData();
   const [submitted, setSubmitted] = useState(false);
+  const [form, setForm] = useState({
+    name: '', email: '', phone: '', service: 'Translation Services', message: ''
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    addLead(form);
     setSubmitted(true);
+    setForm({ name: '', email: '', phone: '', service: 'Translation Services', message: '' });
     setTimeout(() => setSubmitted(false), 4000);
   };
 
@@ -40,11 +47,11 @@ export default function Contact() {
             <div className="stag">Contact Information</div>
             <h3 style={{ fontFamily: "'Playfair Display',serif", fontSize: 'clamp(22px,3vw,32px)', fontWeight: 900, color: '#1a1a2e', margin: '12px 0 10px' }}>We'd Love to <span style={{ color: '#e8651a' }}>Hear From You</span></h3>
             <p style={{ color: '#666680', fontSize: '15px', lineHeight: 1.75, marginBottom: '24px' }}>Reach out by phone, email or the form. Our team responds promptly and professionally.</p>
-            <div className="ci-card"><div className="ci-ico"><i className="fas fa-phone-alt"></i></div><div><strong style={{ display: 'block', fontSize: '14px', color: '#1a1a2e', marginBottom: '3px' }}>Phone</strong><span style={{ fontSize: '13px', color: '#666680' }}>+91 9945342726</span></div></div>
-            <div className="ci-card"><div className="ci-ico"><i className="fas fa-envelope"></i></div><div><strong style={{ display: 'block', fontSize: '14px', color: '#1a1a2e', marginBottom: '3px' }}>Email</strong><span style={{ fontSize: '13px', color: '#666680' }}>info@vismatranslation.com</span></div></div>
-            <div className="ci-card"><div className="ci-ico"><i className="fas fa-map-marker-alt"></i></div><div><strong style={{ display: 'block', fontSize: '14px', color: '#1a1a2e', marginBottom: '3px' }}>Office</strong><span style={{ fontSize: '13px', color: '#666680' }}>Bangalore, Karnataka, India</span></div></div>
-            <div className="ci-card"><div className="ci-ico"><i className="fas fa-clock"></i></div><div><strong style={{ display: 'block', fontSize: '14px', color: '#1a1a2e', marginBottom: '3px' }}>Hours</strong><span style={{ fontSize: '13px', color: '#666680' }}>Monday – Saturday: 9:00 AM – 6:00 PM</span></div></div>
-            <div className="ci-card"><div className="ci-ico"><i className="fab fa-whatsapp"></i></div><div><strong style={{ display: 'block', fontSize: '14px', color: '#1a1a2e', marginBottom: '3px' }}>WhatsApp</strong><span style={{ fontSize: '13px', color: '#666680' }}>+91 9945342726</span></div></div>
+            <div className="ci-card"><div className="ci-ico"><i className="fas fa-phone-alt"></i></div><div><strong style={{ display: 'block', fontSize: '14px', color: '#1a1a2e', marginBottom: '3px' }}>Phone</strong><span style={{ fontSize: '13px', color: '#666680' }}>{topbarContent.phone}</span></div></div>
+            <div className="ci-card"><div className="ci-ico"><i className="fas fa-envelope"></i></div><div><strong style={{ display: 'block', fontSize: '14px', color: '#1a1a2e', marginBottom: '3px' }}>Email</strong><span style={{ fontSize: '13px', color: '#666680' }}>{topbarContent.email}</span></div></div>
+            <div className="ci-card"><div className="ci-ico"><i className="fas fa-map-marker-alt"></i></div><div><strong style={{ display: 'block', fontSize: '14px', color: '#1a1a2e', marginBottom: '3px' }}>Office</strong><span style={{ fontSize: '13px', color: '#666680' }}>{topbarContent.location}</span></div></div>
+            <div className="ci-card"><div className="ci-ico"><i className="fas fa-clock"></i></div><div><strong style={{ display: 'block', fontSize: '14px', color: '#1a1a2e', marginBottom: '3px' }}>Hours</strong><span style={{ fontSize: '13px', color: '#666680' }}>{topbarContent.hours}</span></div></div>
+            <div className="ci-card"><div className="ci-ico"><i className="fab fa-whatsapp"></i></div><div><strong style={{ display: 'block', fontSize: '14px', color: '#1a1a2e', marginBottom: '3px' }}>WhatsApp</strong><span style={{ fontSize: '13px', color: '#666680' }}>{topbarContent.phone}</span></div></div>
           </div>
 
           <div className="form-card">
@@ -52,13 +59,23 @@ export default function Contact() {
             <p style={{ color: '#666680', fontSize: '14px', marginBottom: '26px' }}>Fill in the form and we'll respond within 2 hours.</p>
             <form id="contactForm" onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
               <div className="form-row">
-                <div className="fg"><label>Full Name *</label><input type="text" placeholder="Your full name" required /></div>
-                <div className="fg"><label>Email Address *</label><input type="email" placeholder="your@email.com" required /></div>
+                <div className="fg">
+                  <label>Full Name *</label>
+                  <input type="text" placeholder="Your full name" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} required />
+                </div>
+                <div className="fg">
+                  <label>Email Address *</label>
+                  <input type="email" placeholder="your@email.com" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} required />
+                </div>
               </div>
               <div className="form-row">
-                <div className="fg"><label>Phone Number</label><input type="tel" placeholder="+91 9999999999" /></div>
-                <div className="fg"><label>Service Required</label>
-                  <select defaultValue="Translation Services">
+                <div className="fg">
+                  <label>Phone Number</label>
+                  <input type="tel" placeholder="+91 9999999999" value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })} />
+                </div>
+                <div className="fg">
+                  <label>Service Required</label>
+                  <select value={form.service} onChange={e => setForm({ ...form, service: e.target.value })}>
                     <option>Translation Services</option>
                     <option>Localization Services</option>
                     <option>Apostille Services</option>
@@ -70,11 +87,10 @@ export default function Contact() {
                   </select>
                 </div>
               </div>
-              <div className="form-row">
-                <div className="fg"><label>Source Language</label><input type="text" placeholder="e.g. English" /></div>
-                <div className="fg"><label>Target Language</label><input type="text" placeholder="e.g. Hindi, French..." /></div>
+              <div className="fg">
+                <label>Message *</label>
+                <textarea placeholder="Tell us about your project — document type, word count, deadline..." value={form.message} onChange={e => setForm({ ...form, message: e.target.value })} required></textarea>
               </div>
-              <div className="fg"><label>Message *</label><textarea placeholder="Tell us about your project — document type, word count, deadline..." required></textarea></div>
               <button type="submit" className="sub-btn" id="submitBtn" style={{ background: submitted ? '#27ae60' : '' }}>
                 {submitted ? <><i className="fas fa-check-circle"></i> Message Sent! We'll reply soon.</> : <><i className="fas fa-paper-plane"></i> Send Message</>}
               </button>

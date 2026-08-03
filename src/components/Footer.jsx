@@ -77,7 +77,7 @@ export default function Footer() {
       
       <div className="footer-bottom">
         <div className="container">
-          <p>&copy; {new Date().getFullYear()} Visma Translation. All rights reserved. | <a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a></p>
+          <p>&copy; {new Date().getFullYear()} Visma Translation. All rights reserved. | <a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a> | <Link to="/admin/login" style={{ color: '#e8651a', textDecoration: 'none', fontWeight: '700', marginLeft: '6px' }}><i className="fas fa-lock"></i> Admin Login</Link></p>
         </div>
       </div>
     </footer>

@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
+import { useData } from '../context/DataContext';
 
 export default function Home() {
+  const { heroContent, services, translationServices, addLead } = useData();
   const [stats, setStats] = useState({ customers: 0, projects: 0, words: 0, translators: 0 });
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [contactForm, setContactForm] = useState({
+    name: '', email: '', phone: '', service: 'Translation Services', message: ''
+  });
 
   useEffect(() => {
     const duration = 1800;
@@ -29,7 +34,9 @@ export default function Home() {
 
   const handleContactSubmit = (e) => {
     e.preventDefault();
+    addLead(contactForm);
     setFormSubmitted(true);
+    setContactForm({ name: '', email: '', phone: '', service: 'Translation Services', message: '' });
     setTimeout(() => setFormSubmitted(false), 4000);
   };
 
@@ -45,7 +52,7 @@ export default function Home() {
       <section className="hero" id="home">
         <div style={{
           position: 'absolute', inset: 0,
-          backgroundImage: `url('https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=1600&auto=format&fit=crop')`,
+          backgroundImage: `url('${heroContent.heroImage || 'https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=1600&auto=format&fit=crop'}')`,
           backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.13, zIndex: 0
         }}></div>
 
@@ -53,26 +60,23 @@ export default function Home() {
           <div className="hero-text">
             <div className="hero-tag">
               <span className="tag-line"></span>
-              <span>Fast &amp; Accurate!</span>
+              <span>{heroContent.tag || 'Fast & Accurate!'}</span>
             </div>
             <h1 className="hero-title">
-              Translation<br />
-              <span className="red">Service</span>
+              {heroContent.mainTitle}<br />
+              <span className="red">{heroContent.subTitle}</span>
             </h1>
             <p className="hero-desc">
-              Visma offers comprehensive translation services. Our expert team delivers fast, precise translations in multiple languages. By combining cutting-edge technology with skilled professionals, we ensure timely and accurate transcriptions customized to your specific requirements.
-            </p>
-            <p className="hero-desc">
-              Our services cater to a wide range of translation needs, delivering high-quality results efficiently. Trust Visma for reliable, professional translation services that meet your business demands.
+              {heroContent.desc}
             </p>
             <div className="hero-btns">
               <a href="#services" className="btn-red">Learn More</a>
               <Link to="/contact" className="btn-outline-dark">Contact Us</Link>
             </div>
             <div className="hero-trust">
-              <div className="trust-item"><i className="fas fa-shield-alt"></i><span>ISO 9001:2015 Certified</span></div>
+              <div className="trust-item"><i className="fas fa-shield-alt"></i><span>{heroContent.badge4 || 'ISO 9001:2015 Certified'}</span></div>
               <div className="trust-item"><i className="fas fa-star"></i><span>Top 10 Agency in India</span></div>
-              <div className="trust-item"><i className="fas fa-globe"></i><span>100+ Languages</span></div>
+              <div className="trust-item"><i className="fas fa-globe"></i><span>{heroContent.badge2 || '100+ Languages'}</span></div>
             </div>
           </div>
 
@@ -80,26 +84,26 @@ export default function Home() {
             <div className="hero-img-wrap">
               <div className="hero-img-placeholder" style={{ position: 'relative', overflow: 'hidden', borderRadius: '20px', boxShadow: '0 32px 80px rgba(0,0,0,0.4)' }}>
                 <img
-                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&auto=format&fit=crop&q=80"
-                  alt="Professional translator at work"
+                  src={heroContent.heroImage || "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&auto=format&fit=crop&q=80"}
+                  alt="Visma Translation Service"
                   style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', borderRadius: '20px' }}
                 />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg,rgba(192,57,43,0.25),transparent 60%)', borderRadius: '20px' }}></div>
                 <div className="img-badge" style={{ position: 'absolute', bottom: '20px', left: '20px', zIndex: 2 }}>
-                  <i className="fas fa-certificate"></i> ISO 9001:2015
+                  <i className="fas fa-certificate"></i> {heroContent.badge4 || 'ISO 9001:2015'}
                 </div>
               </div>
               <div className="hero-float-card card1">
                 <i className="fas fa-check-circle"></i>
-                <span>99.9% Accuracy</span>
+                <span>{heroContent.badge1 || '99.9% Accuracy'}</span>
               </div>
               <div className="hero-float-card card2">
                 <i className="fas fa-globe-americas"></i>
-                <span>100+ Languages</span>
+                <span>{heroContent.badge2 || '100+ Languages'}</span>
               </div>
               <div className="hero-float-card card3">
                 <i className="fas fa-clock"></i>
-                <span>24/7 Support</span>
+                <span>{heroContent.badge3 || '24/7 Support'}</span>
               </div>
             </div>
           </div>
@@ -110,39 +114,100 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===== ANNOUNCEMENT BANNER ===== */}
+      {heroContent.showAnnouncement !== false && (
+        <div className="home-announcement-bar" style={{
+          background: 'linear-gradient(90deg, #181a1e 0%, #282c34 100%)',
+          color: '#ffffff',
+          padding: '14px 0',
+          borderBottom: '2px solid var(--org)',
+          boxShadow: '0 4px 20px rgba(0,0,0,0.15)'
+        }}>
+          <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <span style={{
+                background: 'var(--org)',
+                color: '#ffffff',
+                fontSize: '11px',
+                fontWeight: 800,
+                padding: '4px 12px',
+                borderRadius: '50px',
+                textTransform: 'uppercase',
+                letterSpacing: '0.5px'
+              }}>
+                <i className="fas fa-bullhorn" style={{ marginRight: '5px' }}></i> {heroContent.announcementTitle || 'Special Notice'}
+              </span>
+              <p style={{ margin: 0, fontSize: '14px', fontWeight: 500, color: 'rgba(255,255,255,0.9)' }}>
+                {heroContent.announcementText || 'Express 2-Hour Document Translation & Embassy Apostille Legalization available across India!'}
+              </p>
+            </div>
+            <Link to="/contact" style={{
+              background: 'transparent',
+              color: 'var(--org)',
+              border: '1px solid var(--org)',
+              padding: '6px 16px',
+              borderRadius: '50px',
+              fontSize: '12.5px',
+              fontWeight: 700,
+              textDecoration: 'none',
+              transition: 'all 0.2s ease'
+            }}>
+              Get Free Quote <i className="fas fa-arrow-right" style={{ marginLeft: '4px' }}></i>
+            </Link>
+          </div>
+        </div>
+      )}
+
       {/* ===== STATS STRIP ===== */}
       <div className="stats-strip" id="stats">
         <div className="stats-inner">
           <div className="stat-item">
-            <span className="stat-num">{stats.customers}</span><span className="stat-plus">+</span>
-            <span className="stat-label">Happy Customers</span>
+            <span className="stat-num">{heroContent.stat1Num || '500+'}</span>
+            <span className="stat-label">{heroContent.stat1Label || 'Happy Customers'}</span>
           </div>
           <div className="stat-divider"></div>
           <div className="stat-item">
-            <span className="stat-num">{stats.projects}</span><span className="stat-plus">+</span>
-            <span className="stat-label">Projects Completed</span>
+            <span className="stat-num">{heroContent.stat2Num || '1,200+'}</span>
+            <span className="stat-label">{heroContent.stat2Label || 'Projects Completed'}</span>
           </div>
           <div className="stat-divider"></div>
           <div className="stat-item">
-            <span className="stat-num">{stats.words}</span><span className="stat-plus">M+</span>
-            <span className="stat-label">Words Translated</span>
+            <span className="stat-num">{heroContent.stat3Num || '50M+'}</span>
+            <span className="stat-label">{heroContent.stat3Label || 'Words Translated'}</span>
           </div>
           <div className="stat-divider"></div>
           <div className="stat-item">
-            <span className="stat-num">{stats.translators}</span>
-            <span className="stat-label">Translators Worldwide</span>
+            <span className="stat-num">{heroContent.stat4Num || '100+'}</span>
+            <span className="stat-label">{heroContent.stat4Label || 'Translators Worldwide'}</span>
           </div>
         </div>
       </div>
 
-      {/* ===== KEY DELIVERABLES ===== */}
+      {/* ===== KEY DELIVERABLES / WHY CHOOSE VISMA ===== */}
       <section className="deliverables" id="about">
         <div className="container">
           <div className="section-head center">
             <span className="tag">What We Deliver</span>
-            <h2>Key Deliverables of <span className="red">Visma</span></h2>
-            <p>Our services cater to a wide range of translation needs, delivering high-quality results efficiently. Trust Visma for reliable, professional language translation services that meet your business demands.</p>
+            <h2>{heroContent.aboutTitle || 'Why Choose Visma Translation?'}</h2>
+            <p>{heroContent.aboutDesc || 'ISO 9001:2015 Certified translation agency delivering 99.9% accuracy with native linguists in 100+ languages.'}</p>
           </div>
+
+          {heroContent.extraInfoBox && (
+            <div style={{
+              background: '#f8f9fa',
+              borderLeft: '4px solid var(--org)',
+              padding: '20px 24px',
+              borderRadius: '12px',
+              marginBottom: '32px',
+              boxShadow: '0 4px 15px rgba(0,0,0,0.03)'
+            }}>
+              <p style={{ margin: 0, fontSize: '15px', lineHeight: '1.7', color: 'var(--dark)', fontWeight: 500 }}>
+                <i className="fas fa-info-circle" style={{ color: 'var(--org)', marginRight: '10px', fontSize: '18px' }}></i>
+                {heroContent.extraInfoBox}
+              </p>
+            </div>
+          )}
+
           <div className="deliverables-grid">
             <div className="deliver-card">
               <div className="deliver-icon"><i className="fas fa-bolt"></i></div>

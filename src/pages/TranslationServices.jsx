@@ -1,23 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
-
-const TRANSLATION_SERVICES = [
-  { path: '/business-translation', icon: 'fa-briefcase', title: 'Business Translation', desc: 'Corporate communications, business reports, company profiles, and executive presentations translated with domain accuracy.' },
-  { path: '/certificate-translation', icon: 'fa-certificate', title: 'Certificate Translation', desc: 'Embassy-accepted certified translation for birth, marriage, degree, diploma, and personal certificates.' },
-  { path: '/ecommerce-translation', icon: 'fa-shopping-cart', title: 'E-Commerce Translation', desc: 'Product listings, store descriptions, and customer reviews translated to expand global online sales.' },
-  { path: '/elearning-translation', icon: 'fa-graduation-cap', title: 'E-Learning Translation', desc: 'Educational courses, training manuals, LMS platforms, and student materials localized for international learners.' },
-  { path: '/finance-translation', icon: 'fa-chart-line', title: 'Finance Translation', desc: 'Banking documents, financial audits, annual reports, tax filings, and investment prospectuses.' },
-  { path: '/legal-translation', icon: 'fa-gavel', title: 'Legal Translation', desc: 'Court documents, legal contracts, patents, NDAs, and compliance files translated by certified legal linguists.' },
-  { path: '/medical-translation', icon: 'fa-notes-medical', title: 'Medical Translation', desc: 'Pharma reports, clinical trial data, medical device manuals, patient records, and health documentation.' },
-  { path: '/technical-translation', icon: 'fa-cogs', title: 'Technical Translation', desc: 'Engineering manuals, user guides, software specs, technical patents, and industrial documentation.' }
-];
+import { useData } from '../context/DataContext';
 
 export default function TranslationServices() {
+  const { translationServices } = useData();
+
   return (
     <main>
       <SEO 
-        title="Certified Translation Services - 8 Specialized Domains"
+        title="Certified Translation Services - Specialized Domains"
         description="Certified document translation in 100+ languages across Legal, Medical, Financial, Technical, Business, and E-Commerce domains in Bangalore."
         keywords="translation services bangalore, legal translation, medical translation, financial translation, business translation india"
         canonical="https://vismatranslation.com/translation-services"
@@ -38,7 +30,7 @@ export default function TranslationServices() {
             <div className="ph-illus">
               <img src="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=800&auto=format&fit=crop&q=80" alt="Specialized Translation Services" loading="eager" />
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg,rgba(232,101,26,.25),transparent 60%)', borderRadius: '22px' }}></div>
-              <div className="f-badge p1"><i className="fas fa-check-circle"></i> 8 Domains</div>
+              <div className="f-badge p1"><i className="fas fa-check-circle"></i> {translationServices.length} Domains</div>
               <div className="f-badge p2"><i className="fas fa-globe"></i> 100+ Languages</div>
             </div>
           </div>
@@ -55,10 +47,10 @@ export default function TranslationServices() {
           </div>
 
           <div className="g2">
-            {TRANSLATION_SERVICES.map(s => (
-              <div className="card" key={s.path} style={{ display: 'flex', gap: '20px', alignItems: 'flex-start' }}>
+            {translationServices.map(s => (
+              <div className="card" key={s.key || s.path} style={{ display: 'flex', gap: '20px', alignItems: 'flex-start' }}>
                 <div className="c-icon" style={{ flexShrink: 0 }}>
-                  <i className={`fas ${s.icon}`}></i>
+                  <i className={`fas ${s.icon || 'fa-language'}`}></i>
                 </div>
                 <div style={{ flex: 1 }}>
                   <h4 style={{ fontSize: '18px', fontWeight: 800, color: '#1a1a2e', marginBottom: '8px' }}>{s.title}</h4>
