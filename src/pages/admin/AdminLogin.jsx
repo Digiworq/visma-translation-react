@@ -112,6 +112,26 @@ export default function AdminLogin() {
             <i className="fas fa-sign-in-alt"></i> Log In to Dashboard
           </button>
 
+          <div style={{ textAlign: 'center', marginTop: '12px' }}>
+            <button
+              type="button"
+              onClick={() => navigate('/')}
+              style={{
+                background: 'none',
+                border: '1px solid #e8651a',
+                color: '#e8651a',
+                borderRadius: '6px',
+                padding: '8px 20px',
+                fontSize: '13px',
+                fontWeight: 600,
+                cursor: 'pointer',
+                width: '100%',
+              }}
+            >
+              <i className="fas fa-home"></i> Back to Home
+            </button>
+          </div>
+
           <div className="admin-hint">
             <span>Current Username: <code>{adminCreds.username}</code></span>
           </div>
