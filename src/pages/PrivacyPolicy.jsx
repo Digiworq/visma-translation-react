@@ -147,10 +147,7 @@ export default function PrivacyPolicy() {
         }}>
           <i className="fas fa-user-shield" style={{ fontSize: '28px', color: '#e8651a' }}></i>
         </div>
-        <h1 style={{ color: '#fff', fontSize: '42px', fontWeight: 800, margin: '0 0 10px' }}>Privacy Policy</h1>
-        <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '14px', margin: 0 }}>
-          <i className="fas fa-calendar-alt" style={{ marginRight: '6px' }}></i>Last Updated: August 3, 2026
-        </p>
+        <h1 style={{ color: '#fff', fontSize: '42px', fontWeight: 800, margin: 0 }}>Privacy Policy</h1>
       </div>
 
       <div style={{ maxWidth: '900px', margin: '0 auto', padding: '50px 20px 80px' }}>
