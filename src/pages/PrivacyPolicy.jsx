@@ -32,39 +32,19 @@ export default function PrivacyPolicy() {
         </div>
 
         <Section icon="fas fa-database" title="Information We Collect">
-          <p>When you contact us or use our services, we may collect the following:</p>
-          <BulletList items={[
-            'Name', 'Company or organization name', 'Email address', 'Phone number',
-            'Billing and payment information',
-            'Documents and files submitted for translation, localization, or transcription',
-            'Project requirements and communications',
-            'Information from contact forms, quote requests, or email',
-            'Technical data such as IP address, browser type, and device information',
-          ]} />
+          <p>When you contact us or use our services, we may collect your name, company or organization name, email address, phone number, billing and payment information, documents and files submitted for translation or related services, project requirements and communications, information provided through contact forms or quote requests, and technical data such as IP address, browser type, and device information.</p>
         </Section>
 
         <Section icon="fas fa-cogs" title="How We Use Your Information">
-          <p>We may use your information to:</p>
-          <BulletList items={[
-            'Provide translation, localization, transcription, voice-over, subtitling, and other requested services',
-            'Respond to inquiries and provide quotations',
-            'Communicate with you about projects and services',
-            'Process payments and manage billing',
-            'Improve our services and website',
-            'Maintain business and customer records',
-            'Prevent fraud, misuse, or security threats',
-            'Comply with applicable legal and regulatory requirements',
-          ]} />
+          <p>We may use your information to provide translation, localization, transcription, voice-over, subtitling, and other requested services, respond to inquiries and provide quotations, communicate with you about projects, process payments, improve our services and website, maintain business and customer records, prevent fraud or security threats, and comply with applicable legal and regulatory requirements.</p>
         </Section>
 
         <Section icon="fas fa-shield-alt" title="Confidentiality of Documents">
-          <p>We understand that documents submitted to us may contain confidential or sensitive information. Visma Translation takes reasonable measures to protect client materials from unauthorized access, disclosure, alteration, or misuse. Access to client materials is limited to employees, translators, contractors, or service providers who need it to perform the requested services.</p>
-          <p>Where appropriate, we may enter into confidentiality agreements or Non-Disclosure Agreements (NDAs) with clients.</p>
+          <p>We understand that documents submitted to us may contain confidential or sensitive information. Visma Translation takes reasonable measures to protect client materials from unauthorized access, disclosure, alteration, or misuse. Access to client materials is limited to employees, translators, contractors, or service providers who need it to perform the requested services. Where appropriate, we may enter into confidentiality agreements or Non-Disclosure Agreements (NDAs) with clients.</p>
         </Section>
 
         <Section icon="fas fa-share-alt" title="Sharing of Information">
-          <p>We do not sell or rent your personal information to third parties. We may share information with trusted service providers — such as translators, payment processors, or hosting providers — only when necessary to deliver our services.</p>
-          <p>We may also disclose information when required by applicable law, legal proceedings, court orders, or government authorities.</p>
+          <p>We do not sell or rent your personal information to third parties. We may share information with trusted service providers such as translators, payment processors, or hosting providers only when necessary to deliver our services. We may also disclose information when required by applicable law, legal proceedings, court orders, or government authorities.</p>
         </Section>
 
         <Section icon="fas fa-lock" title="Data Security">
@@ -80,19 +60,11 @@ export default function PrivacyPolicy() {
         </Section>
 
         <Section icon="fas fa-external-link-alt" title="Third-Party Websites">
-          <p>Our website may contain links to third-party websites. We are not responsible for their privacy practices, security, or content. We encourage you to review the privacy policies of those websites before sharing personal information.</p>
+          <p>Our website may contain links to third-party websites. We are not responsible for their privacy practices, security, or content. We encourage you to review the privacy policies of those websites before sharing any personal information.</p>
         </Section>
 
         <Section icon="fas fa-user-check" title="Your Rights">
-          <p>Depending on applicable law, you may have the right to:</p>
-          <BulletList items={[
-            'Request access to your personal information',
-            'Request correction of inaccurate information',
-            'Request deletion of personal information where legally permitted',
-            'Withdraw consent where processing is based on consent',
-            'Request information about how your personal data is processed',
-          ]} />
-          <p style={{ marginTop: '14px' }}>To make a privacy-related request, please contact us using the details below.</p>
+          <p>Depending on applicable law, you may have the right to request access to your personal information, request correction of inaccurate information, request deletion of personal information where legally permitted, withdraw consent where processing is based on consent, and request information about how your personal data is processed. To make a privacy-related request, please contact us using the details below.</p>
         </Section>
 
         <Section icon="fas fa-child" title="Children's Privacy">
@@ -100,10 +72,9 @@ export default function PrivacyPolicy() {
         </Section>
 
         <Section icon="fas fa-sync-alt" title="Changes to This Policy">
-          <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page. We encourage you to review this page periodically to stay informed.</p>
+          <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page. We encourage you to review this page periodically to stay informed about how we protect your information.</p>
         </Section>
 
-        {/* Contact Card */}
         <ContactCard />
       </div>
     </main>
@@ -113,27 +84,14 @@ export default function PrivacyPolicy() {
 function Section({ icon, title, children }) {
   return (
     <div style={{ background: '#fff', borderRadius: '16px', padding: '32px 36px', boxShadow: '0 2px 16px rgba(0,0,0,0.05)', marginBottom: '20px' }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '18px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '16px' }}>
         <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: '#fff4ee', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
           <i className={icon} style={{ fontSize: '17px', color: '#e8651a' }}></i>
         </div>
         <h2 style={{ margin: 0, fontSize: '18px', fontWeight: 700, color: '#1a1d24' }}>{title}</h2>
       </div>
-      <div style={{ fontSize: '14.5px', lineHeight: '1.85', color: '#555' }}>{children}</div>
+      <div style={{ fontSize: '14.5px', lineHeight: '1.9', color: '#555' }}>{children}</div>
     </div>
-  );
-}
-
-function BulletList({ items }) {
-  return (
-    <ul style={{ margin: '10px 0 0', paddingLeft: '0', listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-      {items.map((item, i) => (
-        <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '14.5px', color: '#555' }}>
-          <i className="fas fa-check-circle" style={{ color: '#e8651a', marginTop: '3px', flexShrink: 0, fontSize: '13px' }}></i>
-          <span>{item}</span>
-        </li>
-      ))}
-    </ul>
   );
 }
 

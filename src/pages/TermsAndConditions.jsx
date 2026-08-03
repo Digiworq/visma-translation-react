@@ -32,37 +32,15 @@ export default function TermsAndConditions() {
         </div>
 
         <Section icon="fas fa-concierge-bell" title="Our Services">
-          <p>Visma Translation provides professional language-related services, which may include:</p>
-          <BulletList items={[
-            'Translation', 'Localization', 'Document Translation', 'Legal Translation',
-            'Medical Translation', 'Financial Translation', 'Technical Translation',
-            'Transcription', 'Subtitling', 'Voice-over Services', 'Content Writing',
-            'SEO Content Writing', 'Desktop Publishing', 'Social Media Content Services', 'Apostille-related Services',
-          ]} />
-          <p style={{ marginTop: '14px' }}>The exact services available may vary depending on the project and agreement with the client.</p>
+          <p>Visma Translation provides professional language-related services including Translation, Localization, Document Translation, Legal Translation, Medical Translation, Financial Translation, Technical Translation, Transcription, Subtitling, Voice-over Services, Content Writing, SEO Content Writing, Desktop Publishing, Social Media Content Services, and Apostille-related Services. The exact services available may vary depending on the project and agreement with the client.</p>
         </Section>
 
         <Section icon="fas fa-tags" title="Quotes and Pricing">
-          <p>All quotations are based on the information and requirements provided by the client. The final price may vary if:</p>
-          <BulletList items={[
-            'The scope of work changes',
-            'Additional documents are submitted',
-            'The source material differs significantly from what was originally provided',
-            'Additional formatting, editing, proofreading, certification, or urgent delivery is requested',
-          ]} />
-          <p style={{ marginTop: '14px' }}>A project will begin after the client accepts the quotation and fulfills any required payment or deposit conditions.</p>
+          <p>All quotations are based on the information and requirements provided by the client. The final price may vary if the scope of work changes, additional documents are submitted, the source material differs significantly from what was originally provided, or if additional formatting, editing, proofreading, certification, or urgent delivery is requested. A project will begin after the client accepts the quotation and fulfills any required payment or deposit conditions.</p>
         </Section>
 
         <Section icon="fas fa-user-tie" title="Client Responsibilities">
-          <p>The client is responsible for providing:</p>
-          <BulletList items={[
-            'Accurate and complete source materials',
-            'Clear project instructions',
-            'Required reference materials',
-            'Correct contact and billing information',
-            'Any necessary permissions or rights to use submitted materials',
-          ]} />
-          <p style={{ marginTop: '14px' }}>The client must ensure that submitted content does not unlawfully infringe the rights of any third party.</p>
+          <p>The client is responsible for providing accurate and complete source materials, clear project instructions, required reference materials, correct contact and billing information, and any necessary permissions or rights to use submitted materials. The client must ensure that submitted content does not unlawfully infringe the rights of any third party.</p>
         </Section>
 
         <Section icon="fas fa-spell-check" title="Translation Accuracy">
@@ -70,18 +48,11 @@ export default function TermsAndConditions() {
         </Section>
 
         <Section icon="fas fa-truck" title="Delivery Times">
-          <p>Estimated delivery times will be communicated based on the scope and complexity of the project. Delivery times may be affected by:</p>
-          <BulletList items={[
-            'Changes to project requirements',
-            'Delays in receiving necessary information',
-            'Client feedback or approval',
-            'Technical issues',
-            'Force majeure events or unforeseen circumstances',
-          ]} />
+          <p>Estimated delivery times will be communicated based on the scope and complexity of the project. Delivery times may be affected by changes to project requirements, delays in receiving necessary information, client feedback or approval cycles, technical issues, force majeure events, or other unforeseen circumstances beyond our reasonable control.</p>
         </Section>
 
         <Section icon="fas fa-user-secret" title="Confidentiality">
-          <p>Visma Translation respects the confidentiality of all client information and documents. We will take reasonable measures to protect confidential materials and may use confidentiality agreements or NDAs when requested or required. Clients should inform us in advance if a project has specific confidentiality or data-handling requirements.</p>
+          <p>Visma Translation respects the confidentiality of all client information and documents. We will take reasonable measures to protect confidential materials and may use confidentiality agreements or NDAs when requested or required. Clients should inform us in advance if a project has specific confidentiality, security, or data-handling requirements.</p>
         </Section>
 
         <Section icon="fas fa-credit-card" title="Payments">
@@ -89,7 +60,7 @@ export default function TermsAndConditions() {
         </Section>
 
         <Section icon="fas fa-undo-alt" title="Cancellation and Refunds">
-          <p>Cancellation and refund eligibility may depend on the stage of the project and the amount of work already completed. Once work has started, fees may be non-refundable to the extent that services have already been performed or costs have been incurred. Any refund will be considered based on the specific circumstances of the project.</p>
+          <p>Cancellation and refund eligibility may depend on the stage of the project and the amount of work already completed. Once work has started, fees may be non-refundable to the extent that services have already been performed or costs have been incurred. Any refund will be considered based on the specific circumstances of the project and the agreed quotation.</p>
         </Section>
 
         <Section icon="fas fa-edit" title="Revisions and Corrections">
@@ -125,10 +96,9 @@ export default function TermsAndConditions() {
         </Section>
 
         <Section icon="fas fa-sync-alt" title="Changes to These Terms">
-          <p>We may update these Terms and Conditions from time to time. Updated terms will be published on this page with a revised date. Continued use of our services after any changes constitutes acceptance of the updated terms.</p>
+          <p>We may update these Terms and Conditions from time to time. Updated terms will be published on this page. Continued use of our services after any changes constitutes acceptance of the updated terms.</p>
         </Section>
 
-        {/* Contact Card */}
         <ContactCard />
       </div>
     </main>
@@ -138,27 +108,14 @@ export default function TermsAndConditions() {
 function Section({ icon, title, children }) {
   return (
     <div style={{ background: '#fff', borderRadius: '16px', padding: '32px 36px', boxShadow: '0 2px 16px rgba(0,0,0,0.05)', marginBottom: '20px' }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '18px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '16px' }}>
         <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: '#fff4ee', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
           <i className={icon} style={{ fontSize: '17px', color: '#e8651a' }}></i>
         </div>
         <h2 style={{ margin: 0, fontSize: '18px', fontWeight: 700, color: '#1a1d24' }}>{title}</h2>
       </div>
-      <div style={{ fontSize: '14.5px', lineHeight: '1.85', color: '#555' }}>{children}</div>
+      <div style={{ fontSize: '14.5px', lineHeight: '1.9', color: '#555' }}>{children}</div>
     </div>
-  );
-}
-
-function BulletList({ items }) {
-  return (
-    <ul style={{ margin: '10px 0 0', paddingLeft: '0', listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-      {items.map((item, i) => (
-        <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '14.5px', color: '#555' }}>
-          <i className="fas fa-check-circle" style={{ color: '#e8651a', marginTop: '3px', flexShrink: 0, fontSize: '13px' }}></i>
-          <span>{item}</span>
-        </li>
-      ))}
-    </ul>
   );
 }
 
