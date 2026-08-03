@@ -77,7 +77,7 @@ export default function Footer() {
       
       <div className="footer-bottom">
         <div className="container">
-          <p>&copy; {new Date().getFullYear()} Visma Translation. All rights reserved. | <a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a> | <Link to="/admin/login" style={{ color: '#e8651a', textDecoration: 'none', fontWeight: '700', marginLeft: '6px' }}><i className="fas fa-lock"></i> Admin Login</Link></p>
+          <p>&copy; {new Date().getFullYear()} Visma Translation. All rights reserved. | <Link to="/privacy-policy" style={{ color: 'inherit', textDecoration: 'none' }}>Privacy Policy</Link> | <Link to="/terms-and-conditions" style={{ color: 'inherit', textDecoration: 'none' }}>Terms and Conditions</Link></p>
           <p style={{ marginTop: '6px', fontSize: '12px', color: 'rgba(255,255,255,0.45)' }}>
             Designed &amp; Developed by{' '}
             <a href="https://www.digiworq.com/" target="_blank" rel="noopener noreferrer" style={{ color: '#e8651a', textDecoration: 'none', fontWeight: '600' }}>

@@ -15,6 +15,8 @@ import Blog from './pages/Blog';
 import Contact from './pages/Contact';
 import Apostille from './pages/Apostille';
 import ServiceDetail from './pages/ServiceDetail';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsAndConditions from './pages/TermsAndConditions';
 import AdminLogin from './pages/admin/AdminLogin';
 import AdminDashboard from './pages/admin/AdminDashboard';
 
@@ -46,6 +48,8 @@ export default function App() {
             <Route path="/blog" element={<Blog />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/apostille" element={<Apostille />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
 
             {/* Admin Routes */}
             <Route path="/admin/login" element={<AdminLogin />} />
