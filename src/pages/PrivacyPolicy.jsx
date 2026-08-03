@@ -1,127 +1,294 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SEO from '../components/SEO';
 
+const sections = [
+  {
+    icon: 'fas fa-database',
+    title: 'Information We Collect',
+    content: (
+      <>
+        <p>When you contact us or use our services, we may collect:</p>
+        <TagList items={[
+          'Name', 'Company or organization name', 'Email address', 'Phone number',
+          'Billing and payment information',
+          'Documents and files submitted for translation, localization, or transcription',
+          'Project requirements and communications',
+          'Information from contact forms or quote requests',
+          'Technical data: IP address, browser type, device information',
+        ]} />
+      </>
+    ),
+  },
+  {
+    icon: 'fas fa-cogs',
+    title: 'How We Use Your Information',
+    content: (
+      <>
+        <p>Your information helps us:</p>
+        <TagList items={[
+          'Deliver translation, localization, transcription, voice-over, and subtitling services',
+          'Respond to inquiries and provide quotations',
+          'Communicate about projects and services',
+          'Process payments and manage billing',
+          'Improve our services and website',
+          'Maintain business and customer records',
+          'Prevent fraud, misuse, or security threats',
+          'Comply with legal and regulatory requirements',
+        ]} />
+      </>
+    ),
+  },
+  {
+    icon: 'fas fa-shield-alt',
+    title: 'Confidentiality of Documents',
+    content: (
+      <p>We understand that documents submitted to us may contain sensitive information. Visma Translation takes reasonable measures to protect client materials from unauthorized access or disclosure. Access is limited to employees, translators, or contractors who need it to perform the service. Where required, we may enter into Non-Disclosure Agreements (NDAs) with clients.</p>
+    ),
+  },
+  {
+    icon: 'fas fa-share-alt',
+    title: 'Sharing of Information',
+    content: (
+      <>
+        <p>We do not sell or rent your personal information to third parties. We may share data with trusted service providers — such as payment processors or hosting providers — only when necessary to deliver our services. We may also disclose information when legally required by court order or government authority.</p>
+      </>
+    ),
+  },
+  {
+    icon: 'fas fa-lock',
+    title: 'Data Security',
+    content: (
+      <p>We use reasonable administrative, technical, and organizational measures to protect personal information. However, no method of electronic storage or internet transmission is completely secure, and we cannot guarantee absolute security.</p>
+    ),
+  },
+  {
+    icon: 'fas fa-clock',
+    title: 'Data Retention',
+    content: (
+      <p>We retain your information only as long as reasonably necessary to deliver services, maintain records, resolve disputes, and comply with legal obligations. Retention periods vary depending on the nature of the data and services provided.</p>
+    ),
+  },
+  {
+    icon: 'fas fa-cookie-bite',
+    title: 'Cookies',
+    content: (
+      <p>Our website may use cookies and similar technologies to improve functionality, analyze traffic, and enhance user experience. You can adjust your browser to refuse or delete cookies, though some features may not work correctly without them.</p>
+    ),
+  },
+  {
+    icon: 'fas fa-external-link-alt',
+    title: 'Third-Party Websites',
+    content: (
+      <p>Our website may link to third-party sites. We are not responsible for their privacy practices, security, or content. We encourage you to review the privacy policies of those websites before sharing any personal information.</p>
+    ),
+  },
+  {
+    icon: 'fas fa-user-check',
+    title: 'Your Rights',
+    content: (
+      <>
+        <p>Depending on applicable law, you may have the right to:</p>
+        <TagList items={[
+          'Request access to your personal information',
+          'Request correction of inaccurate information',
+          'Request deletion of personal information where legally permitted',
+          'Withdraw consent where processing is based on consent',
+          'Request information about how your personal data is processed',
+        ]} />
+        <p style={{ marginTop: '12px' }}>To make a privacy-related request, please contact us using the details below.</p>
+      </>
+    ),
+  },
+  {
+    icon: 'fas fa-child',
+    title: "Children's Privacy",
+    content: (
+      <p>Our website and services are not directed toward children. We do not knowingly collect personal information from children without appropriate consent where required by law.</p>
+    ),
+  },
+  {
+    icon: 'fas fa-sync-alt',
+    title: 'Changes to This Policy',
+    content: (
+      <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated "Last Updated" date. We encourage you to review this page periodically.</p>
+    ),
+  },
+];
+
 export default function PrivacyPolicy() {
+  const [open, setOpen] = useState(null);
+
   return (
-    <main style={{ background: '#f9f9f9', minHeight: '100vh', paddingBottom: '60px' }}>
+    <main style={{ background: '#f4f6fb', minHeight: '100vh' }}>
       <SEO title="Privacy Policy - Visma Translation" description="Privacy Policy for Visma Translation services." />
 
       {/* Hero */}
-      <div style={{ background: '#1a1d24', padding: '60px 20px 50px', textAlign: 'center' }}>
-        <h1 style={{ color: '#fff', fontSize: '36px', fontWeight: 800, marginBottom: '10px' }}>Privacy Policy</h1>
-        <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '14px' }}>Last Updated: August 3, 2026</p>
+      <div style={{
+        background: 'linear-gradient(135deg, #1a1d24 0%, #2c3040 100%)',
+        padding: '80px 20px 70px',
+        textAlign: 'center',
+        position: 'relative',
+        overflow: 'hidden',
+      }}>
+        <div style={{
+          position: 'absolute', top: '-60px', right: '-60px',
+          width: '300px', height: '300px', borderRadius: '50%',
+          background: 'rgba(232,101,26,0.08)',
+        }} />
+        <div style={{
+          position: 'absolute', bottom: '-40px', left: '-40px',
+          width: '200px', height: '200px', borderRadius: '50%',
+          background: 'rgba(232,101,26,0.06)',
+        }} />
+        <div style={{
+          display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+          width: '70px', height: '70px', borderRadius: '50%',
+          background: 'rgba(232,101,26,0.15)', marginBottom: '20px',
+        }}>
+          <i className="fas fa-user-shield" style={{ fontSize: '28px', color: '#e8651a' }}></i>
+        </div>
+        <h1 style={{ color: '#fff', fontSize: '42px', fontWeight: 800, margin: '0 0 10px' }}>Privacy Policy</h1>
+        <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '14px', margin: 0 }}>
+          <i className="fas fa-calendar-alt" style={{ marginRight: '6px' }}></i>Last Updated: August 3, 2026
+        </p>
       </div>
 
-      <div style={{ maxWidth: '860px', margin: '50px auto', padding: '0 20px' }}>
-        <div style={{ background: '#fff', borderRadius: '12px', padding: '48px 52px', boxShadow: '0 4px 24px rgba(0,0,0,0.07)', lineHeight: '1.85', color: '#333', fontSize: '15px' }}>
+      <div style={{ maxWidth: '900px', margin: '0 auto', padding: '50px 20px 80px' }}>
 
-          <p>At Visma Translation, we respect your privacy and are committed to protecting the personal information you provide when using our website and services. This Privacy Policy explains how we collect, use, store, and protect your information.</p>
-
-          <Section title="1. Information We Collect">
-            <p>We may collect the following information when you contact us or use our services:</p>
-            <ul>
-              <li>Name</li>
-              <li>Company or organization name</li>
-              <li>Email address</li>
-              <li>Phone number</li>
-              <li>Billing and payment information</li>
-              <li>Documents and files submitted for translation, localization, transcription, or related services</li>
-              <li>Project requirements and communications</li>
-              <li>Information provided through contact forms, quote requests, or email</li>
-              <li>Technical information such as IP address, browser type, device information, and website usage data</li>
-            </ul>
-          </Section>
-
-          <Section title="2. How We Use Your Information">
-            <p>We may use your information to:</p>
-            <ul>
-              <li>Provide translation, localization, transcription, voice-over, subtitling, and other requested services</li>
-              <li>Respond to inquiries and provide quotations</li>
-              <li>Communicate with you about projects and services</li>
-              <li>Process payments and manage billing</li>
-              <li>Improve our services and website</li>
-              <li>Maintain business and customer records</li>
-              <li>Prevent fraud, misuse, or security threats</li>
-              <li>Comply with applicable legal and regulatory requirements</li>
-            </ul>
-          </Section>
-
-          <Section title="3. Confidentiality of Documents">
-            <p>We understand that documents submitted to us may contain confidential or sensitive information.</p>
-            <p>Visma Translation will take reasonable measures to protect client documents and information from unauthorized access, disclosure, alteration, or misuse. Access to client materials may be limited to employees, translators, contractors, or service providers who require access to perform the requested services.</p>
-            <p>Where appropriate, we may enter into confidentiality agreements or Non-Disclosure Agreements (NDAs) with clients.</p>
-          </Section>
-
-          <Section title="4. Sharing of Information">
-            <p>We do not sell or rent your personal information to third parties.</p>
-            <p>We may share information with trusted service providers, translators, contractors, payment processors, hosting providers, or technology providers when necessary to provide our services.</p>
-            <p>We may also disclose information when required by applicable law, legal proceedings, court orders, or government authorities.</p>
-          </Section>
-
-          <Section title="5. Data Security">
-            <p>We use reasonable administrative, technical, and organizational measures to protect personal information and confidential documents.</p>
-            <p>However, no method of electronic transmission or storage is completely secure, and we cannot guarantee absolute security of information transmitted through the internet.</p>
-          </Section>
-
-          <Section title="6. Data Retention">
-            <p>We retain personal information and project-related materials only for as long as reasonably necessary to provide our services, maintain business records, resolve disputes, comply with legal obligations, or enforce our agreements.</p>
-            <p>The retention period may vary depending on the nature of the information and the services provided.</p>
-          </Section>
-
-          <Section title="7. Cookies">
-            <p>Our website may use cookies and similar technologies to improve website functionality, analyze website traffic, and enhance user experience.</p>
-            <p>You may adjust your browser settings to refuse or delete cookies. However, some website features may not function properly if cookies are disabled.</p>
-          </Section>
-
-          <Section title="8. Third-Party Websites">
-            <p>Our website may contain links to third-party websites. We are not responsible for the privacy practices, security, or content of third-party websites.</p>
-            <p>We encourage users to review the privacy policies of those websites before providing personal information.</p>
-          </Section>
-
-          <Section title="9. Your Rights">
-            <p>Depending on applicable law, you may have the right to:</p>
-            <ul>
-              <li>Request access to your personal information</li>
-              <li>Request correction of inaccurate information</li>
-              <li>Request deletion of personal information where legally permitted</li>
-              <li>Withdraw consent where processing is based on consent</li>
-              <li>Request information about how your personal data is processed</li>
-            </ul>
-            <p>To make a privacy-related request, please contact us using the details below.</p>
-          </Section>
-
-          <Section title="10. Children's Privacy">
-            <p>Our website and services are not specifically directed toward children. We do not knowingly collect personal information from children without appropriate consent where required by law.</p>
-          </Section>
-
-          <Section title="11. Changes to This Privacy Policy">
-            <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated "Last Updated" date.</p>
-          </Section>
-
-          <Section title="12. Contact Us">
-            <p>Visma Translation</p>
-            <p>
-              No. 12, 10th Main, Shivanagar, Rajajinagar,<br />
-              West of Chord Road, Near Chord Manor Apartment,<br />
-              Bangalore – 560010, India
-            </p>
-            <p>Email: <a href="mailto:info@vismatranslation.com" style={{ color: '#e8651a' }}>info@vismatranslation.com</a></p>
-            <p>Phone: <a href="tel:+919945342726" style={{ color: '#e8651a' }}>+91 9945342726</a></p>
-          </Section>
-
+        {/* Intro card */}
+        <div style={{
+          background: '#fff', borderRadius: '16px', padding: '32px 36px',
+          boxShadow: '0 2px 20px rgba(0,0,0,0.06)', marginBottom: '32px',
+          borderLeft: '5px solid #e8651a',
+        }}>
+          <p style={{ margin: 0, fontSize: '15.5px', lineHeight: '1.85', color: '#444' }}>
+            At <strong>Visma Translation</strong>, we respect your privacy and are committed to protecting the personal information you provide when using our website and services. This Privacy Policy explains how we collect, use, store, and protect your information.
+          </p>
         </div>
+
+        {/* Accordion sections */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          {sections.map((sec, i) => (
+            <AccordionCard
+              key={i}
+              icon={sec.icon}
+              title={sec.title}
+              isOpen={open === i}
+              onToggle={() => setOpen(open === i ? null : i)}
+            >
+              {sec.content}
+            </AccordionCard>
+          ))}
+        </div>
+
+        {/* Contact card */}
+        <ContactCard />
       </div>
     </main>
   );
 }
 
-function Section({ title, children }) {
+function AccordionCard({ icon, title, isOpen, onToggle, children }) {
   return (
-    <div style={{ marginTop: '36px' }}>
-      <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#1a1d24', marginBottom: '12px', borderLeft: '4px solid #e8651a', paddingLeft: '12px' }}>
-        {title}
-      </h2>
-      <div style={{ paddingLeft: '4px' }}>{children}</div>
+    <div style={{
+      background: '#fff', borderRadius: '14px',
+      boxShadow: isOpen ? '0 6px 28px rgba(232,101,26,0.12)' : '0 2px 12px rgba(0,0,0,0.05)',
+      border: isOpen ? '1.5px solid rgba(232,101,26,0.3)' : '1.5px solid transparent',
+      transition: 'all 0.25s ease', overflow: 'hidden',
+    }}>
+      <button
+        onClick={onToggle}
+        style={{
+          width: '100%', background: 'none', border: 'none', cursor: 'pointer',
+          padding: '22px 28px', display: 'flex', alignItems: 'center', gap: '16px',
+          textAlign: 'left',
+        }}
+      >
+        <div style={{
+          width: '44px', height: '44px', borderRadius: '10px', flexShrink: 0,
+          background: isOpen ? '#e8651a' : '#fff4ee',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          transition: 'background 0.25s',
+        }}>
+          <i className={icon} style={{ fontSize: '17px', color: isOpen ? '#fff' : '#e8651a' }}></i>
+        </div>
+        <span style={{
+          flex: 1, fontSize: '16px', fontWeight: 700,
+          color: isOpen ? '#e8651a' : '#1a1d24',
+          transition: 'color 0.25s',
+        }}>{title}</span>
+        <i className={`fas fa-chevron-${isOpen ? 'up' : 'down'}`}
+          style={{ color: isOpen ? '#e8651a' : '#aaa', fontSize: '13px', transition: 'all 0.25s' }}></i>
+      </button>
+
+      {isOpen && (
+        <div style={{
+          padding: '0 28px 24px 88px',
+          fontSize: '14.5px', lineHeight: '1.85', color: '#555',
+        }}>
+          {children}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function TagList({ items }) {
+  return (
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '12px' }}>
+      {items.map((item, i) => (
+        <span key={i} style={{
+          background: '#fff4ee', color: '#c45610', border: '1px solid rgba(232,101,26,0.2)',
+          borderRadius: '20px', padding: '5px 14px', fontSize: '13px', fontWeight: 500,
+        }}>
+          <i className="fas fa-check" style={{ marginRight: '6px', fontSize: '11px' }}></i>{item}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+function ContactCard() {
+  return (
+    <div style={{
+      marginTop: '40px', background: 'linear-gradient(135deg, #1a1d24, #2c3040)',
+      borderRadius: '16px', padding: '40px', color: '#fff',
+      display: 'flex', flexWrap: 'wrap', gap: '32px', alignItems: 'center',
+    }}>
+      <div style={{ flex: '1 1 260px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
+          <div style={{
+            width: '44px', height: '44px', borderRadius: '10px',
+            background: 'rgba(232,101,26,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}>
+            <i className="fas fa-headset" style={{ color: '#e8651a', fontSize: '18px' }}></i>
+          </div>
+          <h3 style={{ margin: 0, fontSize: '20px', fontWeight: 700 }}>Contact Us</h3>
+        </div>
+        <p style={{ margin: 0, color: 'rgba(255,255,255,0.6)', fontSize: '14px', lineHeight: '1.7' }}>
+          No. 12, 10th Main, Shivanagar, Rajajinagar,<br />
+          West of Chord Road, Near Chord Manor Apartment,<br />
+          Bangalore – 560010, India
+        </p>
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+        <a href="mailto:info@vismatranslation.com" style={{
+          display: 'flex', alignItems: 'center', gap: '12px',
+          background: 'rgba(255,255,255,0.07)', borderRadius: '10px',
+          padding: '12px 20px', textDecoration: 'none', color: '#fff',
+        }}>
+          <i className="fas fa-envelope" style={{ color: '#e8651a' }}></i>
+          info@vismatranslation.com
+        </a>
+        <a href="tel:+919945342726" style={{
+          display: 'flex', alignItems: 'center', gap: '12px',
+          background: 'rgba(255,255,255,0.07)', borderRadius: '10px',
+          padding: '12px 20px', textDecoration: 'none', color: '#fff',
+        }}>
+          <i className="fas fa-phone-alt" style={{ color: '#e8651a' }}></i>
+          +91 9945342726
+        </a>
+      </div>
     </div>
   );
 }
