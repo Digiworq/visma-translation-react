@@ -60,7 +60,7 @@ export default function Footer() {
               </li>
               <li style={{ display: 'flex', alignItems: 'center', gap: '14px', fontSize: '13.5px', color: 'rgba(255,255,255,0.75)' }}>
                 <i className="fas fa-envelope" style={{ color: 'var(--org)', width: '18px', textAlign: 'center', flexShrink: 0 }}></i>
-                <a href="mailto:info@vismatranslation.com" style={{ color: 'rgba(255,255,255,0.75)', textDecoration: 'none' }}>info@vismatranslation.com</a>
+                <a href="https://mail.google.com/mail/?view=cm&to=info@vismatranslation.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.75)', textDecoration: 'none' }}>info@vismatranslation.com</a>
               </li>
               <li style={{ display: 'flex', alignItems: 'center', gap: '14px', fontSize: '13.5px', color: 'rgba(255,255,255,0.75)' }}>
                 <i className="fas fa-map-marker-alt" style={{ color: 'var(--org)', width: '18px', textAlign: 'center', flexShrink: 0 }}></i>
