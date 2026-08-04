@@ -56,11 +56,11 @@ export default function Footer() {
             <ul className="contact-list ci" style={{ display: 'flex', flexDirection: 'column', gap: '14px', paddingLeft: 0, listStyle: 'none' }}>
               <li style={{ display: 'flex', alignItems: 'center', gap: '14px', fontSize: '13.5px', color: 'rgba(255,255,255,0.75)' }}>
                 <i className="fas fa-phone-alt" style={{ color: 'var(--org)', width: '18px', textAlign: 'center', flexShrink: 0 }}></i>
-                <span>+91 9945342726</span>
+                <a href="tel:+919945342726" style={{ color: 'rgba(255,255,255,0.75)', textDecoration: 'none' }}>+91 9945342726</a>
               </li>
               <li style={{ display: 'flex', alignItems: 'center', gap: '14px', fontSize: '13.5px', color: 'rgba(255,255,255,0.75)' }}>
                 <i className="fas fa-envelope" style={{ color: 'var(--org)', width: '18px', textAlign: 'center', flexShrink: 0 }}></i>
-                <span>info@vismatranslation.com</span>
+                <a href="mailto:info@vismatranslation.com" style={{ color: 'rgba(255,255,255,0.75)', textDecoration: 'none' }}>info@vismatranslation.com</a>
               </li>
               <li style={{ display: 'flex', alignItems: 'center', gap: '14px', fontSize: '13.5px', color: 'rgba(255,255,255,0.75)' }}>
                 <i className="fas fa-map-marker-alt" style={{ color: 'var(--org)', width: '18px', textAlign: 'center', flexShrink: 0 }}></i>
