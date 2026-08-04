@@ -30,9 +30,9 @@ export default function Footer() {
             <h4>Quick Links</h4>
             <ul>
               <li><Link to="/">Home</Link></li>
-              <li><Link to="/about">About Us</Link></li>
-              <li><Link to="/services">Services</Link></li>
-              <li><Link to="/quality">Industries</Link></li>
+              <li><Link to="/about-visma-translation">About Us</Link></li>
+              <li><Link to="/language-services-bangalore">Services</Link></li>
+              <li><Link to="/industries-we-serve">Industries</Link></li>
               <li><Link to="/contact">Contact Us</Link></li>
               <li><Link to="/blog">Blog</Link></li>
             </ul>
@@ -41,13 +41,13 @@ export default function Footer() {
           <div className="footer-col">
             <h4>Our Services</h4>
             <ul>
-              <li><Link to="/services">Translation Services</Link></li>
-              <li><Link to="/localization">Localization Services</Link></li>
-              <li><Link to="/voiceover">Voice-Over Service</Link></li>
-              <li><Link to="/subtitling">Sub-Titling Service</Link></li>
-              <li><Link to="/transcription">Transcription Services</Link></li>
+              <li><Link to="/translation-services">Translation Services</Link></li>
+              <li><Link to="/localization-services">Localization Services</Link></li>
+              <li><Link to="/voice-over-services">Voice-Over Service</Link></li>
+              <li><Link to="/subtitling-services">Sub-Titling Service</Link></li>
+              <li><Link to="/transcription-services">Transcription Services</Link></li>
               <li><Link to="/apostille">Apostille Services</Link></li>
-              <li><Link to="/dtp">DTP &amp; Design</Link></li>
+              <li><Link to="/desktop-publishing-services">DTP &amp; Design</Link></li>
             </ul>
           </div>
 

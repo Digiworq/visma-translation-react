@@ -78,7 +78,7 @@ export default function About() {
             <p className="ph-desc">Visma Translation is a premier ISO 9001:2015 certified agency helping businesses break language barriers since 2010. With 200+ expert linguists across 100+ languages, we deliver precision, speed and trust.</p>
             <div className="ph-btns">
               <Link to="/contact" className="btn-org"><i className="fas fa-envelope"></i> Get In Touch</Link>
-              <Link to="/services" className="btn-ghost"><i className="fas fa-th-large"></i> Our Services</Link>
+              <Link to="/language-services-bangalore" className="btn-ghost"><i className="fas fa-th-large"></i> Our Services</Link>
             </div>
           </div>
           <div className="ph-img">

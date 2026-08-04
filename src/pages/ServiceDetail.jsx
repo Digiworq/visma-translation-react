@@ -28,7 +28,7 @@ const SERVICE_DATABASE = {
       { icon: 'fa-file-alt', title: 'Document Localisation', desc: 'Legal, HR and corporate documents localised with full cultural and regulatory compliance for the target market.' }
     ]
   },
-  '/seo-content': {
+  '/seo-content-writing-services': {
     title: 'SEO Content Writing Service',
     headingMain: 'SEO Content',
     headingSub: 'Writing That Ranks',
@@ -51,7 +51,7 @@ const SERVICE_DATABASE = {
       { icon: 'fa-sync-alt', title: 'Content Optimization', desc: 'Refreshing existing website content to improve rankings, keyword density, and user engagement.' }
     ]
   },
-  '/social-media': {
+  '/social-media-content-services': {
     title: 'Social Media Content Creation',
     headingMain: 'Social Media',
     headingSub: 'Content & Copy',
@@ -97,7 +97,7 @@ const SERVICE_DATABASE = {
       { icon: 'fa-file-export', title: 'Multi-Format Export', desc: 'Delivery in SRT, VTT, SUB, ASS, DFXP, or hardcoded burned-in video formats.' }
     ]
   },
-  '/dtp': {
+  '/desktop-publishing-services': {
     title: 'Desktop Publishing Service',
     headingMain: 'Desktop Publishing',
     headingSub: 'DTP & Layout Design',
@@ -120,7 +120,7 @@ const SERVICE_DATABASE = {
       { icon: 'fa-swatchbook', title: 'Font & Style Matching', desc: 'Custom font selection to match branding guidelines in foreign character sets.' }
     ]
   },
-  '/voiceover': {
+  '/voice-over-services': {
     title: 'Voice-Over Services',
     headingMain: 'Voice-Over',
     headingSub: 'Multilingual Narrations',
@@ -429,11 +429,11 @@ export default function ServiceDetail() {
   // Per-route SEO keywords
   const ROUTE_KEYWORDS = {
     '/localization': 'localization service bangalore, website localization india, app localization, content localization, cultural adaptation, multilingual localization, ui ux localization, e-commerce localization, localization agency india, software localization bangalore, document localization, marketing localization',
-    '/seo-content': 'seo content writing bangalore, seo copywriting india, multilingual seo, keyword research services, blog writing services, content marketing india, meta description writing, technical copywriting, product description writing, on page seo writing',
-    '/social-media': 'social media content creation bangalore, multilingual social media content, instagram content agency, linkedin content writing, social media copywriting india, reels script writing, social media graphics bangalore',
+    '/seo-content-writing-services': 'seo content writing bangalore, seo copywriting india, multilingual seo, keyword research services, blog writing services, content marketing india, meta description writing, technical copywriting, product description writing, on page seo writing',
+    '/social-media-content-services': 'social media content creation bangalore, multilingual social media content, instagram content agency, linkedin content writing, social media copywriting india, reels script writing, social media graphics bangalore',
     '/subtitling': 'subtitling services india, subtitle translation bangalore, closed captioning services, srt file translation, youtube subtitles bangalore, film subtitling india, video captioning services, dfxp vtt subtitles',
-    '/dtp': 'desktop publishing services bangalore, dtp translation india, multilingual typesetting, indesign translation, rtl layout services, print ready pdf translation, brochure typesetting india, dtp localization',
-    '/voiceover': 'voice over services bangalore, multilingual voiceover india, native voice artist, corporate narration, elearning voiceover, commercial voice over, audiobook narration india, ivr voice recording',
+    '/desktop-publishing-services': 'desktop publishing services bangalore, dtp translation india, multilingual typesetting, indesign translation, rtl layout services, print ready pdf translation, brochure typesetting india, dtp localization',
+    '/voice-over-services': 'voice over services bangalore, multilingual voiceover india, native voice artist, corporate narration, elearning voiceover, commercial voice over, audiobook narration india, ivr voice recording',
     '/transcription': 'transcription services bangalore, audio transcription india, video transcription services, legal transcription bangalore, medical transcription india, interview transcription, timestamped transcript',
     '/video-editing': 'video editing services bangalore, multilingual video editing, subtitle integration video, color grading bangalore, corporate video editing, social media video editing, 4k video editing india',
     '/social-media-marketing': 'social media marketing agency bangalore, multilingual social media marketing, facebook ads india, instagram marketing, linkedin marketing bangalore, influencer marketing india, social media management',
@@ -452,7 +452,7 @@ export default function ServiceDetail() {
   const dynamicMatch = allDynamic.find(s => s.path === currentPath || `/${s.key}` === currentPath);
   const isTranslationService = translationServices.some(s => s.path === currentPath || `/${s.key}` === currentPath);
   const sidebarItems = isTranslationService ? translationServices : services;
-  const sidebarHub = isTranslationService ? '/translation-services' : '/services';
+  const sidebarHub = isTranslationService ? '/translation-services' : '/language-services-bangalore';
   const sidebarLabel = isTranslationService ? 'Translation Services' : 'Services';
 
   let data = SERVICE_DATABASE[currentPath];

@@ -55,7 +55,7 @@ export default function Quality() {
             <p className="ph-desc">Quality is our foundation. Every translation at Visma is governed by our ISO 9001:2015 certified quality management system ensuring 99.9% accuracy, consistency and reliability.</p>
             <div className="ph-btns">
               <Link to="/contact" className="btn-org"><i className="fas fa-certificate"></i> Get Certified Translation</Link>
-              <Link to="/about" className="btn-ghost"><i className="fas fa-info-circle"></i> About Us</Link>
+              <Link to="/about-visma-translation" className="btn-ghost"><i className="fas fa-info-circle"></i> About Us</Link>
             </div>
           </div>
           <div className="ph-img">

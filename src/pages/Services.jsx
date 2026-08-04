@@ -65,7 +65,7 @@ export default function Services() {
             <ServiceSidebar
               title="Services"
               items={services}
-              hubPath="/services"
+              hubPath="/language-services-bangalore"
               hubLabel="Services"
             />
             <div className="service-page-main">

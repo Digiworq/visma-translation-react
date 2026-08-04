@@ -161,7 +161,7 @@ export default function Blog() {
           </div>
           <div className="cta-btns">
             <Link to="/contact" className="btn-wh"><i className="fas fa-paper-plane"></i> Get Free Quote</Link>
-            <Link to="/services" className="btn-wb"><i className="fas fa-th-large"></i> Our Services</Link>
+            <Link to="/language-services-bangalore" className="btn-wb"><i className="fas fa-th-large"></i> Our Services</Link>
           </div>
         </div>
       </div>

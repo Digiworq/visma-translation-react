@@ -41,10 +41,10 @@ export default function App() {
         <SiteChrome>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
+            <Route path="/about-visma-translation" element={<About />} />
+            <Route path="/language-services-bangalore" element={<Services />} />
             <Route path="/translation-services" element={<TranslationServices />} />
-            <Route path="/quality" element={<Quality />} />
+            <Route path="/industries-we-serve" element={<Quality />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/apostille" element={<Apostille />} />
@@ -56,14 +56,14 @@ export default function App() {
             <Route path="/admin" element={<AdminDashboard />} />
 
             {/* Dynamic Service Detail Routes */}
-            <Route path="/localization" element={<ServiceDetail />} />
-            <Route path="/seo-content" element={<ServiceDetail />} />
-            <Route path="/social-media" element={<ServiceDetail />} />
-            <Route path="/subtitling" element={<ServiceDetail />} />
-            <Route path="/dtp" element={<ServiceDetail />} />
-            <Route path="/voiceover" element={<ServiceDetail />} />
-            <Route path="/transcription" element={<ServiceDetail />} />
-            <Route path="/video-editing" element={<ServiceDetail />} />
+            <Route path="/localization-services" element={<ServiceDetail />} />
+            <Route path="/seo-content-writing-services" element={<ServiceDetail />} />
+            <Route path="/social-media-content-services" element={<ServiceDetail />} />
+            <Route path="/subtitling-services" element={<ServiceDetail />} />
+            <Route path="/desktop-publishing-services" element={<ServiceDetail />} />
+            <Route path="/voice-over-services" element={<ServiceDetail />} />
+            <Route path="/transcription-services" element={<ServiceDetail />} />
+            <Route path="/video-editing-services" element={<ServiceDetail />} />
             <Route path="/social-media-marketing" element={<ServiceDetail />} />
             <Route path="/web-development" element={<ServiceDetail />} />
 
@@ -75,6 +75,19 @@ export default function App() {
             <Route path="/legal-translation" element={<ServiceDetail />} />
             <Route path="/medical-translation" element={<ServiceDetail />} />
             <Route path="/technical-translation" element={<ServiceDetail />} />
+
+            {/* Legacy URLs — keep old short routes working */}
+            <Route path="/services" element={<Services />} />
+            <Route path="/quality" element={<Quality />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/localization" element={<ServiceDetail />} />
+            <Route path="/dtp" element={<ServiceDetail />} />
+            <Route path="/voiceover" element={<ServiceDetail />} />
+            <Route path="/seo-content" element={<ServiceDetail />} />
+            <Route path="/social-media" element={<ServiceDetail />} />
+            <Route path="/subtitling" element={<ServiceDetail />} />
+            <Route path="/transcription" element={<ServiceDetail />} />
+            <Route path="/video-editing" element={<ServiceDetail />} />
 
             {/* Fallback for any dynamically created service path */}
             <Route path="/:serviceKey" element={<ServiceDetail />} />

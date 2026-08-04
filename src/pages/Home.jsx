@@ -333,7 +333,7 @@ export default function Home() {
               <div className="svc-icon"><i className="fas fa-language"></i></div>
               <h3>Translation Services</h3>
               <p>As the best translation service provider, we pride ourselves on having a team of skilled linguists who are experts in various languages and dialects. Whether you need documents translated, marketing materials localized, or websites adapted for different cultures, we have the resources and knowledge to meet your needs.</p>
-              <Link to="/services" className="svc-link">Read More <i className="fas fa-arrow-right"></i></Link>
+              <Link to="/language-services-bangalore" className="svc-link">Read More <i className="fas fa-arrow-right"></i></Link>
             </div>
 
             <div className="svc-card featured">
@@ -349,7 +349,7 @@ export default function Home() {
               <div className="svc-icon"><i className="fas fa-pen-nib"></i></div>
               <h3>DTP &amp; Logo Design</h3>
               <p>We offer comprehensive Desktop Publishing services including logo design, brochure creation, flyer production, typesetting, layouts, and graphic designing. We also specialize in creating infographics for social media, ensuring that your visual content is as engaging as your written content.</p>
-              <Link to="/dtp" className="svc-link">Read More <i className="fas fa-arrow-right"></i></Link>
+              <Link to="/desktop-publishing-services" className="svc-link">Read More <i className="fas fa-arrow-right"></i></Link>
             </div>
 
             <div className="svc-card">
@@ -357,7 +357,7 @@ export default function Home() {
               <div className="svc-icon"><i className="fas fa-hashtag"></i></div>
               <h3>Social Media Content</h3>
               <p>Our team excels in creating and crafting creative content with precision. We focus on producing content that is impactful, engaging, and conversational enough to retain customer attention. We tailor our content to suit each platform's unique characteristics, ensuring maximum reach and engagement.</p>
-              <Link to="/social-media" className="svc-link">Read More <i className="fas fa-arrow-right"></i></Link>
+              <Link to="/social-media-content-services" className="svc-link">Read More <i className="fas fa-arrow-right"></i></Link>
             </div>
 
             <div className="svc-card">
@@ -365,7 +365,7 @@ export default function Home() {
               <div className="svc-icon"><i className="fas fa-search"></i></div>
               <h3>SEO Content Writing</h3>
               <p>Our proficient team of writers possesses expertise in both SEO and writing, allowing us to create content that not only informs but also ranks well in search engines. We understand keywords, meta descriptions, and other SEO elements, incorporating them seamlessly to drive traffic to your website.</p>
-              <Link to="/seo-content" className="svc-link">Read More <i className="fas fa-arrow-right"></i></Link>
+              <Link to="/seo-content-writing-services" className="svc-link">Read More <i className="fas fa-arrow-right"></i></Link>
             </div>
 
             <div className="svc-card">
@@ -381,7 +381,7 @@ export default function Home() {
               <div className="svc-icon"><i className="fas fa-microphone-alt"></i></div>
               <h3>Voice-Over Service</h3>
               <p>As a multilingual voice-over agency, we offer a wide range of voice-over services in Bangalore, India. Our services encompass everything from crafting compelling scripts to delivering captivating narrations. Our talented voice-over artists are skilled in various languages and accents.</p>
-              <Link to="/voiceover" className="svc-link">Read More <i className="fas fa-arrow-right"></i></Link>
+              <Link to="/voice-over-services" className="svc-link">Read More <i className="fas fa-arrow-right"></i></Link>
             </div>
 
             <div className="svc-card">

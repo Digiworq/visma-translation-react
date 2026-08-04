@@ -23,14 +23,14 @@ import imgTechnical from '../../teachnical translation.png';
 const DataContext = createContext();
 
 const INITIAL_SERVICES = [
-  { path: '/localization', title: 'Localization Service', sub: 'Cultural adaptation', key: 'localization', icon: 'fa-globe-americas', image: imgLocalization, desc: 'Cultural adaptation of software, websites, and mobile applications for international audiences.' },
-  { path: '/seo-content', title: 'SEO Content Writing', sub: 'Rank higher online', key: 'seo', icon: 'fa-pen-nib', image: imgSeo, desc: 'Search engine optimized content in multiple languages to drive organic traffic and boost conversions.' },
-  { path: '/social-media', title: 'Social Media Content', sub: 'Crafted for every platform', key: 'social', icon: 'fa-share-alt', image: imgSocial, desc: 'Culturally resonant social media posts, graphics, and campaigns for global audience engagement.' },
-  { path: '/subtitling', title: 'Sub-Titling Services', sub: 'Movies, TV, YouTube', key: 'subtitling', icon: 'fa-closed-captioning', image: imgSubtitling, desc: 'Accurate multilingual subtitles and closed captions for movies, TV shows, and YouTube videos.' },
-  { path: '/dtp', title: 'Desktop Publishing', sub: 'Multilingual DTP', key: 'dtp', icon: 'fa-desktop', image: imgDtp, desc: 'Multilingual layout formatting for brochures, manuals, catalogs, and marketing collateral.' },
-  { path: '/voiceover', title: 'Voice-Over Services', sub: 'Multilingual narrations', key: 'voiceover', icon: 'fa-microphone-alt', image: imgVoiceover, desc: 'Professional native voice-over narrations for corporate videos, e-learning, and commercials.' },
-  { path: '/transcription', title: 'Transcription Services', sub: 'Audio & video to text', key: 'transcription', icon: 'fa-file-audio', image: imgTranscription, desc: 'Converting audio and video recordings into highly accurate written text in 100+ languages.' },
-  { path: '/video-editing', title: 'Video Editing Service', sub: 'Professional post-production', key: 'videoediting', icon: 'fa-film', image: imgVideoediting, desc: 'Professional post-production video editing integrated with localized audio and subtitles.' },
+  { path: '/localization-services', title: 'Localization Service', sub: 'Cultural adaptation', key: 'localization', icon: 'fa-globe-americas', image: imgLocalization, desc: 'Cultural adaptation of software, websites, and mobile applications for international audiences.' },
+  { path: '/seo-content-writing-services', title: 'SEO Content Writing', sub: 'Rank higher online', key: 'seo', icon: 'fa-pen-nib', image: imgSeo, desc: 'Search engine optimized content in multiple languages to drive organic traffic and boost conversions.' },
+  { path: '/social-media-content-services', title: 'Social Media Content', sub: 'Crafted for every platform', key: 'social', icon: 'fa-share-alt', image: imgSocial, desc: 'Culturally resonant social media posts, graphics, and campaigns for global audience engagement.' },
+  { path: '/subtitling-services', title: 'Sub-Titling Services', sub: 'Movies, TV, YouTube', key: 'subtitling', icon: 'fa-closed-captioning', image: imgSubtitling, desc: 'Accurate multilingual subtitles and closed captions for movies, TV shows, and YouTube videos.' },
+  { path: '/desktop-publishing-services', title: 'Desktop Publishing', sub: 'Multilingual DTP', key: 'dtp', icon: 'fa-desktop', image: imgDtp, desc: 'Multilingual layout formatting for brochures, manuals, catalogs, and marketing collateral.' },
+  { path: '/voice-over-services', title: 'Voice-Over Services', sub: 'Multilingual narrations', key: 'voiceover', icon: 'fa-microphone-alt', image: imgVoiceover, desc: 'Professional native voice-over narrations for corporate videos, e-learning, and commercials.' },
+  { path: '/transcription-services', title: 'Transcription Services', sub: 'Audio & video to text', key: 'transcription', icon: 'fa-file-audio', image: imgTranscription, desc: 'Converting audio and video recordings into highly accurate written text in 100+ languages.' },
+  { path: '/video-editing-services', title: 'Video Editing Service', sub: 'Professional post-production', key: 'videoediting', icon: 'fa-film', image: imgVideoediting, desc: 'Professional post-production video editing integrated with localized audio and subtitles.' },
   { path: '/social-media-marketing', title: 'Social Media Marketing', sub: 'Grow your brand online', key: 'smmarketing', icon: 'fa-bullhorn', image: imgSmmarketing, desc: 'Strategic multilingual social campaigns to build brand authority and convert followers.' },
   { path: '/web-development', title: 'Web Development', sub: 'Modern & multilingual sites', key: 'webdev', icon: 'fa-code', image: imgWebdev, desc: 'Modern, responsive, and multilingual web application development for global businesses.' }
 ];
@@ -48,11 +48,11 @@ const INITIAL_TRANSLATION_SERVICES = [
 
 const INITIAL_MENU_LINKS = [
   { id: '1', label: 'Home', path: '/', isMega: false, visible: true },
-  { id: '2', label: 'About Us', path: '/about', isMega: false, visible: true },
-  { id: '3', label: 'Services', path: '/services', isMega: true, megaType: 'services', visible: true },
+  { id: '2', label: 'About Us', path: '/about-visma-translation', isMega: false, visible: true },
+  { id: '3', label: 'Services', path: '/language-services-bangalore', isMega: true, megaType: 'services', visible: true },
   { id: '4', label: 'Translation Services', path: '/translation-services', isMega: true, megaType: 'translation', visible: true },
   { id: '5', label: 'Apostille Services', path: '/apostille', isMega: false, visible: true },
-  { id: '6', label: 'Quality', path: '/quality', isMega: false, visible: true },
+  { id: '6', label: 'Quality', path: '/industries-we-serve', isMega: false, visible: true },
   { id: '7', label: 'Contact Us', path: '/contact', isMega: false, visible: true },
   { id: '8', label: 'Blog', path: '/blog', isMega: false, visible: true }
 ];
