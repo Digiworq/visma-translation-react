@@ -23,7 +23,7 @@ import imgTechnical from '../../teachnical translation.png';
 const DataContext = createContext();
 
 // Bump this version number any time you change INITIAL_MENU_LINKS or INITIAL_SERVICES
-const DATA_VERSION = '2.0';
+const DATA_VERSION = '3.0';
 
 // On load, if the stored version doesn't match, wipe the relevant keys so fresh defaults load
 const storedVersion = localStorage.getItem('visma_data_version');
