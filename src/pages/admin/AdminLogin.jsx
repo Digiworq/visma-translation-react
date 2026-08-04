@@ -132,9 +132,7 @@ export default function AdminLogin() {
             </button>
           </div>
 
-          <div className="admin-hint">
-            <span>Current Username: <code>{adminCreds.username}</code></span>
-          </div>
+
         </form>
       </div>
 
