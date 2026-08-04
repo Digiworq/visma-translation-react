@@ -22,6 +22,18 @@ import imgTechnical from '../../teachnical translation.png';
 
 const DataContext = createContext();
 
+// Bump this version number any time you change INITIAL_MENU_LINKS or INITIAL_SERVICES
+const DATA_VERSION = '2.0';
+
+// On load, if the stored version doesn't match, wipe the relevant keys so fresh defaults load
+const storedVersion = localStorage.getItem('visma_data_version');
+if (storedVersion !== DATA_VERSION) {
+  localStorage.removeItem('visma_menu_links');
+  localStorage.removeItem('visma_services');
+  localStorage.removeItem('visma_translation_services');
+  localStorage.setItem('visma_data_version', DATA_VERSION);
+}
+
 const INITIAL_SERVICES = [
   { path: '/localization-services', title: 'Localization Service', sub: 'Cultural adaptation', key: 'localization', icon: 'fa-globe-americas', image: imgLocalization, desc: 'Cultural adaptation of software, websites, and mobile applications for international audiences.' },
   { path: '/seo-content-writing-services', title: 'SEO Content Writing', sub: 'Rank higher online', key: 'seo', icon: 'fa-pen-nib', image: imgSeo, desc: 'Search engine optimized content in multiple languages to drive organic traffic and boost conversions.' },
