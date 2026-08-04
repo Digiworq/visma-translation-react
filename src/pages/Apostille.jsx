@@ -59,7 +59,7 @@ export default function Apostille() {
             <h1>Fast &amp; Reliable<br /><span className="ac">Apostille Services</span></h1>
             <p className="ph-desc">Get your documents apostilled for international use. We handle MEA apostille, HRD attestation, embassy attestation and more — with express processing across all Indian states.</p>
             <div className="ph-btns">
-              <Link to="/contact" className="btn-org"><i className="fas fa-paper-plane"></i> Apply Now</Link>
+              <Link to="/translation-services-contact-us" className="btn-org"><i className="fas fa-paper-plane"></i> Apply Now</Link>
               <a href="#process" className="btn-ghost"><i className="fas fa-info-circle"></i> How It Works</a>
             </div>
           </div>
@@ -156,7 +156,7 @@ export default function Apostille() {
             <p>Quick, reliable and fully tracked. Free assessment within 2 hours.</p>
           </div>
           <div className="cta-btns">
-            <Link to="/contact" className="btn-wh"><i className="fas fa-paper-plane"></i> Apply Now</Link>
+            <Link to="/translation-services-contact-us" className="btn-wh"><i className="fas fa-paper-plane"></i> Apply Now</Link>
             <a href="tel:+919945342726" className="btn-wb"><i className="fas fa-phone-alt"></i> Call for Help</a>
           </div>
         </div>

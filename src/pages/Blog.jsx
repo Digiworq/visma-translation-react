@@ -160,7 +160,7 @@ export default function Blog() {
             <p>Get a free quote within 2 hours. Fast, accurate and ISO certified.</p>
           </div>
           <div className="cta-btns">
-            <Link to="/contact" className="btn-wh"><i className="fas fa-paper-plane"></i> Get Free Quote</Link>
+            <Link to="/translation-services-contact-us" className="btn-wh"><i className="fas fa-paper-plane"></i> Get Free Quote</Link>
             <Link to="/language-services-bangalore" className="btn-wb"><i className="fas fa-th-large"></i> Our Services</Link>
           </div>
         </div>

@@ -552,7 +552,7 @@ export default function ServiceDetail() {
             <h1><span className="ac">{data.headingMain}</span><br />{data.headingSub}</h1>
             <p className="ph-desc">{data.desc}</p>
             <div className="ph-btns">
-              <Link to="/contact" className="btn-org"><i className="fas fa-paper-plane"></i> Get a Free Quote</Link>
+              <Link to="/translation-services-contact-us" className="btn-org"><i className="fas fa-paper-plane"></i> Get a Free Quote</Link>
               <Link to={sidebarHub} className="btn-ghost"><i className="fas fa-th-large"></i> All {sidebarLabel}</Link>
             </div>
           </div>
@@ -606,7 +606,7 @@ export default function ServiceDetail() {
             <p>Get a free consultation and quote within 2 hours.</p>
           </div>
           <div className="cta-btns">
-            <Link to="/contact" className="btn-wh"><i className="fas fa-paper-plane"></i> Get Free Quote</Link>
+            <Link to="/translation-services-contact-us" className="btn-wh"><i className="fas fa-paper-plane"></i> Get Free Quote</Link>
             <a href="tel:+919945342726" className="btn-wb"><i className="fas fa-phone-alt"></i> +91 9945342726</a>
           </div>
         </div>

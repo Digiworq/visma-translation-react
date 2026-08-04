@@ -41,7 +41,7 @@ export default function TranslationServices() {
             <h1>Specialized Document<br /><span className="ac">Translation Services</span></h1>
             <p className="ph-desc">Fast, accurate, and embassy-accepted document translation across 100+ languages. Governed by ISO 9001:2015 quality standards with 2-hour quote response.</p>
             <div className="ph-btns">
-              <Link to="/contact" className="btn-org"><i className="fas fa-paper-plane"></i> Get a Free Quote</Link>
+              <Link to="/translation-services-contact-us" className="btn-org"><i className="fas fa-paper-plane"></i> Get a Free Quote</Link>
               <a href="tel:+919945342726" className="btn-ghost"><i className="fas fa-phone-alt"></i> Call Us Now</a>
             </div>
           </div>
@@ -101,7 +101,7 @@ export default function TranslationServices() {
             <p>Get a free quote within 2 hours. ISO certified quality guaranteed.</p>
           </div>
           <div className="cta-btns">
-            <Link to="/contact" className="btn-wh"><i className="fas fa-paper-plane"></i> Get Free Quote</Link>
+            <Link to="/translation-services-contact-us" className="btn-wh"><i className="fas fa-paper-plane"></i> Get Free Quote</Link>
             <a href="tel:+919945342726" className="btn-wb"><i className="fas fa-phone-alt"></i> Call Us</a>
           </div>
         </div>

@@ -119,7 +119,7 @@ export default function Home() {
             </p>
             <div className="hero-btns">
               <a href="#services" className="btn-red">Learn More</a>
-              <Link to="/contact" className="btn-outline-dark">Contact Us</Link>
+              <Link to="/translation-services-contact-us" className="btn-outline-dark">Contact Us</Link>
             </div>
             <div className="hero-trust">
               <div className="trust-item"><i className="fas fa-shield-alt"></i><span>{heroContent.badge4 || 'ISO 9001:2015 Certified'}</span></div>
@@ -189,7 +189,7 @@ export default function Home() {
                 {heroContent.announcementText || 'Express 2-Hour Document Translation & Embassy Apostille Legalization available across India!'}
               </p>
             </div>
-            <Link to="/contact" style={{
+            <Link to="/translation-services-contact-us" style={{
               background: 'transparent',
               color: 'var(--org)',
               border: '1px solid var(--org)',
@@ -299,7 +299,7 @@ export default function Home() {
               <span className="tag light">Recognition</span>
               <h2>Top 10 Translation Agency <span className="red">in India</span></h2>
               <p>Our exceptional language translation services are designed to help you break down language barriers and connect with customers from all over the world. In a world that is increasingly interconnected, effective communication is key to building relationships and fostering trust with your audience.</p>
-              <Link to="/contact" className="btn-red">Get Started Today</Link>
+              <Link to="/translation-services-contact-us" className="btn-red">Get Started Today</Link>
             </div>
             <div className="top10-visual">
               <div className="award-badge">
@@ -548,7 +548,7 @@ export default function Home() {
                 <span><i className="fas fa-check"></i> 100+ Languages</span>
               </div>
               <div className="cta-btns">
-                <Link to="/contact" className="btn-red">Get a Free Quote</Link>
+                <Link to="/translation-services-contact-us" className="btn-red">Get a Free Quote</Link>
                 <a href="tel:+919945342726" className="btn-outline-red"><i className="fas fa-phone-alt"></i> Call Now</a>
               </div>
             </div>

@@ -43,7 +43,7 @@ export default function Services() {
             <h1>Complete Digital &amp;<br /><span className="ac">Language Solutions</span></h1>
             <p className="ph-desc">From precise website localization to high-converting social media marketing and web development — Visma delivers end-to-end solutions tailored for global businesses.</p>
             <div className="ph-btns">
-              <Link to="/contact" className="btn-org"><i className="fas fa-paper-plane"></i> Get a Free Quote</Link>
+              <Link to="/translation-services-contact-us" className="btn-org"><i className="fas fa-paper-plane"></i> Get a Free Quote</Link>
               <Link to="/translation-services" className="btn-ghost"><i className="fas fa-language"></i> Translation Services</Link>
             </div>
           </div>
@@ -103,7 +103,7 @@ export default function Services() {
             <p>Get a free quote within 2 hours. ISO certified quality guaranteed.</p>
           </div>
           <div className="cta-btns">
-            <Link to="/contact" className="btn-wh"><i className="fas fa-paper-plane"></i> Get Free Quote</Link>
+            <Link to="/translation-services-contact-us" className="btn-wh"><i className="fas fa-paper-plane"></i> Get Free Quote</Link>
             <a href="tel:+919945342726" className="btn-wb"><i className="fas fa-phone-alt"></i> Call Us</a>
           </div>
         </div>

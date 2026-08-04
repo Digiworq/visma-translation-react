@@ -51,10 +51,10 @@ const INITIAL_MENU_LINKS = [
   { id: '2', label: 'About Us', path: '/about-visma-translation', isMega: false, visible: true },
   { id: '3', label: 'Services', path: '/language-services-bangalore', isMega: true, megaType: 'services', visible: true },
   { id: '4', label: 'Translation Services', path: '/translation-services', isMega: true, megaType: 'translation', visible: true },
-  { id: '5', label: 'Apostille Services', path: '/apostille', isMega: false, visible: true },
+  { id: '5', label: 'Apostille Services', path: '/translation-services-apostille', isMega: false, visible: true },
   { id: '6', label: 'Quality', path: '/industries-we-serve', isMega: false, visible: true },
-  { id: '7', label: 'Contact Us', path: '/contact', isMega: false, visible: true },
-  { id: '8', label: 'Blog', path: '/blog', isMega: false, visible: true }
+  { id: '7', label: 'Contact Us', path: '/translation-services-contact-us', isMega: false, visible: true },
+  { id: '8', label: 'Blog', path: '/translation-services-blog', isMega: false, visible: true }
 ];
 
 const INITIAL_HERO = {

@@ -33,8 +33,8 @@ export default function Footer() {
               <li><Link to="/about-visma-translation">About Us</Link></li>
               <li><Link to="/language-services-bangalore">Services</Link></li>
               <li><Link to="/industries-we-serve">Industries</Link></li>
-              <li><Link to="/contact">Contact Us</Link></li>
-              <li><Link to="/blog">Blog</Link></li>
+              <li><Link to="/translation-services-contact-us">Contact Us</Link></li>
+              <li><Link to="/translation-services-blog">Blog</Link></li>
             </ul>
           </div>
 
@@ -46,7 +46,7 @@ export default function Footer() {
               <li><Link to="/voice-over-services">Voice-Over Service</Link></li>
               <li><Link to="/subtitling-services">Sub-Titling Service</Link></li>
               <li><Link to="/transcription-services">Transcription Services</Link></li>
-              <li><Link to="/apostille">Apostille Services</Link></li>
+              <li><Link to="/translation-services-apostille">Apostille Services</Link></li>
               <li><Link to="/desktop-publishing-services">DTP &amp; Design</Link></li>
             </ul>
           </div>
@@ -77,7 +77,7 @@ export default function Footer() {
       
       <div className="footer-bottom">
         <div className="container">
-          <p>&copy; {new Date().getFullYear()} Visma Translation. All rights reserved. | <Link to="/privacy-policy" style={{ color: 'inherit', textDecoration: 'none' }}>Privacy Policy</Link> | <Link to="/terms-and-conditions" style={{ color: 'inherit', textDecoration: 'none' }}>Terms and Conditions</Link></p>
+          <p>&copy; {new Date().getFullYear()} Visma Translation. All rights reserved. | <Link to="/translation-services-privacy-policy" style={{ color: 'inherit', textDecoration: 'none' }}>Privacy Policy</Link> | <Link to="/translation-services-terms-and-conditions" style={{ color: 'inherit', textDecoration: 'none' }}>Terms and Conditions</Link></p>
           <p style={{ marginTop: '6px', fontSize: '12px', color: 'rgba(255,255,255,0.45)' }}>
             Designed &amp; Developed by{' '}
             <a href="https://www.digiworq.com/" target="_blank" rel="noopener noreferrer" style={{ color: '#e8651a', textDecoration: 'none', fontWeight: '600' }}>

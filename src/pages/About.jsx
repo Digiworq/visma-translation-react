@@ -77,7 +77,7 @@ export default function About() {
             <h1>Bridging Languages,<br /><span className="ac">Connecting Worlds</span></h1>
             <p className="ph-desc">Visma Translation is a premier ISO 9001:2015 certified agency helping businesses break language barriers since 2010. With 200+ expert linguists across 100+ languages, we deliver precision, speed and trust.</p>
             <div className="ph-btns">
-              <Link to="/contact" className="btn-org"><i className="fas fa-envelope"></i> Get In Touch</Link>
+              <Link to="/translation-services-contact-us" className="btn-org"><i className="fas fa-envelope"></i> Get In Touch</Link>
               <Link to="/language-services-bangalore" className="btn-ghost"><i className="fas fa-th-large"></i> Our Services</Link>
             </div>
           </div>
@@ -161,7 +161,7 @@ export default function About() {
             <p>Get a free consultation and quote within 24 hours. No hidden charges.</p>
           </div>
           <div className="cta-btns">
-            <Link to="/contact" className="btn-wh"><i className="fas fa-paper-plane"></i> Get Free Quote</Link>
+            <Link to="/translation-services-contact-us" className="btn-wh"><i className="fas fa-paper-plane"></i> Get Free Quote</Link>
             <a href="tel:+919945342726" className="btn-wb"><i className="fas fa-phone-alt"></i> Call Us Now</a>
           </div>
         </div>

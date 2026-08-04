@@ -45,11 +45,11 @@ export default function App() {
             <Route path="/language-services-bangalore" element={<Services />} />
             <Route path="/translation-services" element={<TranslationServices />} />
             <Route path="/industries-we-serve" element={<Quality />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/apostille" element={<Apostille />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+            <Route path="/translation-services-blog" element={<Blog />} />
+            <Route path="/translation-services-contact-us" element={<Contact />} />
+            <Route path="/translation-services-apostille" element={<Apostille />} />
+            <Route path="/translation-services-privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/translation-services-terms-and-conditions" element={<TermsAndConditions />} />
 
             {/* Admin Routes */}
             <Route path="/admin/login" element={<AdminLogin />} />
@@ -80,6 +80,11 @@ export default function App() {
             <Route path="/services" element={<Services />} />
             <Route path="/quality" element={<Quality />} />
             <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/apostille" element={<Apostille />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
             <Route path="/localization" element={<ServiceDetail />} />
             <Route path="/dtp" element={<ServiceDetail />} />
             <Route path="/voiceover" element={<ServiceDetail />} />
